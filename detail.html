@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tour Details | Bali Bagus Journey</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="css/style.css" />
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            teal:   { DEFAULT: '#0f766e', 50: '#f0fdfa', 100: '#ccfbf1', 600: '#0d9488', 700: '#0f766e', 800: '#115e59', 900: '#134e4a' },
+            orange: { DEFAULT: '#f97316', 400: '#fb923c', 500: '#f97316', 600: '#ea580c' },
+          },
+          fontFamily: {
+            sans:    ['"Plus Jakarta Sans"', 'sans-serif'],
+            display: ['"Playfair Display"', 'serif'],
+          },
+        }
+      }
+    }
+  </script>
+</head>
+
+<body class="bg-white text-gray-800">
+
+<!-- ══════════════════════════════════════════════
+     NAVIGATION
+══════════════════════════════════════════════ -->
+<nav class="fixed top-0 left-0 right-0 z-50 bg-teal-700/95 backdrop-blur-md shadow-lg">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 flex items-center justify-between h-16">
+    <a href="index.html" class="flex items-center gap-2 group">
+      <span class="w-9 h-9 rounded-full bg-orange-500 flex items-center justify-center text-white font-bold text-lg shadow-md">W</span>
+      <span class="text-white font-display font-bold text-xl tracking-tight">Bali Bagus <span class="text-orange-400">Journey</span></span>
+    </a>
+
+    <div class="hidden md:flex items-center gap-8 text-sm font-semibold text-teal-100">
+      <a href="index.html" class="nav-link hover:text-white transition pb-1">Home</a>
+      <a href="tours.html" class="nav-link hover:text-white transition pb-1">Tours</a>
+      <a href="about.html" class="nav-link hover:text-white transition pb-1">About Us</a>
+      <a href="index.html#how-to-book" class="nav-link hover:text-white transition pb-1">How to Book</a>
+      <a href="https://wa.me/6281234567890?text=Hi!%20I'm%20interested%20in%20a%20Bali%20tour%20package" target="_blank"
+         class="bg-orange-500 hover:bg-orange-600 text-white px-5 py-2 rounded-full transition shadow">
+        <i class="fab fa-whatsapp mr-1"></i> WhatsApp Us
+      </a>
+    </div>
+
+    <button id="menuToggle" class="md:hidden text-white text-2xl focus:outline-none" onclick="toggleMenu()">
+      <i class="fas fa-bars"></i>
+    </button>
+  </div>
+
+  <div id="mobileMenu" class="hidden md:hidden bg-teal-700/95 backdrop-blur-md px-4 pb-6 text-sm font-semibold text-teal-100 flex flex-col gap-1 border-t border-teal-600/50 shadow-inner">
+    <a href="index.html" class="py-3 border-b border-teal-600/30 hover:text-white transition" onclick="closeMenu()">Home</a>
+    <a href="tours.html" class="py-3 border-b border-teal-600/30 hover:text-white transition" onclick="closeMenu()">Tours</a>
+    <a href="about.html" class="py-3 border-b border-teal-600/30 hover:text-white transition" onclick="closeMenu()">About Us</a>
+    <a href="index.html#how-to-book" class="py-3 border-b border-teal-600/30 hover:text-white transition" onclick="closeMenu()">How to Book</a>
+    <a href="https://wa.me/6281234567890?text=Hi!%20I'm%20interested%20in%20a%20Bali%20tour%20package" target="_blank"
+       class="bg-orange-500 text-white text-center py-3 rounded-xl mt-4 shadow-lg active:scale-95 transition" onclick="closeMenu()">
+      <i class="fab fa-whatsapp mr-1"></i> WhatsApp Us
+    </a>
+  </div>
+</nav>
+
+<!-- ══════════════════════════════════════════════
+     DETAIL HERO
+══════════════════════════════════════════════ -->
+<div id="detail-hero" class="relative h-64 md:h-80 bg-teal-700 mt-16 overflow-hidden">
+  <img id="detail-hero-img" src="" alt="" class="w-full h-full object-cover opacity-60"/>
+  <div class="absolute inset-0 flex flex-col justify-end p-6 md:p-10 max-w-7xl mx-auto">
+    <div class="flex items-center gap-2 text-sm text-teal-200 mb-2 cursor-pointer" onclick="window.history.back()">
+      <i class="fas fa-arrow-left"></i> Back
+    </div>
+    <span class="inline-block bg-orange-500 text-white text-xs font-bold px-3 py-1 rounded-full mb-3 w-fit">
+      <i class="fas fa-tag text-xs mr-1"></i> Exclusive Offer!
+    </span>
+    <h1 id="detail-title" class="font-display text-white text-3xl md:text-4xl font-bold leading-tight"></h1>
+    <div class="flex items-center gap-4 mt-3 text-teal-200 text-sm flex-wrap">
+      <span><i class="fas fa-map-marker-alt text-orange-400 mr-1"></i> Bali, Indonesia</span>
+      <span><i class="fas fa-calendar-check text-green-400 mr-1"></i> Available</span>
+      <span class="flex items-center gap-1 text-yellow-400">
+        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+        <span class="text-teal-200 ml-1">5.0 (128 reviews)</span>
+      </span>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     DETAIL CONTENT
+══════════════════════════════════════════════ -->
+<div class="max-w-7xl mx-auto px-4 sm:px-6 py-10">
+  <div class="flex flex-col lg:flex-row gap-10">
+    <div class="flex-1 min-w-0">
+      <div class="bg-teal-50 border border-teal-100 rounded-2xl p-6 mb-8">
+        <h2 class="font-bold text-teal-800 text-lg mb-3 flex items-center gap-2">
+          <i class="fas fa-tag text-orange-500"></i> Price Start From
+        </h2>
+        <ul id="detail-prices" class="space-y-1 text-gray-700 text-sm list-disc list-inside marker:text-orange-500"></ul>
+      </div>
+      <div class="bg-white border border-gray-100 rounded-2xl p-6 mb-8 shadow-sm">
+        <h2 class="font-bold text-teal-800 text-lg mb-3 flex items-center gap-2">
+          <i class="fas fa-map-marker-alt text-orange-500"></i> Destinations
+        </h2>
+        <ul id="detail-destinations" class="space-y-1.5 text-gray-700 text-sm list-disc list-inside marker:text-teal-500"></ul>
+      </div>
+      <div class="bg-white border border-gray-100 rounded-2xl p-6 shadow-sm overflow-x-auto">
+        <h2 class="font-bold text-teal-800 text-lg mb-5 flex items-center gap-2">
+          <i class="fas fa-clock text-orange-500"></i> General Itinerary
+        </h2>
+        <table id="detail-table" class="itinerary-table w-full border-collapse text-sm rounded-xl overflow-hidden shadow-sm"></table>
+      </div>
+    </div>
+
+    <div class="hidden lg:block w-80 xl:w-96 flex-shrink-0">
+      <div class="sticky-sidebar space-y-6">
+        <div class="bg-white rounded-3xl shadow-xl border border-gray-100 overflow-hidden">
+          <div class="bg-teal-700 px-6 py-4">
+            <div class="text-teal-200 text-sm font-semibold mb-1">Start From</div>
+            <div class="flex items-baseline gap-2">
+              <span class="text-white/60 text-base line-through" id="sidebar-original-price"></span>
+              <span class="text-orange-400 font-extrabold text-3xl" id="sidebar-price"></span>
+            </div>
+          </div>
+          <div class="p-6">
+            <div class="space-y-3 mb-6">
+              <div class="flex items-center gap-3 text-gray-600 text-sm">
+                <div class="w-8 h-8 bg-teal-50 rounded-lg flex items-center justify-center flex-shrink-0">
+                  <i class="fas fa-credit-card text-teal-600 text-xs"></i>
+                </div>
+                <span>Book now pay later</span>
+              </div>
+              <div class="flex items-center gap-3 text-gray-600 text-sm">
+                <div class="w-8 h-8 bg-orange-50 rounded-lg flex items-center justify-center flex-shrink-0">
+                  <i class="fas fa-shield-alt text-orange-500 text-xs"></i>
+                </div>
+                <span>The Best Service Guarantee</span>
+              </div>
+              <div class="flex items-center gap-3 text-gray-600 text-sm">
+                <div class="w-8 h-8 bg-teal-50 rounded-lg flex items-center justify-center flex-shrink-0">
+                  <i class="fas fa-users text-teal-600 text-xs"></i>
+                </div>
+                <span>Minimum 2 persons</span>
+              </div>
+              <div class="flex items-center gap-3 text-gray-600 text-sm">
+                <div class="w-8 h-8 bg-orange-50 rounded-lg flex items-center justify-center flex-shrink-0">
+                  <i class="fas fa-car text-orange-500 text-xs"></i>
+                </div>
+                <span>Private transport included</span>
+              </div>
+            </div>
+            <a id="sidebar-wa-link" href="#" target="_blank"
+               class="flex items-center justify-center gap-3 bg-orange-500 hover:bg-orange-600 text-white font-bold py-4 rounded-2xl shadow-lg transition w-full text-base mb-4">
+              <i class="fab fa-whatsapp text-xl"></i> BOOK BY WHATSAPP
+            </a>
+            <div class="bg-orange-50 border border-orange-200 rounded-xl p-4 flex items-start gap-3">
+              <i class="fas fa-bolt text-orange-500 mt-0.5"></i>
+              <div class="text-orange-800 text-xs leading-relaxed font-medium">
+                <strong>Instant Confirmation.</strong> Secure your spot while staying flexible — cancel anytime before 24 hours.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-3xl shadow-sm border border-gray-100 p-6">
+          <h3 class="font-bold text-teal-800 mb-4 text-sm uppercase tracking-wide">Popular Packages</h3>
+          <div class="space-y-3" id="sidebar-popular-links"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     MOBILE FIXED BOTTOM BAR
+══════════════════════════════════════════════ -->
+<div class="lg:hidden fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 shadow-2xl p-3 flex items-center gap-3 z-40">
+  <div class="flex-1">
+    <div class="text-xs text-gray-400">Start from</div>
+    <div class="text-orange-500 font-extrabold text-xl" id="mobile-price-bar"></div>
+  </div>
+  <a id="mobile-wa-link" href="#" target="_blank"
+     class="flex items-center gap-2 bg-orange-500 hover:bg-orange-600 text-white font-bold px-6 py-3 rounded-2xl shadow-lg transition text-sm">
+    <i class="fab fa-whatsapp text-lg"></i> Book Now
+  </a>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     FOOTER
+══════════════════════════════════════════════ -->
+<footer class="bg-teal-900 text-teal-200 py-8 mt-10 pb-20 lg:pb-8">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 text-center">
+    <p class="text-sm">© 2024 Bali Bagus Journey — <a href="https://wa.me/6281234567890" target="_blank" class="text-orange-400 hover:underline">Contact Us on WhatsApp</a></p>
+  </div>
+</footer>
+
+<!-- FLOATING WHATSAPP -->
+<a href="https://wa.me/6281234567890?text=Hi!%20I'm%20interested%20in%20a%20Bali%20tour%20package" target="_blank"
+   id="wa-float"
+   class="wa-float fixed bottom-6 right-6 z-50 bg-green-500 hover:bg-green-600 text-white w-14 h-14 rounded-full flex items-center justify-center shadow-2xl transition text-2xl"
+   title="Chat on WhatsApp">
+  <i class="fab fa-whatsapp"></i>
+</a>
+
+<script src="js/main.js"></script>
+<script>
+// Get tour ID from URL query parameter
+const urlParams = new URLSearchParams(window.location.search);
+const tourKey = urlParams.get('tour');
+
+if (tourKey && tours[tourKey]) {
+  _renderDetail(tourKey);
+} else {
+  document.body.innerHTML = '<div class="flex items-center justify-center h-screen"><div class="text-center"><h1 class="text-2xl font-bold text-teal-800">Tour not found</h1><p class="text-gray-500 mt-2"><a href="tours.html" class="text-teal-700 hover:underline">Go back to tours</a></p></div></div>';
+}
+
+// Render detail with override for navigation
+function _renderDetail(tourKey) {
+  const t = tours[tourKey];
+  if (!t) return;
+
+  document.getElementById('detail-title').textContent = t.title;
+  document.getElementById('detail-hero-img').src = t.img;
+  document.getElementById('detail-hero-img').alt = t.title;
+
+  // Prices
+  document.getElementById('detail-prices').innerHTML = t.prices.map(p => `<li>${p}</li>`).join('');
+
+  // Destinations
+  document.getElementById('detail-destinations').innerHTML = t.destinations.map(d => `<li>${d}</li>`).join('');
+
+  // Itinerary table
+  let html = `<thead><tr>
+    <th class="text-center w-28">SESSION</th>
+    <th>ACTIVITY</th>
+  </tr></thead><tbody>`;
+  t.itinerary.forEach(block => {
+    block.activities.forEach((act, i) => {
+      html += `<tr>`;
+      if (i === 0) html += `<td rowspan="${block.activities.length}" class="text-center font-bold text-teal-800 bg-teal-50/60 tracking-wide text-xs uppercase">${block.session}</td>`;
+      html += `<td class="text-gray-700">${act}</td></tr>`;
+    });
+  });
+  html += '</tbody>';
+  document.getElementById('detail-table').innerHTML = html;
+
+  // Sidebar
+  document.getElementById('sidebar-price').textContent = t.price;
+  document.getElementById('sidebar-original-price').textContent = t.originalPrice;
+  const waUrl = `https://wa.me/6281234567890?text=${encodeURIComponent(t.waMessage)}`;
+  document.getElementById('sidebar-wa-link').href = waUrl;
+  document.getElementById('mobile-price-bar').textContent = t.price;
+  document.getElementById('mobile-wa-link').href = waUrl;
+
+  // Popular links sidebar
+  const popLinks = Object.entries(tours).filter(([k]) => k !== tourKey).slice(0, 4);
+  document.getElementById('sidebar-popular-links').innerHTML = popLinks.map(([k, p]) => `
+    <a href="detail.html?tour=${k}"
+       class="flex items-center justify-between text-sm text-gray-700 hover:text-teal-700 py-2 border-b border-gray-50 transition group">
+      <span class="group-hover:underline leading-snug">${p.title}</span>
+      <i class="fas fa-arrow-right text-teal-400 text-xs group-hover:translate-x-1 transition flex-shrink-0 ml-2"></i>
+    </a>
+  `).join('');
+}
+</script>
+
+</body>
+</html>

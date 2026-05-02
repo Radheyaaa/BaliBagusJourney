@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bali Private Driver & Tour Guide | Bali Bagus Journey</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="css/style.css" />
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            teal:   { DEFAULT: '#0f766e', 50: '#f0fdfa', 100: '#ccfbf1', 600: '#0d9488', 700: '#0f766e', 800: '#115e59', 900: '#134e4a' },
+            orange: { DEFAULT: '#f97316', 400: '#fb923c', 500: '#f97316', 600: '#ea580c' },
+          },
+          fontFamily: {
+            sans:    ['"Plus Jakarta Sans"', 'sans-serif'],
+            display: ['"Playfair Display"', 'serif'],
+          },
+        }
+      }
+    }
+  </script>
+</head>
+
+<body class="bg-white text-gray-800">
+
+<!-- ══════════════════════════════════════════════
+     NAVIGATION
+══════════════════════════════════════════════ -->
+<nav class="fixed top-0 left-0 right-0 z-50 bg-teal-700/95 backdrop-blur-md shadow-lg">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 flex items-center justify-between h-16">
+    <a href="index.html" class="flex items-center gap-2 group">
+      <span class="w-9 h-9 rounded-full bg-orange-500 flex items-center justify-center text-white font-bold text-lg shadow-md">W</span>
+      <span class="text-white font-display font-bold text-xl tracking-tight">Bali Bagus <span class="text-orange-400">Journey</span></span>
+    </a>
+
+    <div class="hidden md:flex items-center gap-8 text-sm font-semibold text-teal-100">
+      <a href="index.html" class="nav-link hover:text-white transition pb-1">Home</a>
+      <a href="tours.html" class="nav-link hover:text-white transition pb-1">Tours</a>
+      <a href="about.html" class="nav-link hover:text-white transition pb-1">About Us</a>
+      <a href="#how-to-book" class="nav-link hover:text-white transition pb-1">How to Book</a>
+      <a href="https://wa.me/6281234567890?text=Hi!%20I'm%20interested%20in%20a%20Bali%20tour%20package" target="_blank"
+         class="bg-orange-500 hover:bg-orange-600 text-white px-5 py-2 rounded-full transition shadow">
+        <i class="fab fa-whatsapp mr-1"></i> WhatsApp Us
+      </a>
+    </div>
+
+    <button id="menuToggle" class="md:hidden text-white text-2xl focus:outline-none" onclick="toggleMenu()">
+      <i class="fas fa-bars"></i>
+    </button>
+  </div>
+
+  <div id="mobileMenu" class="hidden md:hidden bg-teal-700/95 backdrop-blur-md px-4 pb-6 text-sm font-semibold text-teal-100 flex flex-col gap-1 border-t border-teal-600/50 shadow-inner">
+    <a href="index.html" class="py-3 border-b border-teal-600/30 hover:text-white transition" onclick="closeMenu()">Home</a>
+    <a href="tours.html" class="py-3 border-b border-teal-600/30 hover:text-white transition" onclick="closeMenu()">Tours</a>
+    <a href="about.html" class="py-3 border-b border-teal-600/30 hover:text-white transition" onclick="closeMenu()">About Us</a>
+    <a href="#how-to-book" class="py-3 border-b border-teal-600/30 hover:text-white transition" onclick="closeMenu()">How to Book</a>
+    <a href="https://wa.me/6281234567890?text=Hi!%20I'm%20interested%20in%20a%20Bali%20tour%20package" target="_blank"
+       class="bg-orange-500 text-white text-center py-3 rounded-xl mt-4 shadow-lg active:scale-95 transition" onclick="closeMenu()">
+      <i class="fab fa-whatsapp mr-1"></i> WhatsApp Us
+    </a>
+  </div>
+</nav>
+
+<!-- ══════════════════════════════════════════════
+     HERO
+══════════════════════════════════════════════ -->
+<section class="hero-bg min-h-screen flex items-center pt-16 relative overflow-hidden">
+  <div class="absolute inset-0 overflow-hidden pointer-events-none">
+    <div class="absolute -top-20 -right-20 w-96 h-96 bg-orange-500/10 rounded-full blur-3xl"></div>
+    <div class="absolute bottom-10 -left-20 w-80 h-80 bg-teal-400/10 rounded-full blur-3xl"></div>
+  </div>
+
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 grid md:grid-cols-2 gap-12 items-center py-24">
+    <div class="fade-up">
+      <span class="inline-block bg-orange-500/20 text-orange-300 border border-orange-400/30 text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full mb-5">
+        ✦ Trusted Bali Local Driver
+      </span>
+      <h1 class="font-display text-4xl sm:text-5xl lg:text-6xl text-white leading-tight mb-6">
+        Experience the<br/><span class="text-orange-400">Real Bali</span> with a<br/>Trusted Local Driver
+      </h1>
+      <p class="text-teal-100 text-lg leading-relaxed mb-8 max-w-lg">
+        Discover Bali's hidden gems with professional service, comfortable transport, and flexible itineraries tailored just for you.
+      </p>
+      <div class="flex flex-wrap gap-4">
+        <a href="https://wa.me/6281234567890?text=Hi!%20I'd%20like%20to%20book%20a%20Bali%20tour" target="_blank"
+           class="flex items-center gap-3 bg-orange-500 hover:bg-orange-600 text-white font-bold px-8 py-4 rounded-2xl shadow-xl transition text-base">
+          <i class="fab fa-whatsapp text-xl"></i> Chat &amp; Book on WhatsApp
+        </a>
+        <a href="tours.html"
+           class="flex items-center gap-2 bg-white/10 hover:bg-white/20 text-white border border-white/30 font-semibold px-6 py-4 rounded-2xl transition text-base backdrop-blur-sm">
+          View Tours <i class="fas fa-arrow-right text-sm"></i>
+        </a>
+      </div>
+      <div class="flex flex-wrap gap-5 mt-10 text-teal-100 text-sm">
+        <span class="flex items-center gap-2"><i class="fas fa-star text-yellow-400"></i> 4.9/5 Rating</span>
+        <span class="flex items-center gap-2"><i class="fas fa-users text-orange-400"></i> 2,000+ Happy Tourists</span>
+        <span class="flex items-center gap-2"><i class="fas fa-shield-alt text-teal-300"></i> Safe & Trusted</span>
+      </div>
+    </div>
+
+    <div class="hidden md:flex justify-center float-anim">
+      <div class="relative w-80">
+        <div class="bg-white/10 backdrop-blur-md border border-white/20 rounded-3xl p-6 shadow-2xl text-white">
+          <div class="flex items-center gap-3 mb-4">
+            <div class="w-12 h-12 bg-orange-500 rounded-full flex items-center justify-center font-bold text-xl shadow-lg">W</div>
+            <div>
+              <div class="font-bold text-base">Wayan Artana</div>
+              <div class="text-teal-200 text-xs">Professional Bali Driver & Guide</div>
+            </div>
+            <span class="ml-auto text-xs bg-green-400/30 text-green-300 px-2 py-1 rounded-full border border-green-400/30">●Online</span>
+          </div>
+          <img src="assets/images/nusa-penida.jpg" alt="Bali Tour" class="rounded-2xl w-full h-44 object-cover mb-4"/>
+          <div class="text-sm text-teal-100 mb-3">📍 Today's Tour: Nusa Penida</div>
+          <div class="flex gap-2 text-xs">
+            <span class="bg-teal-700/50 px-3 py-1.5 rounded-full border border-teal-500/30">8 Pax</span>
+            <span class="bg-orange-500/20 px-3 py-1.5 rounded-full border border-orange-400/30 text-orange-300">Confirmed ✓</span>
+          </div>
+        </div>
+        <div class="absolute -bottom-4 -right-4 bg-orange-500 text-white text-xs font-bold px-4 py-2 rounded-2xl shadow-xl">
+          From USD 55 🎉
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="absolute bottom-0 left-0 right-0">
+    <svg viewBox="0 0 1440 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0,40 C360,80 1080,0 1440,40 L1440,60 L0,60 Z" fill="white"/>
+    </svg>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════
+     STATS BAR
+══════════════════════════════════════════════ -->
+<section class="bg-white py-6 border-b border-gray-100">
+  <div class="max-w-4xl mx-auto px-4 grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+    <div><div class="text-3xl font-bold text-teal-700">2K+</div><div class="text-gray-500 text-sm mt-1">Happy Tourists</div></div>
+    <div><div class="text-3xl font-bold text-teal-700">15+</div><div class="text-gray-500 text-sm mt-1">Tour Packages</div></div>
+    <div><div class="text-3xl font-bold text-teal-700">4.9<span class="text-yellow-400">★</span></div><div class="text-gray-500 text-sm mt-1">Average Rating</div></div>
+    <div><div class="text-3xl font-bold text-teal-700">8yr</div><div class="text-gray-500 text-sm mt-1">Experience</div></div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════
+     WHY CHOOSE US
+══════════════════════════════════════════════ -->
+<section id="why-us" class="py-20 bg-gray-50">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6">
+    <div class="text-center mb-14">
+      <span class="text-orange-500 font-bold text-sm uppercase tracking-widest">Why Choose Us</span>
+      <h2 class="font-display text-4xl text-teal-800 mt-2">Your Journey, Our <span class="text-orange-500">Passion</span></h2>
+      <p class="text-gray-500 mt-4 max-w-xl mx-auto leading-relaxed">
+        We're more than just a driver — we're your personal Bali storyteller.
+      </p>
+    </div>
+    <div class="grid md:grid-cols-2 gap-12 items-center">
+      <div class="relative hidden md:block">
+        <img src="https://images.unsplash.com/photo-1555400038-63f5ba517a47?w=700&q=80" alt="Bali Driver" class="rounded-3xl shadow-2xl w-full h-96 object-cover"/>
+        <div class="absolute -bottom-6 -right-6 bg-teal-700 text-white p-5 rounded-2xl shadow-xl text-center w-36">
+          <div class="text-3xl font-bold">8+</div>
+          <div class="text-teal-200 text-xs mt-1">Years Driving<br/>in Bali</div>
+        </div>
+      </div>
+      <div class="grid sm:grid-cols-2 gap-6">
+        <div class="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 hover:shadow-md hover:-translate-y-1 transition group">
+          <div class="w-12 h-12 bg-teal-50 group-hover:bg-teal-100 rounded-xl flex items-center justify-center mb-4 transition">
+            <i class="fas fa-car text-teal-600 text-xl"></i>
+          </div>
+          <h3 class="font-bold text-teal-800 mb-2">Private Tour Service</h3>
+          <p class="text-gray-500 text-sm leading-relaxed">100% private tours — no sharing with strangers. Your schedule, your pace.</p>
+        </div>
+        <div class="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 hover:shadow-md hover:-translate-y-1 transition group">
+          <div class="w-12 h-12 bg-orange-50 group-hover:bg-orange-100 rounded-xl flex items-center justify-center mb-4 transition">
+            <i class="fas fa-user-tie text-orange-500 text-xl"></i>
+          </div>
+          <h3 class="font-bold text-teal-800 mb-2">Experienced Local Driver</h3>
+          <p class="text-gray-500 text-sm leading-relaxed">Born and raised in Bali — we know every hidden gem and secret viewpoint.</p>
+        </div>
+        <div class="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 hover:shadow-md hover:-translate-y-1 transition group">
+          <div class="w-12 h-12 bg-teal-50 group-hover:bg-teal-100 rounded-xl flex items-center justify-center mb-4 transition">
+            <i class="fas fa-snowflake text-teal-600 text-xl"></i>
+          </div>
+          <h3 class="font-bold text-teal-800 mb-2">Comfortable Clean Vehicles</h3>
+          <p class="text-gray-500 text-sm leading-relaxed">Air-conditioned, clean, and well-maintained vehicles for your comfort.</p>
+        </div>
+        <div class="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 hover:shadow-md hover:-translate-y-1 transition group">
+          <div class="w-12 h-12 bg-orange-50 group-hover:bg-orange-100 rounded-xl flex items-center justify-center mb-4 transition">
+            <i class="fas fa-map-marked-alt text-orange-500 text-xl"></i>
+          </div>
+          <h3 class="font-bold text-teal-800 mb-2">Flexible Itinerary</h3>
+          <p class="text-gray-500 text-sm leading-relaxed">No rigid schedules — we customize every trip to match your interests.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════
+     TOUR CARDS (Home — 3 featured)
+══════════════════════════════════════════════ -->
+<section id="services" class="py-20 bg-white">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6">
+    <div class="text-center mb-14">
+      <span class="text-orange-500 font-bold text-sm uppercase tracking-widest">Our Packages</span>
+      <h2 class="font-display text-4xl text-teal-800 mt-2">Popular <span class="text-orange-500">Tour Packages</span></h2>
+      <p class="text-gray-500 mt-4 max-w-md mx-auto">Hand-crafted experiences that bring the best of Bali straight to you.</p>
+    </div>
+
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+      <!-- Card 1 -->
+      <div class="tour-card bg-white rounded-3xl overflow-hidden shadow-md border border-gray-100 cursor-pointer" onclick="goToDetail('nusa-penida')">
+        <div class="relative">
+          <img src="assets/images/nusa-penida.jpg" alt="Nusa Penida" class="w-full h-52 object-cover"/>
+          <div class="absolute top-4 left-4 bg-orange-500 text-white text-xs font-bold px-3 py-1.5 rounded-full shadow-md"><i class="fas fa-tag text-xs mr-1"></i> Best Seller</div>
+        </div>
+        <div class="p-5">
+          <h3 class="font-bold text-teal-800 text-lg mb-1">Nusa Penida West Day Tour</h3>
+          <div class="flex items-center gap-2 text-gray-400 text-sm mb-3">
+            <i class="fas fa-map-marker-alt text-teal-500 text-xs"></i> Bali, Indonesia
+            <span class="ml-auto text-green-500 font-semibold text-xs">Available</span>
+          </div>
+          <div class="flex text-yellow-400 text-sm mb-4">
+            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+            <span class="text-gray-400 ml-2 text-xs">(128 reviews)</span>
+          </div>
+          <div class="flex items-end justify-between">
+            <div>
+              <div class="text-gray-400 text-sm line-through">USD 103</div>
+              <div class="text-orange-500 font-extrabold text-2xl">USD 65</div>
+            </div>
+            <a href="https://wa.me/6281234567890?text=Hi!%20I'm%20interested%20in%20Nusa%20Penida%20West%20Day%20Tour" target="_blank"
+               class="bg-teal-700 hover:bg-teal-800 text-white text-sm font-semibold px-4 py-2.5 rounded-xl transition" onclick="event.stopPropagation()">
+              Book Now
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="tour-card bg-white rounded-3xl overflow-hidden shadow-md border border-gray-100 cursor-pointer" onclick="goToDetail('lempuyang')">
+        <div class="relative">
+          <img src="assets/images/lempuyang.jpg" alt="Lempuyang" class="w-full h-52 object-cover"/>
+          <div class="absolute top-4 left-4 bg-orange-500 text-white text-xs font-bold px-3 py-1.5 rounded-full shadow-md"><i class="fas fa-tag text-xs mr-1"></i> Exclusive Offer!</div>
+        </div>
+        <div class="p-5">
+          <h3 class="font-bold text-teal-800 text-lg mb-1">Lempuyang Gate of Heaven</h3>
+          <div class="flex items-center gap-2 text-gray-400 text-sm mb-3">
+            <i class="fas fa-map-marker-alt text-teal-500 text-xs"></i> Bali, Indonesia
+            <span class="ml-auto text-green-500 font-semibold text-xs">Available</span>
+          </div>
+          <div class="flex text-yellow-400 text-sm mb-4">
+            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+            <span class="text-gray-400 ml-2 text-xs">(96 reviews)</span>
+          </div>
+          <div class="flex items-end justify-between">
+            <div>
+              <div class="text-gray-400 text-sm line-through">USD 85</div>
+              <div class="text-orange-500 font-extrabold text-2xl">USD 55</div>
+            </div>
+            <a href="https://wa.me/6281234567890?text=Hi!%20I'm%20interested%20in%20Lempuyang%20Gate%20of%20Heaven%20Tour" target="_blank"
+               class="bg-teal-700 hover:bg-teal-800 text-white text-sm font-semibold px-4 py-2.5 rounded-xl transition" onclick="event.stopPropagation()">
+              Book Now
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="tour-card bg-white rounded-3xl overflow-hidden shadow-md border border-gray-100 cursor-pointer" onclick="goToDetail('atv')">
+        <div class="relative">
+          <img src="assets/images/shibupavizha-george-zZeh-USTxeE-unsplash.jpg" alt="Bali ATV" class="w-full h-52 object-cover"/>
+          <div class="absolute top-4 left-4 bg-teal-600 text-white text-xs font-bold px-3 py-1.5 rounded-full shadow-md"><i class="fas fa-fire text-xs mr-1"></i> Adventure</div>
+        </div>
+        <div class="p-5">
+          <h3 class="font-bold text-teal-800 text-lg mb-1">Bali ATV Ride Adventure</h3>
+          <div class="flex items-center gap-2 text-gray-400 text-sm mb-3">
+            <i class="fas fa-map-marker-alt text-teal-500 text-xs"></i> Bali, Indonesia
+            <span class="ml-auto text-green-500 font-semibold text-xs">Available</span>
+          </div>
+          <div class="flex text-yellow-400 text-sm mb-4">
+            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+            <span class="text-gray-400 ml-2 text-xs">(74 reviews)</span>
+          </div>
+          <div class="flex items-end justify-between">
+            <div>
+              <div class="text-gray-400 text-sm line-through">USD 90</div>
+              <div class="text-orange-500 font-extrabold text-2xl">USD 60</div>
+            </div>
+            <a href="https://wa.me/6281234567890?text=Hi!%20I'm%20interested%20in%20Bali%20ATV%20Ride%20Adventure" target="_blank"
+               class="bg-teal-700 hover:bg-teal-800 text-white text-sm font-semibold px-4 py-2.5 rounded-xl transition" onclick="event.stopPropagation()">
+              Book Now
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- VIEW MORE BUTTON -->
+    <div class="text-center mt-12">
+      <a href="tours.html"
+         class="inline-flex items-center gap-3 bg-teal-700 hover:bg-teal-800 text-white font-bold px-10 py-4 rounded-2xl shadow-lg transition text-base group">
+        View All Tour Packages
+        <i class="fas fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
+      </a>
+      <p class="text-gray-400 text-sm mt-3">15+ packages available — find the perfect one for you</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════
+     HOW TO BOOK
+══════════════════════════════════════════════ -->
+<section id="how-to-book" class="py-20 bg-teal-800 relative overflow-hidden">
+  <div class="absolute inset-0 pointer-events-none overflow-hidden">
+    <div class="absolute top-0 right-0 w-96 h-96 bg-orange-500/5 rounded-full -translate-y-1/2 translate-x-1/2"></div>
+    <div class="absolute bottom-0 left-0 w-80 h-80 bg-teal-600/20 rounded-full translate-y-1/2 -translate-x-1/2"></div>
+  </div>
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 relative">
+    <div class="text-center mb-14">
+      <span class="text-orange-400 font-bold text-sm uppercase tracking-widest">Simple Steps</span>
+      <h2 class="font-display text-4xl text-white mt-2">How to <span class="text-orange-400">Book</span></h2>
+      <p class="text-teal-200 mt-4 max-w-md mx-auto">Booking your dream Bali experience is quick and easy — we're just a WhatsApp message away!</p>
+    </div>
+    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 relative">
+      <div class="hidden lg:block absolute top-10 left-[12.5%] right-[12.5%] h-0.5 bg-gradient-to-r from-teal-500 via-orange-400 to-teal-500 z-0"></div>
+      <div class="relative z-10 text-center group">
+        <div class="w-20 h-20 mx-auto bg-white/10 group-hover:bg-orange-500/20 border-2 border-teal-500/40 rounded-2xl flex items-center justify-center mb-5 transition duration-300 shadow-lg">
+          <i class="fas fa-phone text-orange-400 text-2xl"></i>
+        </div>
+        <div class="w-7 h-7 mx-auto -mt-2 mb-4 bg-orange-500 text-white text-xs font-bold rounded-full flex items-center justify-center shadow">1</div>
+        <h3 class="text-white font-bold text-base mb-2">Contact Us</h3>
+        <p class="text-teal-300 text-sm leading-relaxed">Reach out via WhatsApp or phone. Tell us your dates and interests!</p>
+      </div>
+      <div class="relative z-10 text-center group">
+        <div class="w-20 h-20 mx-auto bg-white/10 group-hover:bg-orange-500/20 border-2 border-teal-500/40 rounded-2xl flex items-center justify-center mb-5 transition duration-300 shadow-lg">
+          <i class="fas fa-map text-orange-400 text-2xl"></i>
+        </div>
+        <div class="w-7 h-7 mx-auto -mt-2 mb-4 bg-orange-500 text-white text-xs font-bold rounded-full flex items-center justify-center shadow">2</div>
+        <h3 class="text-white font-bold text-base mb-2">Choose Your Tour</h3>
+        <p class="text-teal-300 text-sm leading-relaxed">Browse packages or build your own custom itinerary.</p>
+      </div>
+      <div class="relative z-10 text-center group">
+        <div class="w-20 h-20 mx-auto bg-white/10 group-hover:bg-orange-500/20 border-2 border-teal-500/40 rounded-2xl flex items-center justify-center mb-5 transition duration-300 shadow-lg">
+          <i class="fas fa-check-circle text-orange-400 text-2xl"></i>
+        </div>
+        <div class="w-7 h-7 mx-auto -mt-2 mb-4 bg-orange-500 text-white text-xs font-bold rounded-full flex items-center justify-center shadow">3</div>
+        <h3 class="text-white font-bold text-base mb-2">Confirm Booking</h3>
+        <p class="text-teal-300 text-sm leading-relaxed">Instant confirmation. No upfront payment — book now, pay later!</p>
+      </div>
+      <div class="relative z-10 text-center group">
+        <div class="w-20 h-20 mx-auto bg-white/10 group-hover:bg-orange-500/20 border-2 border-teal-500/40 rounded-2xl flex items-center justify-center mb-5 transition duration-300 shadow-lg">
+          <i class="fas fa-umbrella-beach text-orange-400 text-2xl"></i>
+        </div>
+        <div class="w-7 h-7 mx-auto -mt-2 mb-4 bg-orange-500 text-white text-xs font-bold rounded-full flex items-center justify-center shadow">4</div>
+        <h3 class="text-white font-bold text-base mb-2">Enjoy Your Journey</h3>
+        <p class="text-teal-300 text-sm leading-relaxed">Sit back and let us take you to the most magical places in Bali.</p>
+      </div>
+    </div>
+    <div class="text-center mt-14">
+      <a href="https://wa.me/6281234567890?text=Hi!%20I%20want%20to%20book%20a%20Bali%20tour" target="_blank"
+         class="inline-flex items-center gap-3 bg-orange-500 hover:bg-orange-600 text-white font-bold px-10 py-4 rounded-2xl shadow-xl transition text-base">
+        <i class="fab fa-whatsapp text-xl"></i> Start Booking Now
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════
+     TESTIMONIALS
+══════════════════════════════════════════════ -->
+<section class="py-20 bg-gray-50">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6">
+    <div class="text-center mb-12">
+      <span class="text-orange-500 font-bold text-sm uppercase tracking-widest">Testimonials</span>
+      <h2 class="font-display text-4xl text-teal-800 mt-2">What Travelers <span class="text-orange-500">Say</span></h2>
+    </div>
+    <div class="grid md:grid-cols-3 gap-6">
+      <div class="bg-white rounded-3xl p-6 shadow-sm border border-gray-100 hover:shadow-md transition">
+        <div class="flex text-yellow-400 text-sm mb-3"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+        <p class="text-gray-600 text-sm leading-relaxed mb-4">"Wayan was absolutely amazing! He took us to places we would have never found ourselves. The car was spotless and comfortable. Highly recommended!"</p>
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 bg-teal-100 rounded-full flex items-center justify-center font-bold text-teal-700">S</div>
+          <div><div class="font-semibold text-teal-800 text-sm">Sarah M.</div><div class="text-gray-400 text-xs">🇦🇺 Australia</div></div>
+        </div>
+      </div>
+      <div class="bg-white rounded-3xl p-6 shadow-sm border border-gray-100 hover:shadow-md transition">
+        <div class="flex text-yellow-400 text-sm mb-3"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+        <p class="text-gray-600 text-sm leading-relaxed mb-4">"The Nusa Penida tour was beyond expectations! Very professional, flexible schedule, and great local knowledge. Worth every penny."</p>
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 bg-orange-100 rounded-full flex items-center justify-center font-bold text-orange-700">J</div>
+          <div><div class="font-semibold text-teal-800 text-sm">James K.</div><div class="text-gray-400 text-xs">🇬🇧 United Kingdom</div></div>
+        </div>
+      </div>
+      <div class="bg-white rounded-3xl p-6 shadow-sm border border-gray-100 hover:shadow-md transition">
+        <div class="flex text-yellow-400 text-sm mb-3"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></div>
+        <p class="text-gray-600 text-sm leading-relaxed mb-4">"Booked through WhatsApp and the whole process was seamless. Our guide was funny, knowledgeable, and made the whole trip unforgettable!"</p>
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 bg-teal-100 rounded-full flex items-center justify-center font-bold text-teal-700">A</div>
+          <div><div class="font-semibold text-teal-800 text-sm">Amanda T.</div><div class="text-gray-400 text-xs">🇺🇸 United States</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════
+     FOOTER
+══════════════════════════════════════════════ -->
+<footer class="bg-teal-900 text-teal-200 py-12">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 grid md:grid-cols-3 gap-8">
+    <div>
+      <div class="flex items-center gap-2 mb-4">
+        <span class="w-9 h-9 bg-orange-500 rounded-full flex items-center justify-center text-white font-bold text-lg">W</span>
+        <span class="text-white font-display font-bold text-xl">Bali Bagus Journey</span>
+      </div>
+      <p class="text-sm leading-relaxed">Your trusted private driver and tour guide in Bali. Making every trip memorable since 2016.</p>
+    </div>
+    <div>
+      <h4 class="text-white font-bold mb-4">Quick Links</h4>
+      <ul class="space-y-2 text-sm">
+        <li><a href="tours.html" class="hover:text-white transition">Tour Packages</a></li>
+        <li><a href="about.html" class="hover:text-white transition">About Us</a></li>
+        <li><a href="#how-to-book" class="hover:text-white transition">How to Book</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4 class="text-white font-bold mb-4">Contact</h4>
+      <ul class="space-y-2 text-sm">
+        <li class="flex items-center gap-2"><i class="fab fa-whatsapp text-green-400"></i> +62 815-2993-2189</li>
+        <li class="flex items-center gap-2"><i class="fas fa-envelope text-orange-400"></i> balibagusjourney@gmail.com</li>
+        <li class="flex items-center gap-2"><i class="fas fa-map-marker-alt text-teal-400"></i> Ubud, Bali, Indonesia</li>
+      </ul>
+    </div>
+  </div>
+  <div class="border-t border-teal-700 mt-10 pt-6 text-center text-xs text-teal-400">
+    © 2024 Bali Bagus Journey. All rights reserved. Built with ❤️ in Bali.
+  </div>
+</footer>
+
+<!-- FLOATING WHATSAPP -->
+<a href="https://wa.me/6281529932189?text=Hi!%20I'm%20interested%20in%20a%20Bali%20tour%20package" target="_blank"
+   id="wa-float"
+   class="wa-float fixed bottom-6 right-6 z-50 bg-green-500 hover:bg-green-600 text-white w-14 h-14 rounded-full flex items-center justify-center shadow-2xl transition text-2xl"
+   title="Chat on WhatsApp">
+  <i class="fab fa-whatsapp"></i>
+</a>
+
+<script src="js/main.js"></script>
+
+</body>
+</html>
