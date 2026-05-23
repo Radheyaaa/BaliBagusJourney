@@ -217,6 +217,51 @@ function getStars(rating) {
   return s;
 }
 
+/* ── Show detail page ── */
+function showDetail(tourKey, fromPage) {
+  const t = tours[tourKey];
+  if (!t) return;
+  currentDetailTour = tourKey;
+
+  const backPage = fromPage || activePage;
+  document.getElementById('detail-back-btn').onclick = () => showPage(backPage);
+  document.getElementById('detail-back-label').textContent = backPage === 'tours' ? 'Back to All Tours' : 'Back to Home';
+
+  document.getElementById('detail-title').textContent = t.title;
+  document.getElementById('detail-hero-img').src = t.imgFull || t.img;
+  document.getElementById('detail-prices').innerHTML = t.prices.map(p => `<li>${p}</li>`).join('');
+  document.getElementById('detail-destinations').innerHTML = t.destinations.map(d => `<li>${d}</li>`).join('');
+
+  let tHtml = `<thead><tr><th class="text-center w-28">SESSION</th><th>ACTIVITY</th></tr></thead><tbody>`;
+  t.itinerary.forEach(block => {
+    block.activities.forEach((act, i) => {
+      tHtml += `<tr>`;
+      if (i === 0) tHtml += `<td rowspan="${block.activities.length}" class="text-center font-bold text-teal-800 bg-teal-50/60 tracking-wide text-xs uppercase align-middle">${block.session}</td>`;
+      tHtml += `<td class="text-gray-700">${act}</td></tr>`;
+    });
+  });
+  document.getElementById('detail-table').innerHTML = tHtml + '</tbody>';
+
+  const waUrl = `https://wa.me/6281234567890?text=${encodeURIComponent(t.waMessage)}`;
+  document.getElementById('sidebar-price').textContent = t.price;
+  document.getElementById('sidebar-original-price').textContent = t.originalPrice;
+  document.getElementById('sidebar-wa-link').href = waUrl;
+  document.getElementById('mobile-price-bar').textContent = t.price;
+  document.getElementById('sidebar-popular-list').innerHTML = tourKeys
+    .filter(k => k !== tourKey).slice(0, 5)
+    .map(k => `
+      <a href="#" onclick="showDetail('${k}','tours'); return false;"
+         class="flex items-center justify-between text-sm text-gray-700 hover:text-teal-700 py-2.5 border-b border-gray-50 transition group">
+        <span class="group-hover:underline leading-snug">${tours[k].title}</span>
+        <i class="fas fa-arrow-right text-teal-400 text-xs ml-3 flex-shrink-0 group-hover:translate-x-1 transition"></i>
+      </a>`).join('');
+
+  qbInit(t);
+
+  showPage('detail');
+}
+
+
 /* ═══════════════════════════════════════════════════════
    NAVIGATION
 ═══════════════════════════════════════════════════════ */
@@ -319,11 +364,180 @@ function renderTours(search = '') {
   `).join('');
 }
 
-/* ═══════════════════════════════════════════════════════
-   INIT
-═══════════════════════════════════════════════════════ */
+/* ══════════════════════════════════════
+   QUICK BOOKING FORM (detail page)
+══════════════════════════════════════ */
+const QB_ADULT_CHILD_CATS = ['island', 'temple', 'adventure'];
 
-// Init tours on load
-if (document.getElementById('toursGrid')) {
-  renderTours();
+let qbState = {
+  formType: 'simple',
+  tourTitle: '',
+  priceStr: '',
+  basePrice: 0,
+  childPrice: 0,
+  simple: 1,
+  adults: 1,
+  children: 0,
+};
+
+function qbFmtPrice(num) {
+  return 'USD ' + num;
 }
+
+function qbUpdateTotalSimple() {
+  const n = qbState.simple;
+  const base = qbState.basePrice;
+  const row = document.getElementById('qb-total-simple');
+  if (n > 1) {
+    row.style.display = 'flex';
+    document.getElementById('qb-pax-s').textContent = n;
+    document.getElementById('qb-unit-s').textContent = qbFmtPrice(base);
+    document.getElementById('qb-total-s').textContent = qbFmtPrice(n * base);
+  } else {
+    row.style.display = 'none';
+  }
+}
+
+function qbUpdateTotalOptions() {
+  const a = qbState.adults;
+  const c = qbState.children;
+  const ap = qbState.basePrice;
+  const cp = qbState.childPrice;
+  const row = document.getElementById('qb-total-options');
+
+  if (a > 0 || c > 0) {
+    const total = a * ap + c * cp;
+    let label = '';
+    if (a > 0) label += `${a} adult${a > 1 ? 's' : ''} × USD ${ap}`;
+    if (c > 0) label += (a > 0 ? ' + ' : '') + `${c} child${c > 1 ? 'ren' : ''} × USD ${cp}`;
+    row.style.display = 'flex';
+    document.getElementById('qb-total-options-label').textContent = label;
+    document.getElementById('qb-total-o').textContent = qbFmtPrice(total);
+  } else {
+    row.style.display = 'none';
+  }
+}
+
+function qbAdjust(type, delta) {
+  if (type === 'simple') {
+    qbState.simple = Math.max(1, Math.min(12, qbState.simple + delta));
+    document.getElementById('qb-guests-simple').textContent = qbState.simple;
+    qbUpdateTotalSimple();
+  }
+}
+
+function qbAdjustOpt(type, delta) {
+  if (type === 'adult') {
+    qbState.adults = Math.max(0, Math.min(12, qbState.adults + delta));
+    document.getElementById('qb-adults').textContent = qbState.adults;
+  } else {
+    qbState.children = Math.max(0, Math.min(12, qbState.children + delta));
+    document.getElementById('qb-children').textContent = qbState.children;
+  }
+  qbUpdateTotalOptions();
+}
+
+function qbInit(tour) {
+  const num = parseInt((tour.price || '').replace(/[^0-9]/g, '')) || 0;
+  const childNum = Math.round(num * 0.7);
+  const useOptions = QB_ADULT_CHILD_CATS.includes(tour.category);
+
+  qbState = {
+    formType: useOptions ? 'options' : 'simple',
+    tourTitle: tour.title,
+    priceStr: tour.price,
+    basePrice: num,
+    childPrice: childNum,
+    simple: 1, adults: 1, children: 0,
+  };
+
+  document.getElementById('qb-price-display').textContent = tour.price;
+
+  document.getElementById('qb-date').value = '';
+  document.getElementById('qb-err-date').classList.add('hidden');
+  document.getElementById('qb-date').classList.remove('border-red-400');
+  document.getElementById('qb-date').min = new Date().toISOString().split('T')[0];
+  document.getElementById('qb-date-spacer').style.display = 'block';
+
+  const simple = document.getElementById('qb-form-simple');
+  const options = document.getElementById('qb-form-options');
+
+  if (useOptions) {
+    simple.classList.add('hidden');
+    options.classList.remove('hidden');
+    document.getElementById('qb-adult-price-label').textContent = `USD ${num}`;
+    document.getElementById('qb-child-price-label').textContent = `USD ${childNum}`;
+    document.getElementById('qb-adults').textContent = '1';
+    document.getElementById('qb-children').textContent = '0';
+    document.getElementById('qb-total-options').style.display = 'none';
+  } else {
+    options.classList.add('hidden');
+    simple.classList.remove('hidden');
+    document.getElementById('qb-guests-simple').textContent = '1';
+    document.getElementById('qb-unit-s').textContent = tour.price;
+    document.getElementById('qb-total-simple').style.display = 'none';
+  }
+}
+
+function qbSubmit() {
+  const dateEl = document.getElementById('qb-date');
+  const errEl = document.getElementById('qb-err-date');
+
+  if (!dateEl.value) {
+    errEl.classList.remove('hidden');
+    dateEl.classList.add('border-red-400');
+    dateEl.focus();
+    setTimeout(() => {
+      errEl.classList.add('hidden');
+      dateEl.classList.remove('border-red-400');
+    }, 3000);
+    return;
+  }
+
+  const dateFormatted = new Date(dateEl.value + 'T00:00:00')
+    .toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' });
+
+  let guestLine = '';
+  let totalLine = '';
+
+  if (qbState.formType === 'simple') {
+    const n = qbState.simple;
+    guestLine = `👥 Guests  : ${n} person(s)`;
+    totalLine = `💰 Total   : USD ${n * qbState.basePrice}`;
+  } else {
+    const a = qbState.adults, c = qbState.children;
+    guestLine = `👥 Guests  : ${a} Adult${a !== 1 ? 's' : ''} + ${c} Child${c !== 1 ? 'ren' : ''}`;
+    totalLine = `💰 Total   : USD ${a * qbState.basePrice + c * qbState.childPrice}`;
+  }
+
+  const msg = [
+    '🌴 *Tour Reservation — Bali Bagus Journey*',
+    '━━━━━━━━━━━━━━━━━━',
+    `🗺️ Tour    : ${qbState.tourTitle}`,
+    `📅 Date    : ${dateFormatted}`,
+    guestLine,
+    totalLine,
+    '━━━━━━━━━━━━━━━━━━',
+    '_Sent from Bali Bagus Journey website_'
+  ].join('\n');
+
+  window.open('https://wa.me/6281234567890?text=' + encodeURIComponent(msg), '_blank');
+}
+
+/* ── Keyboard: Escape closes modals ── */
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') {
+    const bookingOverlay = document.getElementById('booking-overlay');
+    const successOverlay = document.getElementById('success-overlay');
+    if (bookingOverlay) bookingOverlay.classList.add('hidden');
+    if (successOverlay) successOverlay.classList.add('hidden');
+    document.body.style.overflow = '';
+  }
+});
+
+/* ── Init ── */
+document.addEventListener('DOMContentLoaded', () => {
+  if (document.getElementById('toursGrid')) {
+    renderTours();
+  }
+});

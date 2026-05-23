@@ -45,7 +45,7 @@
       <a href="tours.html" class="nav-link hover:text-white transition pb-1">Tours</a>
       <a href="about.html" class="nav-link hover:text-white transition pb-1">About Us</a>
       <a href="index.html#how-to-book" class="nav-link hover:text-white transition pb-1">How to Book</a>
-      <a href="https://wa.me/6281234567890?text=Hi!%20I'm%20interested%20in%20a%20Bali%20tour%20package" target="_blank"
+      <a href="https://wa.me/6285934484380?text=Hi!%20I'm%20interested%20in%20a%20Bali%20tour%20package" target="_blank"
          class="bg-orange-500 hover:bg-orange-600 text-white px-5 py-2 rounded-full transition shadow">
         <i class="fab fa-whatsapp mr-1"></i> WhatsApp Us
       </a>
@@ -61,7 +61,7 @@
     <a href="tours.html" class="py-3 border-b border-teal-600/30 hover:text-white transition" onclick="closeMenu()">Tours</a>
     <a href="about.html" class="py-3 border-b border-teal-600/30 hover:text-white transition" onclick="closeMenu()">About Us</a>
     <a href="index.html#how-to-book" class="py-3 border-b border-teal-600/30 hover:text-white transition" onclick="closeMenu()">How to Book</a>
-    <a href="https://wa.me/6281234567890?text=Hi!%20I'm%20interested%20in%20a%20Bali%20tour%20package" target="_blank"
+    <a href="https://wa.me/6285934484380?text=Hi!%20I'm%20interested%20in%20a%20Bali%20tour%20package" target="_blank"
        class="bg-orange-500 text-white text-center py-3 rounded-xl mt-4 shadow-lg active:scale-95 transition" onclick="closeMenu()">
       <i class="fab fa-whatsapp mr-1"></i> WhatsApp Us
     </a>
@@ -116,6 +116,99 @@
         </h2>
         <table id="detail-table" class="itinerary-table w-full border-collapse text-sm rounded-xl overflow-hidden shadow-sm"></table>
       </div>
+      <div class="bg-white border border-gray-200 rounded-2xl p-6 shadow-sm" id="quick-book-box">
+          <p class="text-xs font-bold uppercase tracking-widest text-gray-400 mb-1">FROM</p>
+          <div class="flex items-baseline gap-2 mb-5">
+            <span id="qb-price-display" class="text-3xl font-bold text-sky-500"></span>
+            <span class="text-sm text-gray-400">/Person</span>
+          </div>
+          <p class="text-base font-bold text-teal-800 mb-5">Select your details</p>
+
+          <!-- Date -->
+          <label class="block text-sm font-semibold text-gray-700 mb-1.5" for="qb-date">Date</label>
+          <div class="relative mb-1">
+            <i class="fas fa-calendar-alt absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 text-sm pointer-events-none"></i>
+            <input id="qb-date" type="date"
+              class="form-input w-full border border-gray-200 rounded-xl pl-10 pr-4 py-3 text-sm bg-gray-50 focus:bg-white"
+              placeholder="Select date"/>
+          </div>
+          <p id="qb-err-date" class="hidden text-red-500 text-xs mb-4">Please select a date</p>
+          <div id="qb-date-spacer" class="mb-5"></div>
+
+          <!-- ── FORM TYPE A: Simple (transport / cultural) ── -->
+          <div id="qb-form-simple">
+            <label class="block text-sm font-semibold text-gray-700 mb-1.5">
+              Person <span class="font-normal text-gray-400">(max 12)</span>
+            </label>
+            <div class="flex items-center w-fit border border-gray-200 rounded-xl overflow-hidden mb-6">
+              <button type="button" onclick="qbAdjust('simple',-1)"
+                class="w-12 h-11 flex items-center justify-center text-teal-700 hover:bg-gray-100 transition border-r border-gray-200 font-bold text-lg">−</button>
+              <span id="qb-guests-simple" class="w-14 text-center text-base font-bold text-teal-800">1</span>
+              <button type="button" onclick="qbAdjust('simple',1)"
+                class="w-12 h-11 flex items-center justify-center text-teal-700 hover:bg-gray-100 transition border-l border-gray-200 font-bold text-lg">+</button>
+            </div>
+            <!-- Total row -->
+            <div id="qb-total-simple" class="hidden justify-between items-center bg-teal-50 border border-teal-100 rounded-xl px-4 py-2.5 mb-5">
+              <span class="text-sm text-gray-500"><span id="qb-pax-s">1</span> person × <span id="qb-unit-s"></span></span>
+              <span id="qb-total-s" class="text-sm font-bold text-teal-800"></span>
+            </div>
+          </div>
+
+          <!-- ── FORM TYPE B: Adult + Child (island/temple/adventure) ── -->
+          <div id="qb-form-options" class="hidden">
+            <p class="text-sm font-semibold text-gray-700 mb-3">Options</p>
+            <!-- Adult row -->
+            <div class="border border-gray-200 rounded-xl p-4 mb-3">
+              <div class="flex items-center justify-between">
+                <div class="flex-1">
+                  <div class="flex items-center gap-2">
+                    <span class="text-sm font-bold text-gray-800">Adult</span>
+                    <span id="qb-adult-price-label" class="text-sm text-gray-400"></span>
+                  </div>
+                  <p class="text-xs text-gray-400 mt-0.5">Standard entry for adults (12+ years)</p>
+                </div>
+                <div class="flex items-center border border-gray-200 rounded-xl overflow-hidden ml-3">
+                  <button type="button" onclick="qbAdjustOpt('adult',-1)"
+                    class="w-10 h-10 flex items-center justify-center text-teal-700 hover:bg-gray-100 border-r border-gray-200 font-bold text-lg transition">−</button>
+                  <span id="qb-adults" class="w-10 text-center text-sm font-bold text-teal-800">1</span>
+                  <button type="button" onclick="qbAdjustOpt('adult',1)"
+                    class="w-10 h-10 flex items-center justify-center text-teal-700 hover:bg-gray-100 border-l border-gray-200 font-bold text-lg transition">+</button>
+                </div>
+              </div>
+            </div>
+            <!-- Child row -->
+            <div class="border border-gray-200 rounded-xl p-4 mb-5">
+              <div class="flex items-center justify-between">
+                <div class="flex-1">
+                  <div class="flex items-center gap-2">
+                    <span class="text-sm font-bold text-gray-800">Child</span>
+                    <span id="qb-child-price-label" class="text-sm text-gray-400"></span>
+                  </div>
+                  <p class="text-xs text-gray-400 mt-0.5">Entry for children aged 2–12 years</p>
+                </div>
+                <div class="flex items-center border border-gray-200 rounded-xl overflow-hidden ml-3">
+                  <button type="button" onclick="qbAdjustOpt('child',-1)"
+                    class="w-10 h-10 flex items-center justify-center text-teal-700 hover:bg-gray-100 border-r border-gray-200 font-bold text-lg transition">−</button>
+                  <span id="qb-children" class="w-10 text-center text-sm font-bold text-teal-800">0</span>
+                  <button type="button" onclick="qbAdjustOpt('child',1)"
+                    class="w-10 h-10 flex items-center justify-center text-teal-700 hover:bg-gray-100 border-l border-gray-200 font-bold text-lg transition">+</button>
+                </div>
+              </div>
+            </div>
+            <!-- Total options -->
+            <div id="qb-total-options" class="hidden justify-between items-center bg-teal-50 border border-teal-100 rounded-xl px-4 py-2.5 mb-5">
+              <span id="qb-total-options-label" class="text-sm text-gray-500"></span>
+              <span id="qb-total-o" class="text-sm font-bold text-teal-800"></span>
+            </div>
+          </div>
+
+          <!-- Book button -->
+          <button onclick="qbSubmit()"
+            class="w-full flex items-center justify-center gap-3 bg-green-500 hover:bg-green-600 active:scale-[.98] text-white font-bold py-4 rounded-full shadow-md transition text-base">
+            <i class="fab fa-whatsapp text-xl"></i> Book via WhatsApp
+          </button>
+          <p class="text-center text-xs text-gray-400 mt-3">Need help or have questions? Chat with us.</p>
+        </div><!-- /quick-book-box -->
     </div>
 
     <div class="hidden lg:block w-80 xl:w-96 flex-shrink-0">
@@ -196,12 +289,12 @@
 ══════════════════════════════════════════════ -->
 <footer class="bg-teal-900 text-teal-200 py-8 mt-10 pb-20 lg:pb-8">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 text-center">
-    <p class="text-sm">© 2024 Bali Bagus Journey — <a href="https://wa.me/6281234567890" target="_blank" class="text-orange-400 hover:underline">Contact Us on WhatsApp</a></p>
+    <p class="text-sm">© 2024 Bali Bagus Journey — <a href="https://wa.me/6285934484380" target="_blank" class="text-orange-400 hover:underline">Contact Us on WhatsApp</a></p>
   </div>
 </footer>
 
 <!-- FLOATING WHATSAPP -->
-<a href="https://wa.me/6281234567890?text=Hi!%20I'm%20interested%20in%20a%20Bali%20tour%20package" target="_blank"
+<a href="https://wa.me/6285934484380?text=Hi!%20I'm%20interested%20in%20a%20Bali%20tour%20package" target="_blank"
    id="wa-float"
    class="wa-float fixed bottom-6 right-6 z-50 bg-green-500 hover:bg-green-600 text-white w-14 h-14 rounded-full flex items-center justify-center shadow-2xl transition text-2xl"
    title="Chat on WhatsApp">
@@ -253,7 +346,7 @@ function _renderDetail(tourKey) {
   // Sidebar
   document.getElementById('sidebar-price').textContent = t.price;
   document.getElementById('sidebar-original-price').textContent = t.originalPrice;
-  const waUrl = `https://wa.me/6281234567890?text=${encodeURIComponent(t.waMessage)}`;
+  const waUrl = `https://wa.me/6285934484380?text=${encodeURIComponent(t.waMessage)}`;
   document.getElementById('sidebar-wa-link').href = waUrl;
   document.getElementById('mobile-price-bar').textContent = t.price;
   document.getElementById('mobile-wa-link').href = waUrl;
@@ -267,6 +360,9 @@ function _renderDetail(tourKey) {
       <i class="fas fa-arrow-right text-teal-400 text-xs group-hover:translate-x-1 transition flex-shrink-0 ml-2"></i>
     </a>
   `).join('');
+
+  // Initialize the Quick Booking Form
+  qbInit(t);
 }
 </script>
 

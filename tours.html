@@ -1,11 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Tour Packages | Bali Bagus Journey</title>
 
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@700;800&display=swap"
+    rel="stylesheet" />
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <link rel="stylesheet" href="css/style.css" />
@@ -15,11 +18,11 @@
       theme: {
         extend: {
           colors: {
-            teal:   { DEFAULT: '#0f766e', 50: '#f0fdfa', 100: '#ccfbf1', 600: '#0d9488', 700: '#0f766e', 800: '#115e59', 900: '#134e4a' },
+            teal: { DEFAULT: '#0f766e', 50: '#f0fdfa', 100: '#ccfbf1', 600: '#0d9488', 700: '#0f766e', 800: '#115e59', 900: '#134e4a' },
             orange: { DEFAULT: '#f97316', 400: '#fb923c', 500: '#f97316', 600: '#ea580c' },
           },
           fontFamily: {
-            sans:    ['"Plus Jakarta Sans"', 'sans-serif'],
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
             display: ['"Playfair Display"', 'serif'],
           },
         }
@@ -30,172 +33,201 @@
 
 <body class="bg-white text-gray-800">
 
-<!-- ══════════════════════════════════════════════
+  <!-- ══════════════════════════════════════════════
      NAVIGATION
 ══════════════════════════════════════════════ -->
-<nav class="fixed top-0 left-0 right-0 z-50 bg-teal-700/95 backdrop-blur-md shadow-lg">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 flex items-center justify-between h-16">
-    <a href="index.html" class="flex items-center gap-2 group">
-      <span class="w-9 h-9 rounded-full bg-orange-500 flex items-center justify-center text-white font-bold text-lg shadow-md">W</span>
-      <span class="text-white font-display font-bold text-xl tracking-tight">Bali Bagus <span class="text-orange-400">Journey</span></span>
-    </a>
+  <nav class="fixed top-0 left-0 right-0 z-50 bg-teal-700/95 backdrop-blur-md shadow-lg">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 flex items-center justify-between h-16">
+      <a href="index.html" class="flex items-center gap-2 group">
+        <span
+          class="w-9 h-9 rounded-full bg-orange-500 flex items-center justify-center text-white font-bold text-lg shadow-md">W</span>
+        <span class="text-white font-display font-bold text-xl tracking-tight">Bali Bagus <span
+            class="text-orange-400">Journey</span></span>
+      </a>
 
-    <div class="hidden md:flex items-center gap-8 text-sm font-semibold text-teal-100">
-      <a href="index.html" class="nav-link hover:text-white transition pb-1">Home</a>
-      <a href="tours.html" class="nav-link active-page hover:text-white transition pb-1">Tours</a>
-      <a href="about.html" class="nav-link hover:text-white transition pb-1">About Us</a>
-      <a href="index.html#how-to-book" class="nav-link hover:text-white transition pb-1">How to Book</a>
-      <a href="https://wa.me/6281234567890?text=Hi!%20I'm%20interested%20in%20a%20Bali%20tour%20package" target="_blank"
-         class="bg-orange-500 hover:bg-orange-600 text-white px-5 py-2 rounded-full transition shadow">
+      <div class="hidden md:flex items-center gap-8 text-sm font-semibold text-teal-100">
+        <a href="index.html" class="nav-link hover:text-white transition pb-1">Home</a>
+        <a href="tours.html" class="nav-link active-page hover:text-white transition pb-1">Tours</a>
+        <a href="about.html" class="nav-link hover:text-white transition pb-1">About Us</a>
+        <a href="index.html#how-to-book" class="nav-link hover:text-white transition pb-1">How to Book</a>
+        <a href="https://wa.me/6285934484380?text=Hi!%20I'm%20interested%20in%20a%20Bali%20tour%20package"
+          target="_blank" class="bg-orange-500 hover:bg-orange-600 text-white px-5 py-2 rounded-full transition shadow">
+          <i class="fab fa-whatsapp mr-1"></i> WhatsApp Us
+        </a>
+      </div>
+
+      <button id="menuToggle" class="md:hidden text-white text-2xl focus:outline-none" onclick="toggleMenu()">
+        <i class="fas fa-bars"></i>
+      </button>
+    </div>
+
+    <div id="mobileMenu"
+      class="hidden md:hidden bg-teal-700/95 backdrop-blur-md px-4 pb-6 text-sm font-semibold text-teal-100 flex flex-col gap-1 border-t border-teal-600/50 shadow-inner">
+      <a href="index.html" class="py-3 border-b border-teal-600/30 hover:text-white transition"
+        onclick="closeMenu()">Home</a>
+      <a href="tours.html" class="py-3 border-b border-teal-600/30 hover:text-white transition"
+        onclick="closeMenu()">Tours</a>
+      <a href="about.html" class="py-3 border-b border-teal-600/30 hover:text-white transition"
+        onclick="closeMenu()">About Us</a>
+      <a href="index.html#how-to-book" class="py-3 border-b border-teal-600/30 hover:text-white transition"
+        onclick="closeMenu()">How to Book</a>
+      <a href="https://wa.me/6285934484380?text=Hi!%20I'm%20interested%20in%20a%20Bali%20tour%20package" target="_blank"
+        class="bg-orange-500 text-white text-center py-3 rounded-xl mt-4 shadow-lg active:scale-95 transition"
+        onclick="closeMenu()">
         <i class="fab fa-whatsapp mr-1"></i> WhatsApp Us
       </a>
     </div>
+  </nav>
 
-    <button id="menuToggle" class="md:hidden text-white text-2xl focus:outline-none" onclick="toggleMenu()">
-      <i class="fas fa-bars"></i>
-    </button>
-  </div>
-
-  <div id="mobileMenu" class="hidden md:hidden bg-teal-700/95 backdrop-blur-md px-4 pb-6 text-sm font-semibold text-teal-100 flex flex-col gap-1 border-t border-teal-600/50 shadow-inner">
-    <a href="index.html" class="py-3 border-b border-teal-600/30 hover:text-white transition" onclick="closeMenu()">Home</a>
-    <a href="tours.html" class="py-3 border-b border-teal-600/30 hover:text-white transition" onclick="closeMenu()">Tours</a>
-    <a href="about.html" class="py-3 border-b border-teal-600/30 hover:text-white transition" onclick="closeMenu()">About Us</a>
-    <a href="index.html#how-to-book" class="py-3 border-b border-teal-600/30 hover:text-white transition" onclick="closeMenu()">How to Book</a>
-    <a href="https://wa.me/6281234567890?text=Hi!%20I'm%20interested%20in%20a%20Bali%20tour%20package" target="_blank"
-       class="bg-orange-500 text-white text-center py-3 rounded-xl mt-4 shadow-lg active:scale-95 transition" onclick="closeMenu()">
-      <i class="fab fa-whatsapp mr-1"></i> WhatsApp Us
-    </a>
-  </div>
-</nav>
-
-<!-- ══════════════════════════════════════════════
+  <!-- ══════════════════════════════════════════════
      TOURS HERO
 ══════════════════════════════════════════════ -->
-<div class="tours-hero-bg pt-16 pb-16 relative overflow-hidden">
-  <div class="absolute inset-0 pointer-events-none">
-    <div class="absolute -top-10 -right-10 w-72 h-72 bg-orange-500/10 rounded-full blur-3xl"></div>
-  </div>
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 text-center pt-12 relative">
-    <span class="inline-block bg-orange-500/20 text-orange-300 border border-orange-400/30 text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full mb-5">
-      ✦ All Packages
-    </span>
-    <h1 class="font-display text-4xl sm:text-5xl text-white mb-4">Explore Our <span class="text-orange-400">Tour Packages</span></h1>
-    <p class="text-teal-100 max-w-xl mx-auto leading-relaxed">From temples to beaches, rice fields to adventure — find the perfect Bali experience for you.</p>
+  <div class="tours-hero-bg pt-16 pb-16 relative overflow-hidden">
+    <div class="absolute inset-0 pointer-events-none">
+      <div class="absolute -top-10 -right-10 w-72 h-72 bg-orange-500/10 rounded-full blur-3xl"></div>
+    </div>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 text-center pt-12 relative">
+      <span
+        class="inline-block bg-orange-500/20 text-orange-300 border border-orange-400/30 text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full mb-5">
+        ✦ All Packages
+      </span>
+      <h1 class="font-display text-4xl sm:text-5xl text-white mb-4">Explore Our <span class="text-orange-400">Tour
+          Packages</span></h1>
+      <p class="text-teal-100 max-w-xl mx-auto leading-relaxed">From temples to beaches, rice fields to adventure — find
+        the perfect Bali experience for you.</p>
 
-    <!-- Search bar -->
-    <div class="max-w-md mx-auto mt-8">
-      <div class="relative">
-        <input type="text" id="tourSearch" placeholder="Search tours..." oninput="filterTours()"
-               class="w-full bg-white/10 backdrop-blur-sm text-white placeholder-teal-300 border border-white/20 rounded-2xl px-5 py-3.5 pl-12 focus:outline-none focus:border-orange-400 transition text-sm"/>
-        <i class="fas fa-search absolute left-4 top-1/2 -translate-y-1/2 text-teal-300"></i>
+      <!-- Search bar -->
+      <div class="max-w-md mx-auto mt-8">
+        <div class="relative">
+          <input type="text" id="tourSearch" placeholder="Search tours..." oninput="filterTours()"
+            class="w-full bg-white/10 backdrop-blur-sm text-white placeholder-teal-300 border border-white/20 rounded-2xl px-5 py-3.5 pl-12 focus:outline-none focus:border-orange-400 transition text-sm" />
+          <i class="fas fa-search absolute left-4 top-1/2 -translate-y-1/2 text-teal-300"></i>
+        </div>
+      </div>
+    </div>
+    <div class="absolute bottom-0 left-0 right-0">
+      <svg viewBox="0 0 1440 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0,20 C360,45 1080,0 1440,20 L1440,40 L0,40 Z" fill="white" />
+      </svg>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════
+     FILTER TABS
+══════════════════════════════════════════════ -->
+  <div class="bg-white sticky top-16 z-40 shadow-sm border-b border-gray-100">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 py-4">
+      <div class="flex gap-2 overflow-x-auto pb-1 scrollbar-hide" id="filterTabs">
+        <button onclick="setFilter('all')"
+          class="filter-tab active whitespace-nowrap px-5 py-2 rounded-full text-sm font-semibold transition"
+          data-filter="all">
+          <i class="fa-solid fa-list-ul mr-2"></i> All Tours <span
+            class="ml-1 bg-white/20 px-1.5 py-0.5 rounded-full text-xs">15</span>
+        </button>
+        <button onclick="setFilter('island')"
+          class="filter-tab whitespace-nowrap px-5 py-2 rounded-full text-sm font-semibold transition"
+          data-filter="island">
+          <i class="fa-solid fa-umbrella-beach mr-2"></i> Island Hopping
+        </button>
+        <button onclick="setFilter('temple')"
+          class="filter-tab whitespace-nowrap px-5 py-2 rounded-full text-sm font-semibold transition"
+          data-filter="temple">
+          <i class="fa-solid fa-gopuram mr-2"></i> Temple & Culture
+        </button>
+        <button onclick="setFilter('adventure')"
+          class="filter-tab whitespace-nowrap px-5 py-2 rounded-full text-sm font-semibold transition"
+          data-filter="adventure">
+          <i class="fa-solid fa-person-hiking mr-2"></i> Adventure
+        </button>
+        <button onclick="setFilter('nature')"
+          class="filter-tab whitespace-nowrap px-5 py-2 rounded-full text-sm font-semibold transition"
+          data-filter="nature">
+          <i class="fa-solid fa-leaf mr-2"></i> Nature & Scenery
+        </button>
+        <button onclick="setFilter('transport')"
+          class="filter-tab whitespace-nowrap px-5 py-2 rounded-full text-sm font-semibold transition"
+          data-filter="transport">
+          <i class="fa-solid fa-car-side mr-2"></i> Private Transport
+        </button>
       </div>
     </div>
   </div>
-  <div class="absolute bottom-0 left-0 right-0">
-    <svg viewBox="0 0 1440 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M0,20 C360,45 1080,0 1440,20 L1440,40 L0,40 Z" fill="white"/>
-    </svg>
-  </div>
-</div>
 
-<!-- ══════════════════════════════════════════════
-     FILTER TABS
-══════════════════════════════════════════════ -->
-<div class="bg-white sticky top-16 z-40 shadow-sm border-b border-gray-100">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 py-4">
-    <div class="flex gap-2 overflow-x-auto pb-1 scrollbar-hide" id="filterTabs">
-      <button onclick="setFilter('all')" class="filter-tab active whitespace-nowrap px-5 py-2 rounded-full text-sm font-semibold transition" data-filter="all">
-        <i class="fa-solid fa-list-ul mr-2"></i> All Tours <span class="ml-1 bg-white/20 px-1.5 py-0.5 rounded-full text-xs">15</span>
-      </button>
-      <button onclick="setFilter('island')" class="filter-tab whitespace-nowrap px-5 py-2 rounded-full text-sm font-semibold transition" data-filter="island">
-        <i class="fa-solid fa-umbrella-beach mr-2"></i> Island Hopping
-      </button>
-      <button onclick="setFilter('temple')" class="filter-tab whitespace-nowrap px-5 py-2 rounded-full text-sm font-semibold transition" data-filter="temple">
-        <i class="fa-solid fa-gopuram mr-2"></i> Temple & Culture
-      </button>
-      <button onclick="setFilter('adventure')" class="filter-tab whitespace-nowrap px-5 py-2 rounded-full text-sm font-semibold transition" data-filter="adventure">
-        <i class="fa-solid fa-person-hiking mr-2"></i> Adventure
-      </button>
-      <button onclick="setFilter('nature')" class="filter-tab whitespace-nowrap px-5 py-2 rounded-full text-sm font-semibold transition" data-filter="nature">
-        <i class="fa-solid fa-leaf mr-2"></i> Nature & Scenery
-      </button>
-      <button onclick="setFilter('transport')" class="filter-tab whitespace-nowrap px-5 py-2 rounded-full text-sm font-semibold transition" data-filter="transport">
-        <i class="fa-solid fa-car-side mr-2"></i> Private Transport
-      </button>
-    </div>
-  </div>
-</div>
-
-<!-- ══════════════════════════════════════════════
+  <!-- ══════════════════════════════════════════════
      TOURS GRID
 ══════════════════════════════════════════════ -->
-<div class="max-w-7xl mx-auto px-4 sm:px-6 py-12">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 py-12">
 
-  <!-- Sort & Results info -->
-  <div class="flex items-center justify-between mb-8">
-    <div class="text-gray-500 text-sm"><span id="tourCount">15</span> packages found</div>
-    <select class="text-sm border border-gray-200 rounded-xl px-3 py-2 text-gray-600 focus:outline-none focus:border-teal-500">
-      <option>Sort: Popular</option>
-      <option>Price: Low to High</option>
-      <option>Price: High to Low</option>
-      <option>Newest</option>
-    </select>
-  </div>
-
-  <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8" id="toursGrid">
-    <!-- Cards injected by JS -->
-  </div>
-
-  <!-- Empty state -->
-  <div id="emptyState" class="hidden text-center py-20">
-    <div class="text-6xl mb-4 text-gray-300">
-      <i class="fa-solid fa-magnifying-glass"></i>
+    <!-- Sort & Results info -->
+    <div class="flex items-center justify-between mb-8">
+      <div class="text-gray-500 text-sm"><span id="tourCount">15</span> packages found</div>
+      <select
+        class="text-sm border border-gray-200 rounded-xl px-3 py-2 text-gray-600 focus:outline-none focus:border-teal-500">
+        <option>Sort: Popular</option>
+        <option>Price: Low to High</option>
+        <option>Price: High to Low</option>
+        <option>Newest</option>
+      </select>
     </div>
-    <h3 class="font-bold text-teal-800 text-xl mb-2">No tours found</h3>
-    <p class="text-gray-500 text-sm">Try a different search or category</p>
-    <button onclick="setFilter('all'); document.getElementById('tourSearch').value=''; filterTours();"
-            class="mt-4 bg-teal-700 text-white px-6 py-2.5 rounded-xl text-sm font-semibold hover:bg-teal-800 transition">
-      Show All Tours
-    </button>
+
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8" id="toursGrid">
+      <!-- Cards injected by JS -->
+    </div>
+
+    <!-- Empty state -->
+    <div id="emptyState" class="hidden text-center py-20">
+      <div class="text-6xl mb-4 text-gray-300">
+        <i class="fa-solid fa-magnifying-glass"></i>
+      </div>
+      <h3 class="font-bold text-teal-800 text-xl mb-2">No tours found</h3>
+      <p class="text-gray-500 text-sm">Try a different search or category</p>
+      <button onclick="setFilter('all'); document.getElementById('tourSearch').value=''; filterTours();"
+        class="mt-4 bg-teal-700 text-white px-6 py-2.5 rounded-xl text-sm font-semibold hover:bg-teal-800 transition">
+        Show All Tours
+      </button>
+    </div>
+
   </div>
 
-</div>
-
-<!-- ══════════════════════════════════════════════
+  <!-- ══════════════════════════════════════════════
      CTA BANNER
 ══════════════════════════════════════════════ -->
-<div class="bg-teal-800 py-16 mx-4 sm:mx-6 rounded-3xl mb-12 relative overflow-hidden">
-  <div class="absolute inset-0 pointer-events-none">
-    <div class="absolute top-0 right-0 w-64 h-64 bg-orange-500/10 rounded-full -translate-y-1/2 translate-x-1/2"></div>
+  <div class="bg-teal-800 py-16 mx-4 sm:mx-6 rounded-3xl mb-12 relative overflow-hidden">
+    <div class="absolute inset-0 pointer-events-none">
+      <div class="absolute top-0 right-0 w-64 h-64 bg-orange-500/10 rounded-full -translate-y-1/2 translate-x-1/2">
+      </div>
+    </div>
+    <div class="text-center relative">
+      <h2 class="font-display text-3xl text-white mb-3">Can't find what you're looking for?</h2>
+      <p class="text-teal-200 mb-6 max-w-md mx-auto">We offer fully custom tours — just tell us your dream Bali day and
+        we'll make it happen!</p>
+      <a href="https://wa.me/6285934484380?text=Hi!%20I'd%20like%20to%20plan%20a%20custom%20Bali%20tour" target="_blank"
+        class="inline-flex items-center gap-2 bg-orange-500 hover:bg-orange-600 text-white font-bold px-8 py-4 rounded-2xl shadow-lg transition">
+        <i class="fab fa-whatsapp text-xl"></i> Plan Custom Tour
+      </a>
+    </div>
   </div>
-  <div class="text-center relative">
-    <h2 class="font-display text-3xl text-white mb-3">Can't find what you're looking for?</h2>
-    <p class="text-teal-200 mb-6 max-w-md mx-auto">We offer fully custom tours — just tell us your dream Bali day and we'll make it happen!</p>
-    <a href="https://wa.me/6281234567890?text=Hi!%20I'd%20like%20to%20plan%20a%20custom%20Bali%20tour" target="_blank"
-       class="inline-flex items-center gap-2 bg-orange-500 hover:bg-orange-600 text-white font-bold px-8 py-4 rounded-2xl shadow-lg transition">
-      <i class="fab fa-whatsapp text-xl"></i> Plan Custom Tour
-    </a>
-  </div>
-</div>
 
-<!-- ══════════════════════════════════════════════
+  <!-- ══════════════════════════════════════════════
      FOOTER
 ══════════════════════════════════════════════ -->
-<footer class="bg-teal-900 text-teal-200 py-8">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 text-center">
-    <p class="text-sm">© 2024 Bali Bagus Journey — <a href="https://wa.me/6281234567890" target="_blank" class="text-orange-400 hover:underline">Contact Us on WhatsApp</a></p>
-  </div>
-</footer>
+  <footer class="bg-teal-900 text-teal-200 py-8">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 text-center">
+      <p class="text-sm">© 2024 Bali Bagus Journey — <a href="https://wa.me/6285934484380" target="_blank"
+          class="text-orange-400 hover:underline">Contact Us on WhatsApp</a></p>
+    </div>
+  </footer>
 
-<!-- FLOATING WHATSAPP -->
-<a href="https://wa.me/6281234567890?text=Hi!%20I'm%20interested%20in%20a%20Bali%20tour%20package" target="_blank"
-   id="wa-float"
-   class="wa-float fixed bottom-6 right-6 z-50 bg-green-500 hover:bg-green-600 text-white w-14 h-14 rounded-full flex items-center justify-center shadow-2xl transition text-2xl"
-   title="Chat on WhatsApp">
-  <i class="fab fa-whatsapp"></i>
-</a>
+  <!-- FLOATING WHATSAPP -->
+  <a href="https://wa.me/6285934484380?text=Hi!%20I'm%20interested%20in%20a%20Bali%20tour%20package" target="_blank"
+    id="wa-float"
+    class="wa-float fixed bottom-6 right-6 z-50 bg-green-500 hover:bg-green-600 text-white w-14 h-14 rounded-full flex items-center justify-center shadow-2xl transition text-2xl"
+    title="Chat on WhatsApp">
+    <i class="fab fa-whatsapp"></i>
+  </a>
 
-<script src="js/main.js"></script>
+  <script src="js/main.js"></script>
 
 </body>
+
 </html>
