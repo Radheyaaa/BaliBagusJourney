@@ -3,196 +3,137 @@
 ═══════════════════════════════════════════════════════ */
 
 const tours = {
-  'nusa-penida': {
-    title: 'Nusa Penida West Day Tour',
-    img: 'assets/images/nusa-penida.jpg',
-    thumb: 'assets/images/nusa-penida.jpg',
-    price: 'USD 65', originalPrice: 'USD 103', priceNum: 65,
-    category: 'island', badge: 'Best Seller', badgeColor: 'bg-orange-500',
-    rating: 5.0, reviews: 128,
-    waMessage: "Hi! I'm interested in booking the Nusa Penida West Day Tour. Can you share more details?",
-    prices: ['$65 / person (min. 2 persons)', '$55 / person (group of 4+)', 'Includes: transport, fast boat, guide'],
-    destinations: ['Atuh Beach', 'Diamond Beach', 'Tree House Viewpoint', 'Kelingking Beach (T-Rex cliff)'],
-    itinerary: [
-      { session: 'MORNING', activities: ['Meet at Sanur Harbor (06:00)', 'Fast boat transfer to Nusa Penida (45 min)', 'Arrival & pickup by local guide', 'Explore Diamond Beach'] },
-      { session: 'AFTERNOON', activities: ['Visit Atuh Beach viewpoint', 'Lunch at local warung', 'Tree House Viewpoint photo stop', 'Kelingking Beach viewpoint'] },
-      { session: 'RETURN', activities: ['Head back to Nusa Penida harbor', 'Fast boat back to Sanur (16:30)', 'Drop off at hotel/villa'] }
-    ]
-  },
-  'lempuyang': {
-    title: 'Lempuyang Gate of Heaven',
-    img: 'assets/images/lempuyang.jpg',
-    thumb: 'assets/images/lempuyang.jpg',
-    price: 'USD 55', originalPrice: 'USD 85', priceNum: 55,
-    category: 'temple', badge: 'Iconic', badgeColor: 'bg-teal-600',
-    rating: 5.0, reviews: 96,
-    waMessage: "Hi! I'm interested in booking the Lempuyang Gate of Heaven Tour. Please share the details!",
-    prices: ['$55 / person (min. 2 persons)', '$48 / person (group of 4+)', 'Includes: private car, driver/guide, entrance'],
-    destinations: ['Lempuyang Temple (Gate of Heaven)', 'Tirta Gangga Water Palace', 'Pura Besakih (Mother Temple)', 'Sidemen Valley Scenic Stop'],
-    itinerary: [
-      { session: 'MORNING', activities: ['Hotel pickup (05:30)', 'Arrive Lempuyang Temple (07:00)', 'Iconic photo at Gate of Heaven', 'Explore temple complex'] },
-      { session: 'AFTERNOON', activities: ['Visit Tirta Gangga Water Palace', 'Lunch at local restaurant (rice fields view)', 'Besakih Mother Temple', 'Sidemen Valley overlook'] },
-      { session: 'RETURN', activities: ['Depart for hotel (16:30)', 'Sunset stop en route (optional)', 'Hotel drop off (~18:30)'] }
-    ]
-  },
-  'atv': {
-    title: 'Bali ATV Ride Adventure',
-    img: 'assets/images/shibupavizha-george-zZeh-USTxeE-unsplash.jpg',
-    thumb: 'assets/images/shibupavizha-george-zZeh-USTxeE-unsplash.jpg',
-    price: 'USD 60', originalPrice: 'USD 90', priceNum: 60,
-    category: 'adventure', badge: 'Adventure', badgeColor: 'bg-red-500',
-    rating: 4.5, reviews: 74,
-    waMessage: "Hi! I'd like to book the Bali ATV Ride Adventure. Can you help me?",
-    prices: ['$60 / person (min. 2 persons)', '$52 / person (group of 4+)', 'Includes: transport, ATV, safety gear, guide'],
-    destinations: ['Ubud ATV Track', 'Tegallalang Rice Terrace', 'Tegenungan Waterfall', 'Ubud Monkey Forest (optional)'],
-    itinerary: [
-      { session: 'MORNING', activities: ['Hotel pickup (08:00)', 'Arrive ATV Operator (09:30)', 'Safety briefing & gear up', 'ATV ride through jungle & rice fields (2hrs)'] },
-      { session: 'AFTERNOON', activities: ['Shower & freshen up', 'Lunch at local restaurant', 'Visit Tegallalang Rice Terraces', 'Tegenungan Waterfall swim'] },
-      { session: 'RETURN', activities: ['Depart Ubud area (16:00)', 'Optional Monkey Forest stop', 'Hotel drop off (~17:30)'] }
-    ]
-  },
-  'ubud-highlands': {
-    title: 'Ubud Highlands & Rice Terrace',
-    img: 'assets/images/ubud.jpg',
-    thumb: 'assets/images/ubud.jpg',
-    price: 'USD 50', originalPrice: 'USD 75', priceNum: 50,
-    category: 'nature', badge: 'Nature', badgeColor: 'bg-green-600',
-    rating: 4.9, reviews: 88,
-    waMessage: "Hi! I'm interested in the Ubud Highlands & Rice Terrace tour!",
-    prices: ['$50 / person (min. 2 persons)', '$42 / person (group of 4+)', 'Includes: private car, driver/guide'],
-    destinations: ['Tegallalang Rice Terrace', 'Kanto Lampo Waterfall', 'Tirta Empul Holy Spring', 'Campuhan Ridge Walk'],
-    itinerary: [
-      { session: 'MORNING', activities: ['Hotel pickup (08:00)', 'Campuhan Ridge Walk', 'Tegallalang Rice Terrace visit'] },
-      { session: 'AFTERNOON', activities: ['Lunch in Ubud village', 'Tirta Empul Holy Spring', 'Kanto Lampo Waterfall'] },
-      { session: 'RETURN', activities: ['Ubud town stroll (optional)', 'Hotel drop off (~17:00)'] }
-    ]
-  },
-  'tanah-lot-sunset': {
-    title: 'Tanah Lot Sunset Tour',
-    img: 'https://images.unsplash.com/photo-1518548419970-58e3b4079ab2?w=600&q=80',
-    thumb: 'https://images.unsplash.com/photo-1518548419970-58e3b4079ab2?w=600&q=80',
-    price: 'USD 45', originalPrice: 'USD 70', priceNum: 45,
-    category: 'temple', badge: 'Romantic', badgeColor: 'bg-pink-500',
-    rating: 4.8, reviews: 112,
-    waMessage: "Hi! I want to book the Tanah Lot Sunset Tour!",
-    prices: ['$45 / person (min. 2 persons)', '$38 / person (group of 4+)', 'Includes: private car, driver/guide, entrance'],
-    destinations: ['Jatiluwih UNESCO Rice Terrace', 'Pura Taman Ayun Royal Temple', 'Tanah Lot Sea Temple', 'Beraban Village'],
-    itinerary: [
-      { session: 'MORNING', activities: ['Hotel pickup (09:00)', 'Jatiluwih Rice Terrace walk', 'Taman Ayun Temple visit'] },
-      { session: 'AFTERNOON', activities: ['Lunch at local restaurant', 'Free time in Tabanan area', 'Head to Tanah Lot (arrive ~17:00)'] },
-      { session: 'EVENING', activities: ['Sunset at Tanah Lot Temple', 'Souvenir shopping', 'Hotel drop off (~19:30)'] }
-    ]
-  },
-  'kintamani-volcano': {
-    title: 'Kintamani Volcano & Batur Lake',
-    img: 'assets/images/kintamani.jpg',
-    thumb: 'assets/images/kintamani.jpg',
-    price: 'USD 55', originalPrice: 'USD 85', priceNum: 55,
-    category: 'nature', badge: 'Scenic', badgeColor: 'bg-blue-600',
-    rating: 4.8, reviews: 67,
-    waMessage: "Hi! I'd like to book the Kintamani Volcano & Batur Lake tour!",
-    prices: ['$55 / person (min. 2 persons)', '$46 / person (group of 4+)', 'Includes: private car, driver/guide'],
-    destinations: ['Mount Batur Active Volcano', 'Lake Batur Panoramic View', 'Kintamani Highland Villages', 'Penelokan Viewpoint'],
-    itinerary: [
-      { session: 'MORNING', activities: ['Hotel pickup (08:00)', 'Drive through scenic highlands', 'Penelokan viewpoint stop'] },
-      { session: 'MIDDAY', activities: ['Lunch with volcano view', 'Lake Batur exploration', 'Local village visit'] },
-      { session: 'RETURN', activities: ['Optional coffee plantation stop', 'Hotel drop off (~16:30)'] }
-    ]
-  },
-  'nusa-lembongan': {
-    title: 'Nusa Lembongan Island Day Tour',
-    img: 'https://images.unsplash.com/photo-1620034441342-0287f2b0f91b?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-    thumb: 'https://images.unsplash.com/photo-1620034441342-0287f2b0f91b?q=80&w=600&q=80',
-    price: 'USD 70', originalPrice: 'USD 110', priceNum: 70,
-    category: 'island', badge: 'Island Hopping', badgeColor: 'bg-cyan-600',
-    rating: 4.9, reviews: 54,
-    waMessage: "Hi! I want to book the Nusa Lembongan Island Day Tour!",
-    prices: ['$70 / person (min. 2 persons)', '$60 / person (group of 4+)', 'Includes: fast boat, snorkeling gear, guide'],
-    destinations: ['Dream Beach', 'Devil\'s Tear Blowhole', 'Yellow Bridge to Nusa Ceningan', 'Mangrove Forest'],
-    itinerary: [
-      { session: 'MORNING', activities: ['Sanur Harbor departure (07:30)', 'Fast boat to Lembongan (30 min)', 'Snorkeling at Mangrove Point'] },
-      { session: 'AFTERNOON', activities: ['Dream Beach swim & relax', 'Devil\'s Tear viewpoint', 'Yellow Bridge crossing', 'Local seafood lunch'] },
-      { session: 'RETURN', activities: ['Fast boat back to Sanur (16:00)', 'Hotel drop off'] }
-    ]
-  },
-  'white-water-rafting': {
-    title: 'Ayung River White Water Rafting',
-    img: 'https://images.pexels.com/photos/37097420/pexels-photo-37097420.jpeg',
-    thumb: 'https://images.pexels.com/photos/37097420/pexels-photo-37097420.jpeg',
-    price: 'USD 55', originalPrice: 'USD 80', priceNum: 55,
-    category: 'adventure', badge: 'Thrilling', badgeColor: 'bg-red-600',
-    rating: 4.7, reviews: 91,
-    waMessage: "Hi! I'm interested in the Ayung River White Water Rafting tour!",
-    prices: ['$55 / person (min. 2 persons)', '$48 / person (group of 4+)', 'Includes: transport, equipment, guide, lunch'],
-    destinations: ['Ayung River Gorge', 'Ubud Jungle Surroundings', 'Traditional Villages en Route'],
-    itinerary: [
-      { session: 'MORNING', activities: ['Hotel pickup (08:00)', 'Arrive rafting base (09:30)', 'Safety briefing & gear up'] },
-      { session: 'ACTIVITY', activities: ['2-hour rafting through 25+ rapids', 'Scenic gorge & waterfall views', 'Photo opportunities along the way'] },
-      { session: 'RETURN', activities: ['Shower & change', 'Buffet lunch included', 'Hotel drop off (~14:00)'] }
-    ]
-  },
-  'east-bali': {
-    title: 'East Bali Full Day Explorer',
-    img: 'https://images.unsplash.com/photo-1555400038-63f5ba517a47?w=1200&q=80',
-    thumb: 'https://images.unsplash.com/photo-1555400038-63f5ba517a47?w=600&q=80',
-    price: 'USD 60', originalPrice: 'USD 90', priceNum: 60,
-    category: 'temple', badge: 'Cultural', badgeColor: 'bg-amber-600',
-    rating: 4.8, reviews: 43,
-    waMessage: "Hi! I want to book the East Bali Full Day Explorer tour!",
-    prices: ['$60 / person (min. 2 persons)', '$50 / person (group of 4+)', 'Includes: private car, guide, entrance fees'],
-    destinations: ['Besakih Mother Temple', 'Amed Fishing Village', 'Candidasa Beach', 'Virgin Beach (White Sand)'],
-    itinerary: [
-      { session: 'MORNING', activities: ['Hotel pickup (07:00)', 'Besakih Temple — Bali\'s holiest', 'Traditional sarong provided'] },
-      { session: 'AFTERNOON', activities: ['Amed village & salt flats', 'Lunch with ocean view', 'Candidasa & Virgin Beach'] },
-      { session: 'RETURN', activities: ['Scenic coastal drive back', 'Hotel drop off (~18:00)'] }
-    ]
-  },
-  'private-transport': {
-    title: 'Bali Private Airport Transfer',
-    img: 'https://images.unsplash.com/photo-1715232207853-e4fe86c1feae?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+  'airport-welcome': {
+    title: 'Premium Airport Transfer & Warm Welcome',
+    img: 'https://images.unsplash.com/photo-1715232207853-e4fe86c1feae?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.1.0',
     thumb: 'https://images.unsplash.com/photo-1715232207853-e4fe86c1feae?q=80&w=600&q=80',
     price: 'USD 25', originalPrice: 'USD 40', priceNum: 25,
-    category: 'transport', badge: 'Airport', badgeColor: 'bg-slate-600',
+    category: 'transport', badge: 'VIP Welcome', badgeColor: 'bg-slate-600',
     rating: 5.0, reviews: 203,
-    waMessage: "Hi! I need a private airport transfer in Bali. Can you help?",
-    prices: ['$25 one-way (any area in Bali)', '$40 round-trip discount', 'Includes: meet & greet, luggage help'],
-    destinations: ['Ngurah Rai International Airport', 'All Bali Hotels & Villas', 'Ubud, Seminyak, Canggu & more'],
+    waMessage: "Hi Wayan! I'd like to book the Premium Airport Transfer & Warm Welcome service. Could you help coordinate?",
+    prices: ['$25 one-way transfer (any resort in Bali)', '$45 round-trip transfer deal', 'Includes: Meet & Greet, Toll fees, Aircon van, Luggage help'],
+    destinations: ['Ngurah Rai Airport Arrivals', 'Personalized Welcome Sign 🤝', 'Your Hotel/Villa in Bali'],
     itinerary: [
-      { session: 'PICKUP', activities: ['Flight monitoring for delays', 'Meet & greet at arrivals with name sign', 'Luggage assistance'] },
-      { session: 'TRANSFER', activities: ['Direct route to your accommodation', 'Air-conditioned clean vehicle', 'Bottled water provided'] },
-      { session: 'ARRIVAL', activities: ['Drop off at your hotel/villa', 'Available 24/7 any time of day'] }
+      { session: 'ARRIVALS', activities: ['Real-time flight tracking for delays', 'Meet & greet at arrival gate with personalized name card 🤝', 'Luggage collection and professional porter assistance'] },
+      { session: 'THE JOURNEY', activities: ['Step into a fully air-conditioned, spotlessly clean private vehicle', 'Enjoy complimentary chilled mineral water & fresh wipes', 'Interesting local stories and custom recommendations from Wayan'] },
+      { session: 'CHECK-IN', activities: ['Direct, comfortable drop-off at your hotel or villa lobby', 'Check-in coordination assistance with lobby team', 'Available 24 hours a day, 7 days a week'] }
+    ],
+    rates: [
+      { area: 'Kuta', price: '200.000 IDR' },
+      { area: 'Legian', price: '250.000 IDR' },
+      { area: 'Seminyak', price: '300.000 IDR' },
+      { area: 'Sanur', price: '300.000 IDR' },
+      { area: 'Jimbaran', price: '250.000 IDR' },
+      { area: 'Canggu', price: '400.000 IDR' },
+      { area: 'Nusa Dua', price: '300.000 IDR' },
+      { area: 'Ubud', price: '400.000 IDR' },
+      { area: 'Uluwatu', price: '400.000 IDR' },
+      { area: 'Padang Bai', price: '500.000 IDR' },
+      { area: 'Tanah Lot', price: '450.000 IDR' },
+      { area: 'Candidasa', price: '700.000 IDR' },
+      { area: 'Kintamani', price: '700.000 IDR' },
+      { area: 'Lovina', price: '800.000 IDR' },
+      { area: 'Pemuteran', price: '900.000 IDR' },
+      { area: 'Amed', price: '900.000 IDR' }
     ]
   },
-  'cooking-class': {
-    title: 'Balinese Cooking Class + Market',
-    img: 'https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=1200&q=80',
-    thumb: 'https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=600&q=80',
-    price: 'USD 55', originalPrice: 'USD 80', priceNum: 55,
-    category: 'nature', badge: 'Cultural', badgeColor: 'bg-yellow-600',
-    rating: 4.9, reviews: 61,
-    waMessage: "Hi! I want to book the Balinese Cooking Class + Market tour!",
-    prices: ['$55 / person (min. 2 persons)', '$48 / person (group of 4+)', 'Includes: market visit, cooking class, lunch'],
-    destinations: ['Ubud Traditional Market', 'Local Balinese Kitchen', 'Rice Paddy Walk'],
+  'ubud-heartbeat': {
+    title: "Ubud's Cultural Heartbeat: Forests, Swings & Cascades",
+    img: 'assets/images/ubud.jpg',
+    thumb: 'assets/images/ubud.jpg',
+    price: 'USD 55', originalPrice: 'USD 85', priceNum: 55,
+    category: 'temple', badge: 'Most Popular', badgeColor: 'bg-teal-600',
+    rating: 5.0, reviews: 128,
+    waMessage: "Hi Wayan! I am interested in the Ubud's Cultural Heartbeat Tour. Can you tell me more about it?",
+    prices: ['$55 / person (minimum 2 persons)', '$45 / person (group of 4+)', 'Includes: Private car, Driver/Guide, Sacred Monkey Forest entry, Swing tickets'],
+    destinations: ['Sacred Monkey Forest Sanctuary', 'High-Flying Jungle Swing 🏞️', 'Artisanal Coffee & Tea Plantation', 'Hidden Ubud Waterfall 💧'],
     itinerary: [
-      { session: 'MORNING', activities: ['Hotel pickup (08:00)', 'Ubud morning market with chef guide', 'Learn about local ingredients & spices'] },
-      { session: 'CLASS', activities: ['Hands-on cooking class (4–5 dishes)', 'Learn Nasi Goreng, Satay, Lawar & more', 'Eat what you cook for lunch!'] },
-      { session: 'RETURN', activities: ['Recipe booklet to take home', 'Optional rice paddy walk', 'Hotel drop off (~14:30)'] }
+      { session: 'MORNING', activities: ['08:00 - Private hotel pickup by Wayan', '09:30 - Enter the Sacred Monkey Forest and meet playful macaques 🐒', '11:00 - Soar high over the jungle canopy at the famous Bali Swing 🏞️'] },
+      { session: 'AFTERNOON', activities: ['12:30 - Delicious traditional Balinese lunch with tropical views', '14:00 - Experience local coffee roasting and a premium tea tasting ☕', '15:30 - Walk down and swim at a serene, hidden Ubud Waterfall 💧'] },
+      { session: 'RETURN', activities: ['17:00 - Relaxing drive back with stunning scenery', '18:00 - Arrival and drop-off at your hotel or villa'] }
     ]
   },
-  'south-bali': {
-    title: 'South Bali Beach & Cliff Tour',
-    img: 'https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=600&q=80',
-    thumb: 'https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=600&q=80',
+  'ubud-adventures': {
+    title: 'Ubud Wild Jungle ATV Ride & River Rafting',
+    img: 'assets/images/shibupavizha-george-zZeh-USTxeE-unsplash.jpg',
+    thumb: 'assets/images/shibupavizha-george-zZeh-USTxeE-unsplash.jpg',
+    price: 'USD 65', originalPrice: 'USD 95', priceNum: 65,
+    category: 'adventure', badge: 'Adrenaline', badgeColor: 'bg-red-500',
+    rating: 4.9, reviews: 94,
+    waMessage: "Hi Wayan! I'd love to book the Ubud Wild Jungle ATV Ride & River Rafting package. Can you share availability?",
+    prices: ['$65 / person (ATV Ride + Rafting Combo)', '$58 / person (Group of 4+ discount)', 'Includes: Safety gear, Expert guides, ATV rental, Rafting raft, Lunch buffet'],
+    destinations: ['Rugged ATV Jungle Trails 🏍️💨', 'Ayung River White Water Rafting 🚣', 'Cretya Ubud or Tlaga Singha Infinity Pools 🏊'],
+    itinerary: [
+      { session: 'MORNING', activities: ['08:00 - Private air-conditioned lobby pickup', '09:30 - Unleash the power of an ATV Quad Bike through wild terrains & muddy caves 🏍️💨', '11:30 - Challenge yourself with exhilarating Ayung River white water rafting 🚣'] },
+      { session: 'AFTERNOON', activities: ['13:30 - Gourmet Indonesian buffet lunch overlooking the lush river valley', '15:00 - Treat yourself to a swim at the luxury Cretya Ubud or Tlaga Singha infinity pools 🏊', '16:30 - Relax and enjoy local tropical smoothies overlooking steep rice field cliffs 🍹'] },
+      { session: 'RETURN', activities: ['17:30 - Smooth transit back to your hotel or villa'] }
+    ]
+  },
+  'batur-sunrise': {
+    title: 'Mount Batur Sunrise 4x4 Jeep & Black Lava Adventure',
+    img: 'assets/images/kintamani.jpg',
+    thumb: 'assets/images/kintamani.jpg',
+    price: 'USD 75', originalPrice: 'USD 120', priceNum: 75,
+    category: 'nature', badge: 'Must Do', badgeColor: 'bg-orange-500',
+    rating: 5.0, reviews: 186,
+    waMessage: "Hi Wayan! I'm interested in the Mount Batur Sunrise 4x4 Jeep Tour. What is the itinerary and pickup time?",
+    prices: ['$75 / person (minimum 2 persons)', '$65 / person (group of 4+)', 'Includes: 4x4 off-road Jeep, Volcano entrance, Hot breakfast, Warm jackets'],
+    destinations: ['Mount Batur Caldera Sunrise Point ☀️', 'Rugged Volcanic Black Lava Formations ⚫', 'Serene Lake Batur Coastline 🌊', 'Batur Mountain View Restaurant 🍽️'],
+    itinerary: [
+      { session: 'MIDNIGHT', activities: ['03:00 - Midnight hotel pickup in a warm, cozy private vehicle', '04:30 - Arrive at Batur base camp & board custom open-air 4x4 Jeeps 🚙'] },
+      { session: 'SUNRISE', activities: ['05:45 - Secure a prime spot at the caldera edge to witness a fiery sunrise ☀️', '06:15 - Chef-prepared breakfast on the jeep bonnet (eggs, banana pancakes, coffee) 🍳', '07:30 - Off-road adventure through ancient Black Lava fields and rock formations ⚫'] },
+      { session: 'AFTERNOON', activities: ['09:30 - Admire pristine views of Lake Batur, Bali\'s largest volcanic lake 🌊', '11:30 - Conclude the expedition with a gorgeous valley buffet lunch 🍽️'] },
+      { session: 'RETURN', activities: ['13:00 - Comfortable drive back with an optional coffee plantation stop', '14:30 - Return to your accommodation'] }
+    ]
+  },
+  'blue-lagoon': {
+    title: 'Blue Lagoon Marine Safari & Bella Vista Escape',
+    img: 'https://images.unsplash.com/photo-1555400038-63f5ba517a47?w=1200&q=80',
+    thumb: 'https://images.unsplash.com/photo-1555400038-63f5ba517a47?w=600&q=80',
     price: 'USD 50', originalPrice: 'USD 75', priceNum: 50,
-    category: 'nature', badge: 'Scenic', badgeColor: 'bg-indigo-600',
-    rating: 4.7, reviews: 79,
-    waMessage: "Hi! I'm interested in the South Bali Beach & Cliff Tour!",
-    prices: ['$50 / person (min. 2 persons)', '$42 / person (group of 4+)', 'Includes: private car, guide'],
-    destinations: ['Uluwatu Temple & Kecak Dance', 'Padang Padang Beach', 'Suluban Cave Beach', 'GWK Cultural Park'],
+    category: 'island', badge: 'Best Value', badgeColor: 'bg-cyan-600',
+    rating: 4.8, reviews: 72,
+    waMessage: "Hi Wayan! The Blue Lagoon Marine Safari & Bella Vista Escape looks amazing. Can you share availability details?",
+    prices: ['$50 / person (minimum 2 persons)', '$43 / person (group of 4+)', 'Includes: Snorkeling equipment, Boat captain, Seafood lunch, Monkey Bar access'],
+    destinations: ['Blue Lagoon Snorkeling Bay 🐠', 'Tanjung Jepun Coral Gardens 🐡', 'Monkey Bar at Bella Vista 🍹'],
     itinerary: [
-      { session: 'MORNING', activities: ['Hotel pickup (09:00)', 'GWK Cultural Park', 'Padang Padang Beach (surfing area)'] },
-      { session: 'AFTERNOON', activities: ['Suluban hidden cave beach', 'Lunch at Jimbaran seafood (optional)', 'Uluwatu Temple sunset kecak dance (18:00)'] },
-      { session: 'RETURN', activities: ['Hotel drop off (~20:00)'] }
+      { session: 'MORNING', activities: ['08:00 - Scenic drive to beautiful East Bali (Karangasem area) 🚗', '09:30 - Board a traditional boat to the pristine Blue Lagoon snorkeling spot 🐠', '11:00 - Explore Tanjung Jepun\'s neon coral gardens and search for sea turtles 🐡'] },
+      { session: 'AFTERNOON', activities: ['12:30 - Relish a fresh seafood lunch right on the sandy coast', '14:00 - Dive, swim, and sip cocktails at the amazing Monkey Bar at Bella Vista 🍹'] },
+      { session: 'RETURN', activities: ['16:30 - Departure and coastal drive past terraced hillsides', '18:00 - Hotel drop-off'] }
+    ]
+  },
+  'northern-wonders': {
+    title: 'Northern Lovina Dolphins & Jungle Gate Wonders',
+    img: 'https://images.unsplash.com/photo-1518548419970-58e3b4079ab2?w=1200&q=80',
+    thumb: 'https://images.unsplash.com/photo-1518548419970-58e3b4079ab2?w=600&q=80',
+    price: 'USD 80', originalPrice: 'USD 130', priceNum: 80,
+    category: 'nature', badge: 'Magical Day', badgeColor: 'bg-blue-600',
+    rating: 4.9, reviews: 68,
+    waMessage: "Hi Wayan! I'd like to book the Northern Lovina Dolphins & Jungle Gate Wonders tour. When can we start?",
+    prices: ['$80 / person (minimum 2 persons)', '$70 / person (group of 4+)', 'Includes: Lovina outrigger boat, Snorkel gear with dolphins, All temple tickets'],
+    destinations: ['Lovina Sunrise Beach 🐬', 'Handara Jungle Gate (Gate of Heaven) 🌿📸', 'Ulun Danu Beratan Water Temple 🛶', 'Lake Beratan Scenic Overlooks 🏞️'],
+    itinerary: [
+      { session: 'MIDNIGHT', activities: ['02:00 - Early morning private pickup from your lobby', '05:45 - Board a traditional outrigger boat at Lovina beach 🛶'] },
+      { session: 'DAWN & DOLPHINS', activities: ['06:15 - Marvel at wild, playful dolphins jumping alongside the rising sun 🐬', '07:30 - Unforgettable snorkeling right next to these beautiful creatures in the calm sea 🌊', '09:00 - Warm, hearty breakfast on Lovina\'s dark volcanic sand beach'] },
+      { session: 'AFTERNOON', activities: ['11:00 - Capture iconic photographs at the famous Handara Gate (Gate of the Jungle) 🌿📸', '12:30 - Tour the magical Ulun Danu Beratan water temple floating on the lake', '13:30 - Lakeside lunch with crisp, cool mountain air and gorgeous panoramic views 🏞️'] },
+      { session: 'RETURN', activities: ['15:00 - Scenic drive back through the Bedugul mountain valleys', '18:00 - Arrive safely back at your hotel or villa'] }
+    ]
+  },
+  'water-extravaganza': {
+    title: 'Nusa Dua Watersports & Uluwatu Cliff Kecak',
+    img: 'https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=1200&q=80',
+    thumb: 'https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=600&q=80',
+    price: 'USD 85', originalPrice: 'USD 140', priceNum: 85,
+    category: 'adventure', badge: 'Action & Culture', badgeColor: 'bg-indigo-600',
+    rating: 4.9, reviews: 112,
+    waMessage: "Hi Wayan! The Nusa Dua Watersports & Uluwatu Cliff Kecak combo looks perfect. What is the scheduling for watersports?",
+    prices: ['$85 / person (minimum 2 persons)', '$75 / person (group of 4+)', 'Includes: Adventure Parasailing, Banana Boat, Jet Ski, GWK Entry, Uluwatu Temple, Kecak Show'],
+    destinations: ['Nusa Dua Watersports Beach 🏄‍♀️', 'Garuda Wisnu Kencana (GWK) 🗿', 'Uluwatu Cliff Temple 🛕', 'Sunset Kecak Fire Dance Arena 🌅🔥'],
+    itinerary: [
+      { session: 'MORNING', activities: ['09:00 - Lobby pickup to explore vibrant South Bali', '10:00 - Exhilarating water sports: Fly above with Adventure Parasailing, splash on the Banana Boat, and speed on a Jet Ski! 🚤', '11:30 - Optional additions: Try Fly Fish, Roulette Doughnut, Wakeboarding, or Sea Walker 🏄'] },
+      { session: 'AFTERNOON', activities: ['13:30 - Tasty seaside lunch with fresh coconut water', '14:30 - Wander around the colossal Garuda Wisnu Kencana (GWK) cultural park 🗿', '16:30 - Visit the cliffside Uluwatu Temple and its mischievous resident monkeys'] },
+      { session: 'EVENING', activities: ['18:00 - Witness the legendary Kecak Fire Dance during a brilliant Indian Ocean sunset 🌅🔥', '19:30 - Optional fresh grilled seafood dinner directly on Jimbaran Beach'] },
+      { session: 'RETURN', activities: ['20:30 - Private transfer back to your villa'] }
     ]
   }
 };
@@ -453,6 +394,18 @@ function qbInit(tour) {
 
   document.getElementById('qb-price-display').textContent = tour.price;
 
+  document.getElementById('qb-name').value = '';
+  document.getElementById('qb-err-name').classList.add('hidden');
+  document.getElementById('qb-name').classList.remove('border-red-400');
+  document.getElementById('qb-name-spacer').style.display = 'block';
+
+  document.getElementById('qb-pickup').value = '';
+  document.getElementById('qb-err-pickup').classList.add('hidden');
+  document.getElementById('qb-pickup').classList.remove('border-red-400');
+  document.getElementById('qb-pickup-spacer').style.display = 'block';
+
+  document.getElementById('qb-notes').value = '';
+
   document.getElementById('qb-date').value = '';
   document.getElementById('qb-err-date').classList.add('hidden');
   document.getElementById('qb-date').classList.remove('border-red-400');
@@ -480,48 +433,109 @@ function qbInit(tour) {
 }
 
 function qbSubmit() {
+  const nameEl = document.getElementById('qb-name');
+  const errNameEl = document.getElementById('qb-err-name');
+  const pickupEl = document.getElementById('qb-pickup');
+  const errPickupEl = document.getElementById('qb-err-pickup');
+  const notesEl = document.getElementById('qb-notes');
   const dateEl = document.getElementById('qb-date');
-  const errEl = document.getElementById('qb-err-date');
+  const errDateEl = document.getElementById('qb-err-date');
 
-  if (!dateEl.value) {
-    errEl.classList.remove('hidden');
-    dateEl.classList.add('border-red-400');
-    dateEl.focus();
+  let hasError = false;
+
+  // Validate Name
+  if (!nameEl.value.trim()) {
+    errNameEl.classList.remove('hidden');
+    nameEl.classList.add('border-red-400');
+    if (!hasError) {
+      nameEl.focus();
+      hasError = true;
+    }
     setTimeout(() => {
-      errEl.classList.add('hidden');
+      errNameEl.classList.add('hidden');
+      nameEl.classList.remove('border-red-400');
+    }, 3000);
+  }
+
+  // Validate Pickup
+  if (!pickupEl.value.trim()) {
+    errPickupEl.classList.remove('hidden');
+    pickupEl.classList.add('border-red-400');
+    if (!hasError) {
+      pickupEl.focus();
+      hasError = true;
+    }
+    setTimeout(() => {
+      errPickupEl.classList.add('hidden');
+      pickupEl.classList.remove('border-red-400');
+    }, 3000);
+  }
+
+  // Validate Date
+  if (!dateEl.value) {
+    errDateEl.classList.remove('hidden');
+    dateEl.classList.add('border-red-400');
+    if (!hasError) {
+      dateEl.focus();
+      hasError = true;
+    }
+    setTimeout(() => {
+      errDateEl.classList.add('hidden');
       dateEl.classList.remove('border-red-400');
     }, 3000);
-    return;
   }
+
+  if (hasError) return;
 
   const dateFormatted = new Date(dateEl.value + 'T00:00:00')
     .toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' });
 
+  const nameVal = nameEl.value.trim();
+  const pickupVal = pickupEl.value.trim();
+  const notesVal = notesEl.value.trim() || 'None';
+
   let guestLine = '';
-  let totalLine = '';
+  let totalVal = 0;
 
   if (qbState.formType === 'simple') {
     const n = qbState.simple;
-    guestLine = `👥 Guests  : ${n} person(s)`;
-    totalLine = `💰 Total   : USD ${n * qbState.basePrice}`;
+    guestLine = `${n} Person(s)`;
+    totalVal = n * qbState.basePrice;
   } else {
     const a = qbState.adults, c = qbState.children;
-    guestLine = `👥 Guests  : ${a} Adult${a !== 1 ? 's' : ''} + ${c} Child${c !== 1 ? 'ren' : ''}`;
-    totalLine = `💰 Total   : USD ${a * qbState.basePrice + c * qbState.childPrice}`;
+    guestLine = `${a} Adult${a !== 1 ? 's' : ''} + ${c} Child${c !== 1 ? 'ren' : ''}`;
+    totalVal = a * qbState.basePrice + c * qbState.childPrice;
   }
 
   const msg = [
-    '🌴 *Tour Reservation — Bali Bagus Journey*',
-    '━━━━━━━━━━━━━━━━━━',
-    `🗺️ Tour    : ${qbState.tourTitle}`,
-    `📅 Date    : ${dateFormatted}`,
-    guestLine,
-    totalLine,
-    '━━━━━━━━━━━━━━━━━━',
-    '_Sent from Bali Bagus Journey website_'
+    '🌟 *NEW RESERVATION* 🌟',
+    '━━━━━━━━━━━━━━━━━━━━',
+    '🌴 *BALI\'S BAGUS JOURNEY*',
+    '_Premier Private Tour & Driver Service_',
+    '━━━━━━━━━━━━━━━━━━━━',
+    '',
+    '👤 *CUSTOMER DETAILS*',
+    `  ▪️ *Name*      : ${nameVal}`,
+    `  ▪️ *Pickup*    : ${pickupVal}`,
+    '',
+    '🗺️ *TOUR DETAILS*',
+    `  ▪️ *Package*   : ${qbState.tourTitle}`,
+    `  ▪️ *Date*      : ${dateFormatted}`,
+    `  ▪️ *Guests*    : ${guestLine}`,
+    '',
+    '💰 *PRICE ESTIMATE*',
+    `  ▪️ *Base Price* : ${qbState.priceStr} / Person`,
+    `  ▪️ *Estimated Total* : *USD ${totalVal}*`,
+    '  _(No prepayment needed — pay on the day)_',
+    '',
+    '📝 *SPECIAL REQUESTS*',
+    `  ▪️ ${notesVal}`,
+    '',
+    '━━━━━━━━━━━━━━━━━━━━',
+    '📱 _Sent from Bali Bagus Journey website_'
   ].join('\n');
 
-  window.open('https://wa.me/6281234567890?text=' + encodeURIComponent(msg), '_blank');
+  window.open('https://wa.me/6281529932189?text=' + encodeURIComponent(msg), '_blank');
 }
 
 /* ── Keyboard: Escape closes modals ── */

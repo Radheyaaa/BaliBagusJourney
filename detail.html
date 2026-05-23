@@ -110,6 +110,19 @@
         </h2>
         <ul id="detail-destinations" class="space-y-1.5 text-gray-700 text-sm list-disc list-inside marker:text-teal-500"></ul>
       </div>
+
+      <!-- Custom Airport Transfer Rates -->
+      <div id="airport-rates-container" class="hidden bg-white border border-gray-100 rounded-2xl p-6 mb-8 shadow-sm">
+        <h2 class="font-bold text-teal-800 text-lg mb-2 flex items-center gap-2">
+          <i class="fas fa-car text-orange-500"></i> Private Airport Transfer Rates
+        </h2>
+        <p class="text-xs text-gray-400 mb-5 leading-relaxed">
+          Standard private one-way transfer rates from Ngurah Rai International Airport. Prices are all-inclusive (private driver, air-conditioned vehicle, fuel, parking, and toll fees). No hidden costs.
+        </p>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5" id="airport-rates-grid">
+          <!-- Populated dynamically by JS -->
+        </div>
+      </div>
       <div class="bg-white border border-gray-100 rounded-2xl p-6 shadow-sm overflow-x-auto">
         <h2 class="font-bold text-teal-800 text-lg mb-5 flex items-center gap-2">
           <i class="fas fa-clock text-orange-500"></i> General Itinerary
@@ -123,6 +136,28 @@
             <span class="text-sm text-gray-400">/Person</span>
           </div>
           <p class="text-base font-bold text-teal-800 mb-5">Select your details</p>
+
+          <!-- Full Name -->
+          <label class="block text-sm font-semibold text-gray-700 mb-1.5" for="qb-name">Full Name</label>
+          <div class="relative mb-1">
+            <i class="fas fa-user absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 text-sm pointer-events-none"></i>
+            <input id="qb-name" type="text"
+              class="form-input w-full border border-gray-200 rounded-xl pl-10 pr-4 py-3 text-sm bg-gray-50 focus:bg-white focus:outline-none focus:border-teal-500 transition"
+              placeholder="e.g. John Doe"/>
+          </div>
+          <p id="qb-err-name" class="hidden text-red-500 text-xs mb-4">Please enter your name</p>
+          <div id="qb-name-spacer" class="mb-4"></div>
+
+          <!-- Hotel / Pickup -->
+          <label class="block text-sm font-semibold text-gray-700 mb-1.5" for="qb-pickup">Hotel / Pickup Location</label>
+          <div class="relative mb-1">
+            <i class="fas fa-hotel absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 text-sm pointer-events-none"></i>
+            <input id="qb-pickup" type="text"
+              class="form-input w-full border border-gray-200 rounded-xl pl-10 pr-4 py-3 text-sm bg-gray-50 focus:bg-white focus:outline-none focus:border-teal-500 transition"
+              placeholder="e.g. Ubud Resort / Airport Terminal"/>
+          </div>
+          <p id="qb-err-pickup" class="hidden text-red-500 text-xs mb-4">Please enter your hotel or pickup location</p>
+          <div id="qb-pickup-spacer" class="mb-4"></div>
 
           <!-- Date -->
           <label class="block text-sm font-semibold text-gray-700 mb-1.5" for="qb-date">Date</label>
@@ -200,6 +235,15 @@
               <span id="qb-total-options-label" class="text-sm text-gray-500"></span>
               <span id="qb-total-o" class="text-sm font-bold text-teal-800"></span>
             </div>
+          </div>
+
+          <!-- Special Requests / Notes -->
+          <label class="block text-sm font-semibold text-gray-700 mb-1.5" for="qb-notes">Special Requests / Notes (Optional)</label>
+          <div class="relative mb-6">
+            <i class="fas fa-comment-dots absolute left-4 top-4 text-gray-400 text-sm pointer-events-none"></i>
+            <textarea id="qb-notes" rows="3"
+              class="form-input w-full border border-gray-200 rounded-xl pl-10 pr-4 py-3 text-sm bg-gray-50 focus:bg-white focus:outline-none focus:border-teal-500 transition resize-none"
+              placeholder="e.g. baby car seat, vegetarian lunch, custom stops..."></textarea>
           </div>
 
           <!-- Book button -->
@@ -327,6 +371,26 @@ function _renderDetail(tourKey) {
 
   // Destinations
   document.getElementById('detail-destinations').innerHTML = t.destinations.map(d => `<li>${d}</li>`).join('');
+
+  // Dynamic Airport Transfer Rates Grid
+  const ratesContainer = document.getElementById('airport-rates-container');
+  const ratesGrid = document.getElementById('airport-rates-grid');
+  if (t.rates) {
+    ratesContainer.classList.remove('hidden');
+    ratesGrid.innerHTML = t.rates.map(r => `
+      <div class="bg-teal-50/40 border border-teal-100/50 rounded-xl p-3.5 flex items-center justify-between hover:shadow-md hover:border-teal-200 transition group">
+        <div class="flex items-center gap-2">
+          <div class="w-8 h-8 rounded-lg bg-teal-700/10 flex items-center justify-center text-teal-700 text-sm group-hover:bg-orange-500/10 group-hover:text-orange-500 transition">
+            <i class="fas fa-map-marker-alt"></i>
+          </div>
+          <span class="text-gray-700 font-bold text-sm leading-tight">${r.area}</span>
+        </div>
+        <span class="text-orange-500 font-extrabold text-sm whitespace-nowrap">${r.price}</span>
+      </div>
+    `).join('');
+  } else {
+    ratesContainer.classList.add('hidden');
+  }
 
   // Itinerary table
   let html = `<thead><tr>
