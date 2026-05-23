@@ -43,6 +43,7 @@
     <div class="hidden md:flex items-center gap-8 text-sm font-semibold text-teal-100">
       <a href="index.html" class="nav-link hover:text-white transition pb-1">Home</a>
       <a href="tours.html" class="nav-link hover:text-white transition pb-1">Tours</a>
+      <a href="transportation.html" class="nav-link hover:text-white transition pb-1">Transportation</a>
       <a href="about.html" class="nav-link hover:text-white transition pb-1">About Us</a>
       <a href="#how-to-book" class="nav-link hover:text-white transition pb-1">How to Book</a>
       <a href="https://wa.me/6285934484380?text=Hi!%20I'm%20interested%20in%20a%20Bali%20tour%20package" target="_blank"
@@ -59,6 +60,7 @@
   <div id="mobileMenu" class="hidden md:hidden bg-teal-700/95 backdrop-blur-md px-4 pb-6 text-sm font-semibold text-teal-100 flex flex-col gap-1 border-t border-teal-600/50 shadow-inner">
     <a href="index.html" class="py-3 border-b border-teal-600/30 hover:text-white transition" onclick="closeMenu()">Home</a>
     <a href="tours.html" class="py-3 border-b border-teal-600/30 hover:text-white transition" onclick="closeMenu()">Tours</a>
+    <a href="transportation.html" class="py-3 border-b border-teal-600/30 hover:text-white transition" onclick="closeMenu()">Transportation</a>
     <a href="about.html" class="py-3 border-b border-teal-600/30 hover:text-white transition" onclick="closeMenu()">About Us</a>
     <a href="#how-to-book" class="py-3 border-b border-teal-600/30 hover:text-white transition" onclick="closeMenu()">How to Book</a>
     <a href="https://wa.me/6285934484380?text=Hi!%20I'm%20interested%20in%20a%20Bali%20tour%20package" target="_blank"
@@ -199,6 +201,28 @@
           <p class="text-gray-500 text-sm leading-relaxed">No rigid schedules — we customize every trip to match your interests.</p>
         </div>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════
+     HOME FLEET PREVIEW
+══════════════════════════════════════════════ -->
+<section class="py-20 bg-gray-50">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6">
+    <div class="flex flex-col sm:flex-row items-center justify-between gap-4 mb-12">
+      <div>
+        <span class="text-orange-500 font-bold text-sm uppercase tracking-widest">Our Fleet</span>
+        <h2 class="font-display text-4xl text-teal-800 mt-1">Our <span class="text-orange-500">Vehicles</span></h2>
+        <p class="text-gray-500 mt-2 max-w-md">Clean, comfortable, and AC-equipped vehicles for every group size.</p>
+      </div>
+      <a href="transportation.html"
+         class="flex-shrink-0 flex items-center gap-2 border-2 border-teal-700 text-teal-700 hover:bg-teal-700 hover:text-white font-bold px-7 py-3 rounded-2xl transition text-sm">
+        View All Vehicles <i class="fas fa-arrow-right"></i>
+      </a>
+    </div>
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8" id="home-fleet-grid">
+      <!-- Populated by JavaScript -->
     </div>
   </div>
 </section>

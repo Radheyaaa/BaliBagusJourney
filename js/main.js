@@ -138,6 +138,153 @@ const tours = {
   }
 };
 
+/* ═══════════════════════════════════════════════════════
+   VEHICLE DATA
+═══════════════════════════════════════════════════════ */
+
+const cars = {
+  'suzuki-apv': {
+    name: 'Suzuki APV',
+    badge: 'Standard Car', badgeColor: 'bg-blue-600',
+    category: 'standard',
+    img: 'https://catalogo.gac-sa.cl/assets/vehiculos/matriz/Wigo_Peru/3115/image_principal/image_principal.jpg',
+    price: 'USD 35',
+    priceNum: 35,
+    maxTour: '6 Pax', maxAirport: '4 Pax', luggage: '4 Bags', hours: '10 hrs',
+    description: 'The Suzuki APV is our most popular entry-level van, ideal for small families or groups of up to 6 people on a tour. Compact yet spacious inside, it handles Bali\'s narrow roads and mountain routes with ease. Full air-conditioning and comfortable seating make it perfect for a full-day island tour.',
+    features: [
+      'Full air conditioning','4 large luggage capacity','USB charging port',
+      'Comfortable reclining seats','Ideal for narrow mountain roads',
+      'Max 4 pax with luggage for airport','Max 6 pax for tour'
+    ],
+    pricing: [
+      { service:'Airport Transfer (Kuta/Seminyak)', duration:'One way', price:'USD 20' },
+      { service:'Airport Transfer (Ubud)', duration:'One way', price:'USD 30' },
+      { service:'Private Tour (Full Day)', duration:'8–10 hrs', price:'USD 35' },
+      { service:'Half Day Tour', duration:'4–5 hrs', price:'USD 25' },
+    ],
+    waMessage: "Hi! I'd like to book the Suzuki APV. Can you share availability and details?"
+  },
+  'toyota-avanza': {
+    name: 'Toyota Avanza',
+    badge: 'Standard Car', badgeColor: 'bg-blue-600',
+    category: 'standard',
+    img: 'https://www.dubicars.com/images/148f64/r_960x540/generations/generation_64968304ed607_toyota-avanza-cover-front-left-angled.jpg?',
+    price: 'USD 40',
+    priceNum: 40,
+    maxTour: '6 Pax', maxAirport: '4 Pax', luggage: '4 Bags', hours: '10 hrs',
+    description: 'The Toyota Avanza is a reliable and fuel-efficient MPV widely trusted across Bali. Known for its smooth ride and solid build, it comfortably seats up to 6 passengers for tours and 4 with luggage for airport transfers. A great all-rounder choice.',
+    features: [
+      'Full air conditioning','Smooth automatic transmission','USB charging port',
+      'Spacious legroom','Fuel efficient engine','Comfortable for long drives',
+      'Max 4 pax + luggage airport','Max 6 pax for tour'
+    ],
+    pricing: [
+      { service:'Airport Transfer (Kuta/Seminyak)', duration:'One way', price:'USD 22' },
+      { service:'Airport Transfer (Ubud)', duration:'One way', price:'USD 32' },
+      { service:'Private Tour (Full Day)', duration:'8–10 hrs', price:'USD 40' },
+      { service:'Half Day Tour', duration:'4–5 hrs', price:'USD 28' },
+    ],
+    waMessage: "Hi! I'd like to book the Toyota Avanza. Can you help me?"
+  },
+  'toyota-innova': {
+    name: 'Toyota Innova Reborn',
+    badge: 'MPV', badgeColor: 'bg-teal-700',
+    category: 'mpv',
+    img: 'https://momobil.id/news/wp-content/uploads/2023/09/Toyota-Kijang-Innova-Reborn-Diesel.jpg',
+    price: 'USD 55',
+    priceNum: 55,
+    maxTour: '7 Pax', maxAirport: '6 Pax', luggage: '6 Bags', hours: '10 hrs',
+    description: 'The Toyota Innova Reborn is a premium MPV that balances comfort and capacity perfectly. With dual-zone air conditioning and a spacious cabin, it is ideal for families or medium-sized groups who want extra comfort on a full-day tour across Bali.',
+    features: [
+      'Dual zone air conditioning','USB & 12V charging ports','Wide panoramic windows',
+      'Reclining captain seats','Extra legroom & boot space','Great for long-distance routes',
+      'Max 6 pax + luggage airport','Max 7 pax for tour'
+    ],
+    pricing: [
+      { service:'Airport Transfer (Kuta/Seminyak)', duration:'One way', price:'USD 28' },
+      { service:'Airport Transfer (Ubud)', duration:'One way', price:'USD 40' },
+      { service:'Private Tour (Full Day)', duration:'8–10 hrs', price:'USD 55' },
+      { service:'Half Day Tour', duration:'4–5 hrs', price:'USD 38' },
+    ],
+    waMessage: "Hi! I'm interested in booking the Toyota Innova Reborn."
+  },
+  'toyota-hiace': {
+    name: 'Toyota Hi-Ace',
+    badge: 'Elf', badgeColor: 'bg-indigo-700',
+    category: 'elf',
+    img: 'https://imgcdn.zigwheels.co.th/large/gallery/exterior/33/3369/toyota-hiace-front-angle-low-view-827028.jpg',
+    price: 'USD 80',
+    priceNum: 80,
+    maxTour: '15 Pax', maxAirport: '11 Pax', luggage: '10 Bags', hours: '10 hrs',
+    description: 'The Toyota Hi-Ace is our premium large van, perfect for bigger groups, corporate transfers, or extended family tours. With a high-roof cabin and generous luggage space, it comfortably handles up to 15 passengers for tours and 11 with full luggage for airport transfers.',
+    features: [
+      'High-roof cabin — stand-up comfortable','Dual AC units front & rear',
+      'USB charging on every row','Large overhead compartments',
+      'Professional licensed driver','Suitable for wedding/event transport',
+      'Max 11 pax + luggage airport','Max 15 pax for tour'
+    ],
+    pricing: [
+      { service:'Airport Transfer (Kuta/Seminyak)', duration:'One way', price:'USD 40' },
+      { service:'Airport Transfer (Ubud)', duration:'One way', price:'USD 55' },
+      { service:'Private Tour (Full Day)', duration:'8–10 hrs', price:'USD 80' },
+      { service:'Half Day Tour', duration:'4–5 hrs', price:'USD 55' },
+      { service:'Multi-day (3+ days)', duration:'per day', price:'USD 70' },
+    ],
+    waMessage: "Hi! I need the Toyota Hi-Ace for a group. Can you confirm availability?"
+  },
+  'alphard': {
+    name: 'Toyota Alphard',
+    badge: 'Luxury Car', badgeColor: 'bg-yellow-600',
+    category: 'luxury',
+    img: 'https://photo.znews.vn/Uploaded/yqdlmdxwp/2024_12_21/2025_Toyota_Alphard_Exterior_6_2_2.jpg',
+    price: 'USD 195',
+    priceNum: 195,
+    maxTour: '5 Pax', maxAirport: '4 Pax', luggage: '4 Bags', hours: '10 hrs',
+    description: 'The Toyota Alphard is the pinnacle of luxury travel in Bali. With its executive cabin, power-sliding doors, and premium leather seats, it delivers a VIP experience unlike any other. Perfect for honeymoon couples, business travelers, or those who simply want to explore Bali in style.',
+    features: [
+      'Premium leather captain seats','Power-sliding rear doors',
+      'Dual-screen rear entertainment','Panoramic sunroof',
+      'Refrigerator & mini bar','USB & wireless charging',
+      'Privacy curtains','Full day 8–10 hours max',
+      'Max 4 pax + luggage airport','Max 5 pax for tour'
+    ],
+    pricing: [
+      { service:'Airport Transfer (Kuta/Seminyak)', duration:'One way', price:'USD 75' },
+      { service:'Airport Transfer (Ubud)', duration:'One way', price:'USD 95' },
+      { service:'Private Tour (Full Day)', duration:'8–10 hrs', price:'USD 195' },
+      { service:'Half Day Tour', duration:'4–5 hrs', price:'USD 130' },
+      { service:'Wedding/Event Transfer', duration:'4 hrs', price:'USD 150' },
+    ],
+    waMessage: "Hi! I'm interested in the Toyota Alphard for a luxury Bali experience. Can you help?"
+  },
+  'fortuner': {
+    name: 'Toyota Fortuner',
+    badge: 'Luxury Car', badgeColor: 'bg-yellow-600',
+    category: 'luxury',
+    img: 'https://media.cdntoyota.co.za/toyotacms23/attachments/cldd4dd3a01gu0psx0wnbyh1i-fortuner-exterior-front-34-high-turn-1920x1080.desktop.jpg',
+    price: 'USD 120',
+    priceNum: 120,
+    maxTour: '6 Pax', maxAirport: '5 Pax', luggage: '5 Bags', hours: '10 hrs',
+    description: 'The Toyota Fortuner is a premium SUV delivering power and prestige. Built for comfort and style, it\'s perfect for adventurous travelers and those seeking a more upscale option. With modern amenities and impressive road presence, it stands out among Bali\'s rental fleet.',
+    features: [
+      'Premium cabin design','Advanced AC climate control','Power windows & mirrors',
+      'Cruise control','Leather upholstery','Modern infotainment system',
+      'Max 5 pax + luggage airport','Max 6 pax for tour'
+    ],
+    pricing: [
+      { service:'Airport Transfer (Kuta/Seminyak)', duration:'One way', price:'USD 50' },
+      { service:'Airport Transfer (Ubud)', duration:'One way', price:'USD 70' },
+      { service:'Private Tour (Full Day)', duration:'8–10 hrs', price:'USD 120' },
+      { service:'Half Day Tour', duration:'4–5 hrs', price:'USD 85' },
+    ],
+    waMessage: "Hi! I'm interested in booking the Toyota Fortuner for my Bali tour."
+  }
+};
+
+let carKeys = Object.keys(cars);
+let activeCarCat = 'all';
+
 let currentFilter = 'all';
 let currentDetailFrom = 'tours';
 
@@ -303,6 +450,73 @@ function renderTours(search = '') {
       </div>
     </div>
   `).join('');
+}
+
+/* ═══════════════════════════════════════════════════════
+   VEHICLES/TRANSPORTATION PAGE FUNCTIONS
+═══════════════════════════════════════════════════════ */
+
+function filterCars(cat) {
+  activeCarCat = cat;
+  document.querySelectorAll('.car-pill').forEach(btn => {
+    btn.classList.toggle('active', btn.dataset.cat === cat);
+  });
+  renderAllCars();
+}
+
+function renderAllCars() {
+  const grid = document.getElementById('all-car-grid');
+  const countEl = document.getElementById('car-count');
+  if (!grid) return;
+
+  const filtered = carKeys.filter(key => {
+    return activeCarCat === 'all' || cars[key].category === activeCarCat;
+  });
+
+  countEl.textContent = `Showing ${filtered.length} vehicle${filtered.length !== 1 ? 's' : ''}`;
+
+  grid.innerHTML = filtered.map(key => buildCarCard(key)).join('');
+}
+
+function buildCarCard(key) {
+  const car = cars[key];
+  return `
+    <div class="bg-white rounded-3xl overflow-hidden shadow-md border border-gray-100 cursor-pointer hover:shadow-lg hover:-translate-y-1 transition" onclick="showCarDetail('${key}')">
+      <div class="relative">
+        <img src="${car.img}" alt="${car.name}" class="w-full h-48 object-cover" loading="lazy"/>
+        <div class="absolute top-4 left-4 ${car.badgeColor} text-white text-xs font-bold px-3 py-1.5 rounded-full shadow-md">
+          ${car.badge}
+        </div>
+      </div>
+      <div class="p-5">
+        <h3 class="font-bold text-teal-800 text-lg mb-2">${car.name}</h3>
+        <div class="flex gap-4 text-gray-600 text-sm mb-4">
+          <span><i class="fas fa-users text-teal-600 mr-1"></i>${car.maxTour}</span>
+          <span><i class="fas fa-briefcase text-orange-500 mr-1"></i>${car.luggage}</span>
+        </div>
+        <div class="flex items-end justify-between">
+          <span class="text-orange-500 font-bold text-2xl">${car.price}</span>
+          <a href="https://wa.me/6285934484380?text=${encodeURIComponent(car.waMessage)}" target="_blank"
+             class="bg-teal-700 hover:bg-teal-800 text-white text-xs font-semibold px-4 py-2 rounded-xl transition"
+             onclick="event.stopPropagation()">
+            Book Now
+          </a>
+        </div>
+      </div>
+    </div>
+  `;
+}
+
+function renderHomeFleet() {
+  const grid = document.getElementById('home-fleet-grid');
+  if (!grid) return;
+
+  const featured = carKeys.slice(0, 3);
+  grid.innerHTML = featured.map(key => buildCarCard(key)).join('');
+}
+
+function showCarDetail(carKey) {
+  window.location.href = 'car-detail.html?car=' + carKey;
 }
 
 /* ══════════════════════════════════════
@@ -508,7 +722,7 @@ function qbSubmit() {
   }
 
   const msg = [
-    '🌟 *NEW RESERVATION* 🌟',
+    '✨ *NEW RESERVATION* ✨',
     '━━━━━━━━━━━━━━━━━━━━',
     '🌴 *BALI\'S BAGUS JOURNEY*',
     '_Premier Private Tour & Driver Service_',
@@ -553,5 +767,11 @@ document.addEventListener('keydown', e => {
 document.addEventListener('DOMContentLoaded', () => {
   if (document.getElementById('toursGrid')) {
     renderTours();
+  }
+  if (document.getElementById('all-car-grid')) {
+    renderAllCars();
+  }
+  if (document.getElementById('home-fleet-grid')) {
+    renderHomeFleet();
   }
 });

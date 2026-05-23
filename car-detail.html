@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vehicle Details | Bali Bagus Journey</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="css/style.css" />
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            teal:   { DEFAULT: '#0f766e', 50: '#f0fdfa', 100: '#ccfbf1', 600: '#0d9488', 700: '#0f766e', 800: '#115e59', 900: '#134e4a' },
+            orange: { DEFAULT: '#f97316', 400: '#fb923c', 500: '#f97316', 600: '#ea580c' },
+          },
+          fontFamily: {
+            sans:    ['"Plus Jakarta Sans"', 'sans-serif'],
+            display: ['"Playfair Display"', 'serif'],
+          },
+        }
+      }
+    }
+  </script>
+
+  <style>
+    * { scroll-behavior: smooth; }
+    body { font-family: 'Plus Jakarta Sans', sans-serif; }
+    @keyframes fadeUp { from { opacity:0; transform:translateY(28px); } to { opacity:1; transform:translateY(0); } }
+    .fade-up { animation: fadeUp .65s ease forwards; }
+  </style>
+</head>
+
+<body class="bg-white text-gray-800">
+
+<!-- ══════════════════════════════════════════════════════
+     NAVIGATION
+══════════════════════════════════════════════════════ -->
+<nav class="fixed top-0 left-0 right-0 z-50 bg-teal-700/95 backdrop-blur-md shadow-lg">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 flex items-center justify-between h-16">
+    <a href="index.html" class="flex items-center gap-2 group">
+      <span class="w-9 h-9 rounded-full bg-orange-500 flex items-center justify-center text-white font-bold text-lg shadow-md">W</span>
+      <span class="text-white font-display font-bold text-xl tracking-tight">Bali Bagus <span class="text-orange-400">Journey</span></span>
+    </a>
+
+    <div class="hidden md:flex items-center gap-8 text-sm font-semibold text-teal-100">
+      <a href="index.html" class="nav-link hover:text-white transition pb-1">Home</a>
+      <a href="tours.html" class="nav-link hover:text-white transition pb-1">Tours</a>
+      <a href="transportation.html" class="nav-link hover:text-white transition pb-1">Transportation</a>
+      <a href="about.html" class="nav-link hover:text-white transition pb-1">About Us</a>
+      <a href="https://wa.me/6285934484380?text=Hi!%20I'm%20interested%20in%20a%20Bali%20tour%20package" target="_blank"
+         class="bg-orange-500 hover:bg-orange-600 text-white px-5 py-2 rounded-full transition shadow">
+        <i class="fab fa-whatsapp mr-1"></i> WhatsApp Us
+      </a>
+    </div>
+
+    <button id="menuToggle" class="md:hidden text-white text-2xl focus:outline-none" onclick="toggleMenu()">
+      <i class="fas fa-bars"></i>
+    </button>
+  </div>
+
+  <div id="mobileMenu" class="hidden md:hidden bg-teal-700/95 backdrop-blur-md px-4 pb-6 text-sm font-semibold text-teal-100 flex flex-col gap-1 border-t border-teal-600/50 shadow-inner">
+    <a href="index.html" class="py-3 border-b border-teal-600/30 hover:text-white transition" onclick="closeMenu()">Home</a>
+    <a href="tours.html" class="py-3 border-b border-teal-600/30 hover:text-white transition" onclick="closeMenu()">Tours</a>
+    <a href="transportation.html" class="py-3 border-b border-teal-600/30 hover:text-white transition" onclick="closeMenu()">Transportation</a>
+    <a href="about.html" class="py-3 border-b border-teal-600/30 hover:text-white transition" onclick="closeMenu()">About Us</a>
+    <a href="https://wa.me/6285934484380?text=Hi!%20I'm%20interested%20in%20a%20Bali%20tour%20package" target="_blank"
+       class="bg-orange-500 text-white text-center py-3 rounded-xl mt-4 shadow-lg active:scale-95 transition" onclick="closeMenu()">
+      <i class="fab fa-whatsapp mr-1"></i> WhatsApp Us
+    </a>
+  </div>
+</nav>
+
+<!-- ══════════════════════════════════════════════════════
+     HERO SECTION WITH IMAGE
+══════════════════════════════════════════════════════ -->
+<section class="pt-20 pb-0 relative overflow-hidden bg-teal-900">
+  <div class="absolute inset-0">
+    <img id="car-hero-img" src="" alt="Car" class="w-full h-full object-cover opacity-40"/>
+  </div>
+  <div class="absolute inset-0 bg-gradient-to-b from-teal-900/60 via-teal-900/40 to-white"></div>
+
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 relative z-10 py-8 flex items-start justify-between">
+    <button onclick="history.back()" class="flex items-center gap-2 text-white hover:text-orange-400 transition font-semibold">
+      <i class="fas fa-arrow-left"></i> Back
+    </button>
+    <div id="car-badge" class="text-white text-xs font-bold px-4 py-2 rounded-full shadow-md">Car</div>
+  </div>
+
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 relative z-10 pb-20">
+    <h1 id="car-name" class="font-display text-4xl md:text-5xl text-white font-bold">Vehicle Name</h1>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════
+     SPECIFICATIONS GRID
+══════════════════════════════════════════════════════ -->
+<section class="bg-white py-12 -mt-12 relative z-20 max-w-7xl mx-auto mx-4 sm:mx-6 rounded-3xl shadow-lg mx-4 lg:mx-auto">
+  <div class="px-6 sm:px-10">
+    <div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
+      <div class="text-center p-4 bg-teal-50 rounded-2xl">
+        <i class="fas fa-users text-teal-600 text-2xl mb-2 block"></i>
+        <div class="text-xs text-gray-500 uppercase tracking-wide font-semibold mb-1">Max Tour</div>
+        <div id="car-max-tour" class="font-bold text-lg text-teal-800">6 Pax</div>
+      </div>
+      <div class="text-center p-4 bg-orange-50 rounded-2xl">
+        <i class="fas fa-plane text-orange-500 text-2xl mb-2 block"></i>
+        <div class="text-xs text-gray-500 uppercase tracking-wide font-semibold mb-1">Airport</div>
+        <div id="car-max-airport" class="font-bold text-lg text-orange-700">4 Pax</div>
+      </div>
+      <div class="text-center p-4 bg-teal-50 rounded-2xl">
+        <i class="fas fa-suitcase text-teal-600 text-2xl mb-2 block"></i>
+        <div class="text-xs text-gray-500 uppercase tracking-wide font-semibold mb-1">Luggage</div>
+        <div id="car-luggage" class="font-bold text-lg text-teal-800">4 Bags</div>
+      </div>
+      <div class="text-center p-4 bg-orange-50 rounded-2xl">
+        <i class="fas fa-clock text-orange-500 text-2xl mb-2 block"></i>
+        <div class="text-xs text-gray-500 uppercase tracking-wide font-semibold mb-1">Duration</div>
+        <div id="car-hours" class="font-bold text-lg text-orange-700">10 hrs</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════
+     MAIN CONTENT WITH SIDEBAR
+══════════════════════════════════════════════════════ -->
+<section class="bg-white py-16">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6">
+    <div class="grid md:grid-cols-3 gap-12 items-start">
+
+      <!-- LEFT: Main Content -->
+      <div class="md:col-span-2 space-y-10">
+
+        <!-- Description -->
+        <div class="fade-up">
+          <h2 class="text-2xl font-bold text-teal-800 mb-4">About This Vehicle</h2>
+          <p id="car-description" class="text-gray-600 leading-relaxed">
+            Vehicle description goes here.
+          </p>
+        </div>
+
+        <!-- Features -->
+        <div class="fade-up">
+          <h2 class="text-2xl font-bold text-teal-800 mb-4">Features & Amenities</h2>
+          <ul id="car-features" class="grid sm:grid-cols-2 gap-4">
+            <!-- Features list -->
+          </ul>
+        </div>
+
+        <!-- Pricing Table -->
+        <div class="fade-up">
+          <h2 class="text-2xl font-bold text-teal-800 mb-4">Pricing</h2>
+          <div class="overflow-x-auto">
+            <table class="w-full">
+              <thead>
+                <tr class="bg-teal-700 text-white">
+                  <th class="px-6 py-3 text-left font-semibold">Service</th>
+                  <th class="px-6 py-3 text-left font-semibold">Duration</th>
+                  <th class="px-6 py-3 text-right font-semibold">Price</th>
+                </tr>
+              </thead>
+              <tbody id="car-pricing" class="divide-y divide-gray-200">
+                <!-- Pricing rows -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- RIGHT: Sidebar (Desktop only) -->
+      <div class="hidden md:block sticky top-32">
+        <div class="bg-gradient-to-br from-teal-50 to-teal-100 rounded-3xl p-8 shadow-lg border border-teal-200">
+
+          <!-- Price Box -->
+          <div class="mb-6 text-center">
+            <div class="text-gray-500 text-sm mb-1">Starting from</div>
+            <div id="car-sidebar-price" class="text-orange-500 font-bold text-4xl">USD 35</div>
+            <div class="text-gray-500 text-xs mt-1">per day</div>
+          </div>
+
+          <!-- Key Features -->
+          <div class="mb-6 pb-6 border-b border-teal-200">
+            <h3 class="font-bold text-teal-800 mb-3">Key Features</h3>
+            <ul id="car-sidebar-features" class="space-y-2 text-sm text-gray-700">
+              <li class="flex items-start gap-2"><i class="fas fa-check text-orange-500 mt-1 flex-shrink-0"></i><span>Full air conditioning</span></li>
+            </ul>
+          </div>
+
+          <!-- CTA Buttons -->
+          <div class="space-y-3">
+            <a id="car-wa-link"
+               href="#" target="_blank"
+               class="block text-center bg-green-500 hover:bg-green-600 text-white font-bold py-4 rounded-2xl transition shadow-lg">
+              <i class="fab fa-whatsapp mr-2"></i> Book on WhatsApp
+            </a>
+            <a href="transportation.html"
+               class="block text-center bg-teal-700 hover:bg-teal-800 text-white font-semibold py-3 rounded-2xl transition">
+              View All Vehicles
+            </a>
+          </div>
+
+          <!-- Cancellation Notice -->
+          <div class="mt-6 p-4 bg-orange-50 rounded-xl border border-orange-200">
+            <p class="text-xs text-gray-600">
+              <strong>No upfront payment required!</strong> Confirm your booking and pay on the day of your tour.
+            </p>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════
+     MOBILE BOTTOM BAR
+══════════════════════════════════════════════════════ -->
+<div class="fixed bottom-0 left-0 right-0 md:hidden bg-white border-t border-gray-200 shadow-2xl p-4 z-40">
+  <div class="flex items-center justify-between gap-3">
+    <div>
+      <div class="text-gray-500 text-xs">Starting from</div>
+      <div id="mobile-price" class="text-orange-500 font-bold text-2xl">USD 35</div>
+    </div>
+    <a id="mobile-wa-btn"
+       href="#" target="_blank"
+       class="flex-1 flex items-center justify-center gap-2 bg-green-500 hover:bg-green-600 text-white font-bold py-3 rounded-2xl transition">
+      <i class="fab fa-whatsapp"></i> Book
+    </a>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════
+     FOOTER
+══════════════════════════════════════════════════════ -->
+<footer class="bg-teal-900 text-teal-200 py-12 mt-20">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 grid md:grid-cols-3 gap-8">
+    <div>
+      <div class="flex items-center gap-2 mb-4">
+        <span class="w-9 h-9 bg-orange-500 rounded-full flex items-center justify-center text-white font-bold text-lg">W</span>
+        <span class="text-white font-display font-bold text-xl">Bali Bagus Journey</span>
+      </div>
+      <p class="text-sm leading-relaxed">Your trusted private driver and tour guide in Bali. Making every trip memorable since 2016.</p>
+    </div>
+    <div>
+      <h4 class="text-white font-bold mb-4">Quick Links</h4>
+      <ul class="space-y-2 text-sm">
+        <li><a href="index.html" class="hover:text-white transition">Home</a></li>
+        <li><a href="tours.html" class="hover:text-white transition">Tour Packages</a></li>
+        <li><a href="transportation.html" class="hover:text-white transition">Transportation</a></li>
+        <li><a href="about.html" class="hover:text-white transition">About Us</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4 class="text-white font-bold mb-4">Contact</h4>
+      <ul class="space-y-2 text-sm">
+        <li class="flex items-center gap-2"><i class="fab fa-whatsapp text-green-400"></i> +62 859-3448-4380</li>
+        <li class="flex items-center gap-2"><i class="fas fa-envelope text-orange-400"></i> balibagusjourney@gmail.com</li>
+        <li class="flex items-center gap-2"><i class="fas fa-map-marker-alt text-teal-400"></i> Ubud, Bali, Indonesia</li>
+      </ul>
+    </div>
+  </div>
+  <div class="border-t border-teal-700 mt-10 pt-6 text-center text-xs text-teal-400">
+    © 2024 Bali Bagus Journey. All rights reserved.
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+
+<script>
+// Get car key from URL parameters
+function getCarFromURL() {
+  const params = new URLSearchParams(window.location.search);
+  return params.get('car');
+}
+
+// Load car details
+function loadCarDetail() {
+  const carKey = getCarFromURL();
+  if (!carKey || !cars[carKey]) {
+    document.body.innerHTML = '<div class="text-center pt-40"><h1 class="text-2xl">Vehicle not found</h1></div>';
+    return;
+  }
+
+  const car = cars[carKey];
+
+  // Header and basic info
+  document.getElementById('car-hero-img').src = car.img;
+  document.getElementById('car-name').textContent = car.name;
+  document.getElementById('car-badge').className = `${car.badgeColor} text-white text-xs font-bold px-4 py-2 rounded-full shadow-md`;
+  document.getElementById('car-badge').textContent = car.badge;
+
+  // Specs
+  document.getElementById('car-max-tour').textContent = car.maxTour;
+  document.getElementById('car-max-airport').textContent = car.maxAirport;
+  document.getElementById('car-luggage').textContent = car.luggage;
+  document.getElementById('car-hours').textContent = car.hours;
+
+  // Description
+  document.getElementById('car-description').textContent = car.description;
+
+  // Features
+  document.getElementById('car-features').innerHTML = car.features
+    .map(f => `<li class="flex items-center gap-3"><i class="fas fa-check-circle text-teal-600"></i><span>${f}</span></li>`)
+    .join('');
+
+  // Sidebar Features
+  document.getElementById('car-sidebar-features').innerHTML = car.features.slice(0, 5)
+    .map(f => `<li class="flex items-start gap-2"><i class="fas fa-check text-orange-500 mt-1 flex-shrink-0"></i><span>${f}</span></li>`)
+    .join('');
+
+  // Pricing
+  document.getElementById('car-pricing').innerHTML = car.pricing
+    .map((p, i) => `
+      <tr class="${i % 2 === 0 ? 'bg-gray-50' : 'bg-white'}">
+        <td class="px-6 py-3 font-semibold text-gray-800">${p.service}</td>
+        <td class="px-6 py-3 text-gray-600">${p.duration}</td>
+        <td class="px-6 py-3 text-right font-bold text-orange-600">${p.price}</td>
+      </tr>
+    `)
+    .join('');
+
+  // Prices
+  document.getElementById('car-sidebar-price').textContent = car.price;
+  document.getElementById('mobile-price').textContent = car.price;
+
+  // WhatsApp links
+  const waUrl = `https://wa.me/6285934484380?text=${encodeURIComponent(car.waMessage)}`;
+  document.getElementById('car-wa-link').href = waUrl;
+  document.getElementById('mobile-wa-btn').href = waUrl;
+}
+
+document.addEventListener('DOMContentLoaded', loadCarDetail);
+</script>
+
+</body>
+</html>
