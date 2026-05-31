@@ -5,8 +5,13 @@
 const tours = {
   'airport-welcome': {
     title: 'Premium Airport Transfer & Warm Welcome',
-    img: 'https://images.unsplash.com/photo-1715232207853-e4fe86c1feae?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.1.0',
-    thumb: 'https://images.unsplash.com/photo-1715232207853-e4fe86c1feae?q=80&w=600&q=80',
+    img: 'https://images.unsplash.com/photo-1715232207853-e4fe86c1feae?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.1.0&fm=webp',
+    thumb: 'https://images.unsplash.com/photo-1715232207853-e4fe86c1feae?q=80&w=600&q=80&fm=webp',
+    galleryImages: [
+      'https://images.unsplash.com/photo-1715232207853-e4fe86c1feae?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.1.0&fm=webp',
+      'https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.1.0&fm=webp',
+      'https://images.unsplash.com/photo-1552183756-0a0b8a8b27f8?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.1.0&fm=webp'
+    ],
     price: 'USD 25', originalPrice: 'USD 40', priceNum: 25,
     category: 'transport', badge: 'VIP Welcome', badgeColor: 'bg-slate-600',
     rating: 5.0, reviews: 203,
@@ -39,14 +44,25 @@ const tours = {
   },
   'ubud-heartbeat': {
     title: "Ubud's Cultural Heartbeat: Forests, Swings & Cascades",
-    img: 'assets/images/ubud.jpg',
-    thumb: 'assets/images/ubud.jpg',
+    img: 'assets/images/swing-landscape.webp',
+    thumb: 'assets/images/swing-landscape.webp',
+    galleryImages: [
+      'assets/images/monkey-landscape.webp',
+      'assets/images/swing-landscape.webp',
+      'assets/images/coffee-plantation.webp',
+      'https://images.unsplash.com/photo-1537225228614-b3fb3d625cb0?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.1.0&fm=webp'
+    ],
     price: 'USD 55', originalPrice: 'USD 85', priceNum: 55,
     category: 'temple', badge: 'Most Popular', badgeColor: 'bg-teal-600',
     rating: 5.0, reviews: 128,
     waMessage: "Hi! I am interested in the Ubud's Cultural Heartbeat Tour. Can you tell me more about it?",
     prices: ['$55 / person (minimum 2 persons)', '$45 / person (group of 4+)', 'Includes: Private car, Driver/Guide, Sacred Monkey Forest entry, Swing tickets'],
-    destinations: ['Sacred Monkey Forest Sanctuary', 'High-Flying Jungle Swing 🏞️', 'Artisanal Coffee & Tea Plantation', 'Hidden Ubud Waterfall 💧'],
+    destinations: [
+      "Monkey Forest : Encounter some of Bali's charming wildlife. 🐒",
+      'Bali Swing: Soar above the lush landscapes for an exhilarating experience🏞️',
+      'Coffee Plantation (Tasting): Experience the aroma and flavor of local Balinese coffee',
+      'Ubud Waterfall: Discover the serene beauty of a hidden cascade. 💧'
+    ],
     itinerary: [
       { session: 'MORNING', activities: ['08:00 - Private hotel pickup by our professional driver', '09:30 - Enter the Sacred Monkey Forest and meet playful macaques 🐒', '11:00 - Soar high over the jungle canopy at the famous Bali Swing 🏞️'] },
       { session: 'AFTERNOON', activities: ['12:30 - Delicious traditional Balinese lunch with tropical views', '14:00 - Experience local coffee roasting and a premium tea tasting ☕', '15:30 - Walk down and swim at a serene, hidden Ubud Waterfall 💧'] },
@@ -55,14 +71,23 @@ const tours = {
   },
   'ubud-adventures': {
     title: 'Ubud Wild Jungle ATV Ride & River Rafting',
-    img: 'assets/images/shibupavizha-george-zZeh-USTxeE-unsplash.jpg',
-    thumb: 'assets/images/shibupavizha-george-zZeh-USTxeE-unsplash.jpg',
+    img: 'assets/images/shibupavizha-george-zZeh-USTxeE-unsplash.webp',
+    thumb: 'assets/images/shibupavizha-george-zZeh-USTxeE-unsplash.webp',
+    galleryImages: [
+      'assets/images/rafting-potrait.webp',
+      'https://images.unsplash.com/photo-1565803842219-405ed0e34daf?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.1.0&fm=webp',
+      'assets/images/tlaga.webp'
+    ],
     price: 'USD 65', originalPrice: 'USD 95', priceNum: 65,
     category: 'adventure', badge: 'Adrenaline', badgeColor: 'bg-red-500',
     rating: 4.9, reviews: 94,
     waMessage: "Hi! I'd love to book the Ubud Wild Jungle ATV Ride & River Rafting package. Can you share availability?",
     prices: ['$65 / person (ATV Ride + Rafting Combo)', '$58 / person (Group of 4+ discount)', 'Includes: Safety gear, Expert guides, ATV rental, Rafting raft, Lunch buffet'],
-    destinations: ['Rugged ATV Jungle Trails 🏍️💨', 'Ayung River White Water Rafting 🚣', 'Cretya Ubud or Tlaga Singha Infinity Pools 🏊'],
+    destinations: [
+      'ATV Quad Bike Adventure: Navigate rugged terrains for an adrenaline rush. 🏍️💨',
+      'White Water Rafting OR Tubing: Choose between an exhilarating rafting experience or a more relaxed river tubing adventure. 🚣‍♀️',
+      'Infinity Pool Experience:Opt for a luxurious swim at either Cretya or Tlaga Singha, offering breathtaking views. 🏊'
+    ],
     itinerary: [
       { session: 'MORNING', activities: ['08:00 - Private air-conditioned lobby pickup', '09:30 - Unleash the power of an ATV Quad Bike through wild terrains & muddy caves 🏍️💨', '11:30 - Challenge yourself with exhilarating Ayung River white water rafting 🚣'] },
       { session: 'AFTERNOON', activities: ['13:30 - Gourmet Indonesian buffet lunch overlooking the lush river valley', '15:00 - Treat yourself to a swim at the luxury Cretya Ubud or Tlaga Singha infinity pools 🏊', '16:30 - Relax and enjoy local tropical smoothies overlooking steep rice field cliffs 🍹'] },
@@ -71,14 +96,26 @@ const tours = {
   },
   'batur-sunrise': {
     title: 'Mount Batur Sunrise 4x4 Jeep & Black Lava Adventure',
-    img: 'assets/images/kintamani.jpg',
-    thumb: 'assets/images/kintamani.jpg',
+    img: 'assets/images/kintamani.webp',
+    thumb: 'assets/images/kintamani.webp',
+    galleryImages: [
+      'assets/images/batur-sunrise.webp',
+      'assets/images/jeep-tour.webp',
+      'https://www.bali.info/wp-content/uploads/2022/03/Kintamani-Danau-Batur-scaled.jpg',
+      'https://www.bali.info/wp-content/uploads/2022/03/Kintamani-Danau-Batur-scaled.jpg'
+    ],
     price: 'USD 75', originalPrice: 'USD 120', priceNum: 75,
     category: 'nature', badge: 'Must Do', badgeColor: 'bg-orange-500',
     rating: 5.0, reviews: 186,
     waMessage: "Hi! I'm interested in the Mount Batur Sunrise 4x4 Jeep Tour. What is the itinerary and pickup time?",
-    prices: ['$75 / person (minimum 2 persons)', '$65 / person (group of 4+)', 'Includes: 4x4 off-road Jeep, Volcano entrance, Hot breakfast, Warm jackets'],
-    destinations: ['Mount Batur Caldera Sunrise Point ☀️', 'Rugged Volcanic Black Lava Formations ⚫', 'Serene Lake Batur Coastline 🌊', 'Batur Mountain View Restaurant 🍽️'],
+    prices: ['$75 / person (minimum 2 persons)', '$65 / person (group of 4+)', 'Includes: 4x4 off-road Jeep, Volcano entrance, Hot breakfast'],
+    destinations: [
+      'Morning Breakfast: Enjoy a delightful breakfast amidst stunning natural beauty.🍳',
+      'Batur Sunrise Trip: Capture the iconic sunrise over the volcano. 📸',
+      'Black Lava Trip: Explore the unique volcanic rock formations. ⚫️',
+      "Lake Batur Trip: Admire the serene waters of Bali's largest lake. 🌊",
+      'Lunch: Conclude our adventure with a satisfying lunch. 🍽️'
+    ],
     itinerary: [
       { session: 'MIDNIGHT', activities: ['03:00 - Midnight hotel pickup in a warm, cozy private vehicle', '04:30 - Arrive at Batur base camp & board custom open-air 4x4 Jeeps 🚙'] },
       { session: 'SUNRISE', activities: ['05:45 - Secure a prime spot at the caldera edge to witness a fiery sunrise ☀️', '06:15 - Chef-prepared breakfast on the jeep bonnet (eggs, banana pancakes, coffee) 🍳', '07:30 - Off-road adventure through ancient Black Lava fields and rock formations ⚫'] },
@@ -88,14 +125,23 @@ const tours = {
   },
   'blue-lagoon': {
     title: 'Blue Lagoon Marine Safari & Bella Vista Escape',
-    img: 'https://images.unsplash.com/photo-1555400038-63f5ba517a47?w=1200&q=80',
-    thumb: 'https://images.unsplash.com/photo-1555400038-63f5ba517a47?w=600&q=80',
+    img: 'https://images.unsplash.com/photo-1555400038-63f5ba517a47?w=1200&q=80&fm=webp',
+    thumb: 'https://images.unsplash.com/photo-1555400038-63f5ba517a47?w=600&q=80&fm=webp',
+    galleryImages: [
+      'https://images.unsplash.com/photo-1555400038-63f5ba517a47?w=1200&q=80&fm=webp',
+      'https://images.unsplash.com/photo-1505142468610-359e7d316be0?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.1.0&fm=webp',
+      'https://images.unsplash.com/photo-1439405326854-014607e694d7?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.1.0&fm=webp'
+    ],
     price: 'USD 50', originalPrice: 'USD 75', priceNum: 50,
     category: 'island', badge: 'Best Value', badgeColor: 'bg-cyan-600',
     rating: 4.8, reviews: 72,
     waMessage: "Hi! The Blue Lagoon Marine Safari & Bella Vista Escape looks amazing. Can you share availability details?",
     prices: ['$50 / person (minimum 2 persons)', '$43 / person (group of 4+)', 'Includes: Snorkeling equipment, Boat captain, Seafood lunch, Monkey Bar access'],
-    destinations: ['Blue Lagoon Snorkeling Bay 🐠', 'Tanjung Jepun Coral Gardens 🐡', 'Monkey Bar at Bella Vista 🍹'],
+    destinations: [
+      'Snorkeling Blue Lagoon: Discover the vibrant marine life beneath the crystal-clear waters. 🐠',
+      'Snorkeling Tanjung Jepun: Continue your underwater exploration at another beautiful spot. 🐡',
+      'Monkey Bar Pool & Bar: Relax and enjoy the vibrant atmosphere.🍹'
+    ],
     itinerary: [
       { session: 'MORNING', activities: ['08:00 - Scenic drive to beautiful East Bali (Karangasem area) 🚗', '09:30 - Board a traditional boat to the pristine Blue Lagoon snorkeling spot 🐠', '11:00 - Explore Tanjung Jepun\'s neon coral gardens and search for sea turtles 🐡'] },
       { session: 'AFTERNOON', activities: ['12:30 - Relish a fresh seafood lunch right on the sandy coast', '14:00 - Dive, swim, and sip cocktails at the amazing Monkey Bar at Bella Vista 🍹'] },
@@ -104,14 +150,25 @@ const tours = {
   },
   'northern-wonders': {
     title: 'Northern Lovina Dolphins & Jungle Gate Wonders',
-    img: 'https://images.unsplash.com/photo-1518548419970-58e3b4079ab2?w=1200&q=80',
-    thumb: 'https://images.unsplash.com/photo-1518548419970-58e3b4079ab2?w=600&q=80',
+    img: 'https://images.unsplash.com/photo-1518548419970-58e3b4079ab2?w=1200&q=80&fm=webp',
+    thumb: 'https://images.unsplash.com/photo-1518548419970-58e3b4079ab2?w=600&q=80&fm=webp',
+    galleryImages: [
+      'https://images.unsplash.com/photo-1518548419970-58e3b4079ab2?w=1200&q=80&fm=webp',
+      'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.1.0&fm=webp',
+      'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.1.0&fm=webp'
+    ],
     price: 'USD 80', originalPrice: 'USD 130', priceNum: 80,
     category: 'nature', badge: 'Magical Day', badgeColor: 'bg-blue-600',
     rating: 4.9, reviews: 68,
     waMessage: "Hi! I'd like to book the Northern Lovina Dolphins & Jungle Gate Wonders tour. When can we start?",
     prices: ['$80 / person (minimum 2 persons)', '$70 / person (group of 4+)', 'Includes: Lovina outrigger boat, Snorkel gear with dolphins, All temple tickets'],
-    destinations: ['Lovina Sunrise Beach 🐬', 'Handara Jungle Gate (Gate of Heaven) 🌿📸', 'Ulun Danu Beratan Water Temple 🛶', 'Lake Beratan Scenic Overlooks 🏞️'],
+    destinations: [
+      'Bali Dolphin Lovina: Witness playful dolphins in their natural habitat at sunrise. 🐬',
+      'Snorkeling With Dolphin: An incredible opportunity to swim alongside these magnificent creatures. 🌊',
+      'Handara Gate Of The Jungle (Gate Of Heaven): Capture iconic photos at this picturesque gate. 🌿📸',
+      'Ulundanu Temple: Visit the stunning water temple on Lake Bratan. 🛶',
+      'Beratan Lake And View: Enjoy the tranquil views of the lake and its surroundings. 🏞️'
+    ],
     itinerary: [
       { session: 'MIDNIGHT', activities: ['02:00 - Early morning private pickup from your lobby', '05:45 - Board a traditional outrigger boat at Lovina beach 🛶'] },
       { session: 'DAWN & DOLPHINS', activities: ['06:15 - Marvel at wild, playful dolphins jumping alongside the rising sun 🐬', '07:30 - Unforgettable snorkeling right next to these beautiful creatures in the calm sea 🌊', '09:00 - Warm, hearty breakfast on Lovina\'s dark volcanic sand beach'] },
@@ -121,19 +178,56 @@ const tours = {
   },
   'water-extravaganza': {
     title: 'Nusa Dua Watersports & Uluwatu Cliff Kecak',
-    img: 'https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=1200&q=80',
-    thumb: 'https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=600&q=80',
+    img: 'https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=1200&q=80&fm=webp',
+    thumb: 'https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=600&q=80&fm=webp',
+    galleryImages: [
+      'https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=1200&q=80&fm=webp',
+      'https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.1.0&fm=webp',
+      'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.1.0&fm=webp'
+    ],
     price: 'USD 85', originalPrice: 'USD 140', priceNum: 85,
     category: 'adventure', badge: 'Action & Culture', badgeColor: 'bg-indigo-600',
     rating: 4.9, reviews: 112,
     waMessage: "Hi! The Nusa Dua Watersports & Uluwatu Cliff Kecak combo looks perfect. What is the scheduling for watersports?",
     prices: ['$85 / person (minimum 2 persons)', '$75 / person (group of 4+)', 'Includes: Adventure Parasailing, Banana Boat, Jet Ski, GWK Entry, Uluwatu Temple, Kecak Show'],
-    destinations: ['Nusa Dua Watersports Beach 🏄‍♀️', 'Garuda Wisnu Kencana (GWK) 🗿', 'Uluwatu Cliff Temple 🛕', 'Sunset Kecak Fire Dance Arena 🌅🔥'],
+    destinations: [
+      'Adventure Parasailing: Soar high above the ocean for panoramic views. 🪁',
+      'Banana Boat Ride: Experience a thrilling ride across the waves. 🍌',
+      'Jet Ski: Speed across the water with an adrenaline rush. 🚤',
+      'Fly Fish: Experience the unique sensation of "flying" on the water. 🐠💨',
+      'Roulette Doughnut: Spin and splash on this exciting inflatable ride. 🍩',
+      'Wakeboarding: Glide across the water while being pulled by a boat. 🏄',
+      'Sea Walker: Walk on the ocean floor with a special helmet. 🚶‍♀️',
+      'Garuda Wisnu Kencana (GWK) Cultural Park: Explore the majestic statue and cultural exhibitions. 🗿', 
+      'Sunset Kecak Fire Dance: Witness the captivating traditional dance at sunset. 🌅🔥'
+    ],
     itinerary: [
       { session: 'MORNING', activities: ['09:00 - Lobby pickup to explore vibrant South Bali', '10:00 - Exhilarating water sports: Fly above with Adventure Parasailing, splash on the Banana Boat, and speed on a Jet Ski! 🚤', '11:30 - Optional additions: Try Fly Fish, Roulette Doughnut, Wakeboarding, or Sea Walker 🏄'] },
       { session: 'AFTERNOON', activities: ['13:30 - Tasty seaside lunch with fresh coconut water', '14:30 - Wander around the colossal Garuda Wisnu Kencana (GWK) cultural park 🗿', '16:30 - Visit the cliffside Uluwatu Temple and its mischievous resident monkeys'] },
       { session: 'EVENING', activities: ['18:00 - Witness the legendary Kecak Fire Dance during a brilliant Indian Ocean sunset 🌅🔥', '19:30 - Optional fresh grilled seafood dinner directly on Jimbaran Beach'] },
       { session: 'RETURN', activities: ['20:30 - Private transfer back to your villa'] }
+    ]
+  },
+  'lempuyang': {
+    title: 'Lempuyang Temple, Tirta Gangga & Virgin Beach Escape',
+    img: 'assets/images/lempuyang.webp',
+    thumb: 'assets/images/lempuyang.webp',
+    galleryImages: [
+      'assets/images/lempuyang.webp',
+      'https://images.unsplash.com/photo-1513161455079-7ef1a827c008?w=1200&q=80&fm=webp',
+      'https://images.unsplash.com/photo-1505142468610-359e7d316be0?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.1.0&fm=webp'
+    ],
+    price: 'USD 65', originalPrice: 'USD 100', priceNum: 65,
+    category: 'temple', badge: 'Scenic Paradise', badgeColor: 'bg-purple-600',
+    rating: 4.9, reviews: 154,
+    waMessage: "Hi! I'm interested in the Lempuyang Temple, Tirta Gangga & Virgin Beach Escape tour. Can you share availability?",
+    prices: ['$65 / person (minimum 2 persons)', '$55 / person (group of 4+)', 'Includes: Private car, Driver/Guide, Temple entries, Beach access, Lunch'],
+    destinations: ['Lempuyang Temple (Gate of Heaven) 🛕', 'Tirta Gangga Water Palace 💧', 'Virgin Beach 🏖️'],
+    itinerary: [
+      { session: 'MORNING', activities: ['08:00 - Private hotel pickup in a comfortable air-conditioned vehicle', '09:30 - Arrive at Lempuyang Temple base and begin the spiritual journey 🛕', '10:30 - Climb the sacred steps to the iconic Gate of Heaven temple with breathtaking valley views 🏔️'] },
+      { session: 'MIDDAY', activities: ['12:00 - Explore the ancient temples and participate in a blessing ceremony 🙏', '13:00 - Traditional Balinese lunch with local specialties at a scenic viewpoint 🍽️', '14:30 - Visit the magnificent Tirta Gangga Water Palace with its ornamental ponds and fountains 💧'] },
+      { session: 'AFTERNOON', activities: ['15:30 - Relax and explore the beautiful gardens of Tirta Gangga', '16:30 - Head to the serene Virgin Beach for sunset and swimwear time 🏖️🌅', '17:30 - Stroll along pristine white sand and enjoy the peaceful ocean breeze'] },
+      { session: 'RETURN', activities: ['18:30 - Departure from the beach', '20:00 - Arrival and drop-off at your hotel or villa'] }
     ]
   }
 };
@@ -418,15 +512,38 @@ function renderTours(search = '') {
   empty.classList.add('hidden');
 
   grid.innerHTML = filtered.map(([key, t]) => `
-    <div class="tour-card bg-white rounded-3xl overflow-hidden shadow-md border border-gray-100 cursor-pointer" onclick="goToDetail('${key}')">
-      <div class="relative">
-        <img src="${t.thumb}" alt="${t.title}" class="w-full h-52 object-cover" loading="lazy"/>
-        <div class="absolute top-4 left-4 ${t.badgeColor} text-white text-xs font-bold px-3 py-1.5 rounded-full shadow-md">
+    <div class="tour-card bg-white rounded-3xl overflow-hidden shadow-md border border-gray-100 cursor-pointer">
+      <div class="relative group">
+        <div class="carousel-container relative w-full h-52 overflow-hidden bg-gray-200" id="carousel-${key}">
+          ${(t.galleryImages || [t.thumb]).map((img, idx) => `
+            <img src="${img}" alt="${t.title} - Image ${idx + 1}"
+                 class="carousel-slide absolute w-full h-52 object-cover transition-opacity duration-300 ${idx === 0 ? 'opacity-100' : 'opacity-0'}"
+                 data-slide="${idx}"/>
+          `).join('')}
+
+          <button onclick="carouselPrev('${key}'); event.stopPropagation();"
+                  class="carousel-btn carousel-prev absolute left-2 top-1/2 -translate-y-1/2 bg-black/60 hover:bg-black/80 text-white w-8 h-8 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition z-10">
+            <i class="fas fa-chevron-left text-xs"></i>
+          </button>
+          <button onclick="carouselNext('${key}'); event.stopPropagation();"
+                  class="carousel-btn carousel-next absolute right-2 top-1/2 -translate-y-1/2 bg-black/60 hover:bg-black/80 text-white w-8 h-8 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition z-10">
+            <i class="fas fa-chevron-right text-xs"></i>
+          </button>
+
+          <div class="carousel-dots absolute bottom-2 left-1/2 -translate-x-1/2 flex gap-2 z-20">
+            ${(t.galleryImages || [t.thumb]).map((_, idx) => `
+              <button onclick="carouselGoTo('${key}', ${idx}); event.stopPropagation();"
+                      class="carousel-dot w-2 h-2 rounded-full transition ${idx === 0 ? 'bg-orange-500' : 'bg-white/50 hover:bg-white/70'}"></button>
+            `).join('')}
+          </div>
+        </div>
+
+        <div class="absolute top-4 left-4 ${t.badgeColor} text-white text-xs font-bold px-3 py-1.5 rounded-full shadow-md z-20">
           ${t.badge}
         </div>
         <div class="absolute bottom-0 inset-x-0 h-12 bg-gradient-to-t from-black/30 to-transparent"></div>
       </div>
-      <div class="p-5">
+      <div class="p-5" onclick="goToDetail('${key}')">
         <h3 class="font-bold text-teal-800 text-base mb-1 leading-snug">${t.title}</h3>
         <div class="flex items-center gap-2 text-gray-400 text-xs mb-3">
           <i class="fas fa-map-marker-alt text-teal-500"></i> Bali, Indonesia
@@ -451,6 +568,71 @@ function renderTours(search = '') {
       </div>
     </div>
   `).join('');
+
+  // Initialize carousel state
+  initCarousels(filtered.map(([key]) => key));
+}
+
+/* ═══════════════════════════════════════════════════════
+   CAROUSEL FUNCTIONS
+═══════════════════════════════════════════════════════ */
+
+const carouselState = {};
+
+function initCarousels(tourKeys) {
+  tourKeys.forEach(key => {
+    const gallery = tours[key]?.galleryImages || [tours[key]?.thumb];
+    carouselState[key] = { current: 0, total: gallery.length };
+  });
+}
+
+function carouselNext(tourKey) {
+  if (!carouselState[tourKey]) return;
+  const state = carouselState[tourKey];
+  state.current = (state.current + 1) % state.total;
+  updateCarousel(tourKey);
+}
+
+function carouselPrev(tourKey) {
+  if (!carouselState[tourKey]) return;
+  const state = carouselState[tourKey];
+  state.current = (state.current - 1 + state.total) % state.total;
+  updateCarousel(tourKey);
+}
+
+function carouselGoTo(tourKey, slide) {
+  if (!carouselState[tourKey] || slide < 0 || slide >= carouselState[tourKey].total) return;
+  carouselState[tourKey].current = slide;
+  updateCarousel(tourKey);
+}
+
+function updateCarousel(tourKey) {
+  const container = document.getElementById(`carousel-${tourKey}`);
+  if (!container) return;
+
+  const current = carouselState[tourKey].current;
+  const slides = container.querySelectorAll('.carousel-slide');
+  const dots = container.querySelectorAll('.carousel-dot');
+
+  slides.forEach((slide, idx) => {
+    if (idx === current) {
+      slide.classList.add('opacity-100');
+      slide.classList.remove('opacity-0');
+    } else {
+      slide.classList.remove('opacity-100');
+      slide.classList.add('opacity-0');
+    }
+  });
+
+  dots.forEach((dot, idx) => {
+    if (idx === current) {
+      dot.classList.add('bg-orange-500');
+      dot.classList.remove('bg-white/50', 'hover:bg-white/70');
+    } else {
+      dot.classList.remove('bg-orange-500');
+      dot.classList.add('bg-white/50', 'hover:bg-white/70');
+    }
+  });
 }
 
 /* ═══════════════════════════════════════════════════════
