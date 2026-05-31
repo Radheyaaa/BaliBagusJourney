@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gallery | Bali Bagus Journey</title>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@700;800&display=swap"
+    rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="css/style.css" />
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            teal: { DEFAULT: '#0f766e', 50: '#f0fdfa', 100: '#ccfbf1', 600: '#0d9488', 700: '#0f766e', 800: '#115e59', 900: '#134e4a' },
+            orange: { DEFAULT: '#f97316', 400: '#fb923c', 500: '#f97316', 600: '#ea580c' },
+          },
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+            display: ['"Playfair Display"', 'serif'],
+          },
+        }
+      }
+    }
+  </script>
+
+  <style>
+    * { scroll-behavior: smooth; }
+    body { font-family: 'Plus Jakarta Sans', sans-serif; }
+
+    @keyframes fadeUp { from { opacity:0; transform:translateY(28px); } to { opacity:1; transform:translateY(0); } }
+    @keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
+    @keyframes lbIn { from{opacity:0;transform:scale(.92);} to{opacity:1;transform:scale(1);} }
+
+    .fade-up { animation: fadeUp .65s ease forwards; }
+    .fade-in { animation: fadeIn .5s ease forwards; }
+    .lb-img-anim { animation: lbIn .25s ease forwards; }
+
+    /* Masonry grid */
+    .masonry-grid {
+      columns: 2;
+      column-gap: 1rem;
+    }
+    @media(min-width:768px)  { .masonry-grid { columns: 3; column-gap: 1.25rem; } }
+    @media(min-width:1280px) { .masonry-grid { columns: 4; column-gap: 1.25rem; } }
+
+    .masonry-item {
+      break-inside: avoid;
+      margin-bottom: 1rem;
+      border-radius: 1rem;
+      overflow: hidden;
+      position: relative;
+      cursor: pointer;
+    }
+    @media(min-width:768px) { .masonry-item { margin-bottom: 1.25rem; } }
+
+    .masonry-item img {
+      width: 100%;
+      display: block;
+      transition: transform .4s ease;
+    }
+    .masonry-item:hover img { transform: scale(1.04); }
+    .masonry-item .gallery-overlay {
+      position: absolute; inset:0;
+      background: linear-gradient(to top, rgba(0,0,0,.55) 0%, transparent 50%);
+      opacity: 0;
+      transition: opacity .3s ease;
+      display: flex; align-items:flex-end; padding: 1rem;
+    }
+    .masonry-item:hover .gallery-overlay { opacity: 1; }
+
+    /* Gallery filter */
+    .gallery-pill.active { background: #0f766e; color:#fff; border-color:#0f766e; }
+
+    /* Lightbox */
+    @keyframes lbIn { from{opacity:0;transform:scale(.92);} to{opacity:1;transform:scale(1);} }
+    .lb-img-anim { animation: lbIn .25s ease forwards; }
+  </style>
+</head>
+
+<body class="bg-white text-gray-800">
+
+  <!-- ══════════════════════════════════════════════
+     NAVIGATION
+══════════════════════════════════════════════ -->
+  <nav class="fixed top-0 left-0 right-0 z-50 bg-teal-700/95 backdrop-blur-md shadow-lg">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 flex items-center justify-between h-16">
+      <a href="index.html" class="flex items-center gap-2 group">
+        <span
+          class="w-9 h-9 rounded-full bg-orange-500 flex items-center justify-center text-white font-bold text-lg shadow-md">W</span>
+        <span class="text-white font-display font-bold text-xl tracking-tight">Bali Bagus <span
+            class="text-orange-400">Journey</span></span>
+      </a>
+
+      <div class="hidden md:flex items-center gap-8 text-sm font-semibold text-teal-100">
+        <a href="index.html" class="nav-link hover:text-white transition pb-1">Home</a>
+        <a href="tours.html" class="nav-link hover:text-white transition pb-1">Tours</a>
+        <a href="transportation.html" class="nav-link hover:text-white transition pb-1">Transportation</a>
+        <a href="gallery.html" class="nav-link active-page hover:text-white transition pb-1">Gallery</a>
+        <a href="about.html" class="nav-link hover:text-white transition pb-1">About Us</a>
+        <a href="https://wa.me/6285934484380?text=Hi!%20I'm%20interested%20in%20a%20Bali%20tour%20package"
+          target="_blank" class="bg-orange-500 hover:bg-orange-600 text-white px-5 py-2 rounded-full transition shadow">
+          <i class="fab fa-whatsapp mr-1"></i> WhatsApp Us
+        </a>
+      </div>
+
+      <button id="menuToggle" class="md:hidden text-white text-2xl focus:outline-none" onclick="toggleMenu()">
+        <i class="fas fa-bars"></i>
+      </button>
+    </div>
+
+    <div id="mobileMenu"
+      class="hidden md:hidden bg-teal-700/95 backdrop-blur-md px-4 pb-6 text-sm font-semibold text-teal-100 flex flex-col gap-1 border-t border-teal-600/50 shadow-inner">
+      <a href="index.html" class="py-3 border-b border-teal-600/30 hover:text-white transition"
+        onclick="closeMenu()">Home</a>
+      <a href="tours.html" class="py-3 border-b border-teal-600/30 hover:text-white transition"
+        onclick="closeMenu()">Tours</a>
+      <a href="transportation.html" class="py-3 border-b border-teal-600/30 hover:text-white transition"
+        onclick="closeMenu()">Transportation</a>
+      <a href="gallery.html" class="py-3 border-b border-teal-600/30 hover:text-white transition"
+        onclick="closeMenu()">Gallery</a>
+      <a href="about.html" class="py-3 border-b border-teal-600/30 hover:text-white transition"
+        onclick="closeMenu()">About Us</a>
+      <a href="https://wa.me/6285934484380?text=Hi!%20I'm%20interested%20in%20a%20Bali%20tour%20package" target="_blank"
+        class="bg-orange-500 text-white text-center py-3 rounded-xl mt-4 shadow-lg active:scale-95 transition"
+        onclick="closeMenu()">
+        <i class="fab fa-whatsapp mr-1"></i> WhatsApp Us
+      </a>
+    </div>
+  </nav>
+
+  <!-- ══════════════════════════════════════════════
+     HERO
+══════════════════════════════════════════════ -->
+  <section class="relative pt-16 overflow-hidden"
+    style="background:linear-gradient(135deg,rgba(15,118,110,.90) 0%,rgba(17,94,89,.85) 60%,rgba(249,115,22,.18) 100%), url('https://images.unsplash.com/photo-1537996194471-e657df975ab4?w=1600&q=80') center/cover no-repeat;">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 text-center py-14">
+      <span
+        class="inline-block bg-orange-500/25 text-orange-300 border border-orange-400/30 text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full mb-4">Our
+        Gallery</span>
+      <h1 class="font-display text-4xl md:text-5xl text-white font-bold mb-3">Moments &amp; <span
+          class="text-orange-400">Memories</span></h1>
+      <p class="text-teal-100 max-w-lg mx-auto leading-relaxed">Real photos from real trips — explore the beauty of Bali
+        through the eyes of our happy travelers.</p>
+    </div>
+    <div class="absolute bottom-0 left-0 right-0">
+      <svg viewBox="0 0 1440 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0,20 C480,50 960,0 1440,20 L1440,40 L0,40 Z" fill="white" />
+      </svg>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════
+     FILTER + STATS BAR
+══════════════════════════════════════════════ -->
+  <section class="bg-white border-b border-gray-100 sticky top-16 z-30">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 py-3 flex flex-col sm:flex-row items-center justify-between gap-3">
+      <div class="flex flex-wrap gap-2" id="gallery-filter-pills">
+        <button onclick="filterGallery('all')"
+          class="gallery-pill active text-xs font-semibold px-4 py-2 rounded-full border border-gray-200 hover:border-teal-600 transition">All
+          Photos</button>
+        <button onclick="filterGallery('destination')"
+          class="gallery-pill text-xs font-semibold px-4 py-2 rounded-full border border-gray-200 hover:border-teal-600 transition text-gray-600">🏝️
+          Destinations</button>
+        <button onclick="filterGallery('tour')"
+          class="gallery-pill text-xs font-semibold px-4 py-2 rounded-full border border-gray-200 hover:border-teal-600 transition text-gray-600">🗺️
+          Tours</button>
+        <button onclick="filterGallery('culture')"
+          class="gallery-pill text-xs font-semibold px-4 py-2 rounded-full border border-gray-200 hover:border-teal-600 transition text-gray-600">🛕
+          Culture</button>
+        <button onclick="filterGallery('nature')"
+          class="gallery-pill text-xs font-semibold px-4 py-2 rounded-full border border-gray-200 hover:border-teal-600 transition text-gray-600">🌿
+          Nature</button>
+        <button onclick="filterGallery('happy')"
+          class="gallery-pill text-xs font-semibold px-4 py-2 rounded-full border border-gray-200 hover:border-teal-600 transition text-gray-600">😊
+          Happy Guests</button>
+      </div>
+      <p class="text-gray-400 text-xs flex-shrink-0" id="gallery-count">24 photos</p>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════
+     MASONRY GRID
+══════════════════════════════════════════════ -->
+  <section class="py-10 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6">
+      <div class="masonry-grid" id="gallery-grid"></div>
+      <!-- Empty state -->
+      <div id="gallery-empty" class="hidden text-center py-20 text-gray-400">
+        <i class="fas fa-images text-5xl mb-4 block text-gray-200"></i>
+        <p class="text-lg font-semibold">No photos in this category yet</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════
+     CTA
+══════════════════════════════════════════════ -->
+  <section class="bg-teal-800 py-14">
+    <div class="max-w-3xl mx-auto text-center px-4">
+      <h2 class="font-display text-3xl text-white mb-3">Want to Be in Our Gallery?</h2>
+      <p class="text-teal-200 mb-8 leading-relaxed">Book a tour with us and we'll capture your Bali moments! Tag us on
+        Instagram or share your photos with us via WhatsApp.</p>
+      <div class="flex flex-wrap justify-center gap-4">
+        <a href="tours.html"
+          class="inline-flex items-center gap-3 bg-orange-500 hover:bg-orange-600 text-white font-bold px-8 py-4 rounded-2xl shadow-xl transition">
+          <i class="fas fa-calendar-check text-lg"></i> Book a Tour
+        </a>
+        <a href="https://wa.me/6285934484380?text=Hi!%20I'd%20like%20to%20share%20my%20Bali%20photos%20with%20you!"
+          target="_blank"
+          class="inline-flex items-center gap-3 bg-green-500 hover:bg-green-600 text-white font-bold px-8 py-4 rounded-2xl shadow-xl transition">
+          <i class="fab fa-whatsapp text-lg"></i> Share Your Photos
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════
+     LIGHTBOX MODAL
+══════════════════════════════════════════════ -->
+  <div id="lightbox-overlay"
+    class="hidden fixed inset-0 bg-black/90 z-[200] flex items-center justify-center p-4"
+    onclick="closeLightbox(event)">
+    <div class="relative max-w-5xl w-full" onclick="event.stopPropagation()">
+
+      <!-- Close button -->
+      <button onclick="closeLightbox()"
+        class="absolute -top-12 right-0 text-white/70 hover:text-white text-3xl w-10 h-10 flex items-center justify-center transition z-10">
+        <i class="fas fa-times"></i>
+      </button>
+
+      <!-- Prev / Next -->
+      <button id="lb-prev" onclick="lbNavigate(-1)"
+        class="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-14 text-white/70 hover:text-white text-3xl w-12 h-12 flex items-center justify-center transition hidden md:flex">
+        <i class="fas fa-chevron-left"></i>
+      </button>
+      <button id="lb-next" onclick="lbNavigate(1)"
+        class="absolute right-0 top-1/2 -translate-y-1/2 translate-x-14 text-white/70 hover:text-white text-3xl w-12 h-12 flex items-center justify-center transition hidden md:flex">
+        <i class="fas fa-chevron-right"></i>
+      </button>
+
+      <!-- Image -->
+      <div class="relative">
+        <img id="lb-img" src="" alt="" class="lb-img-anim w-full max-h-[80vh] object-contain rounded-2xl shadow-2xl" />
+        <!-- Caption bar -->
+        <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent rounded-b-2xl p-5">
+          <p id="lb-caption" class="text-white font-semibold text-base"></p>
+          <p id="lb-subcaption" class="text-white/60 text-xs mt-0.5"></p>
+        </div>
+      </div>
+
+      <!-- Counter + swipe hint -->
+      <div class="flex items-center justify-between mt-3 text-white/50 text-xs px-1">
+        <span id="lb-counter"></span>
+        <span class="md:hidden">← swipe atau tap arrows to navigate →</span>
+        <div class="flex gap-2">
+          <button onclick="lbNavigate(-1)" class="md:hidden bg-white/10 px-3 py-1.5 rounded-full hover:bg-white/20 transition">‹
+            Prev</button>
+          <button onclick="lbNavigate(1)" class="md:hidden bg-white/10 px-3 py-1.5 rounded-full hover:bg-white/20 transition">Next
+            ›</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════
+     FOOTER
+══════════════════════════════════════════════ -->
+  <footer class="bg-teal-900 text-teal-200 pt-16 pb-8">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6">
+      <!-- Footer Content Grid -->
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+        <!-- Brand Info -->
+        <div>
+          <div class="flex items-center gap-2 mb-4">
+            <span class="w-8 h-8 rounded-full bg-orange-500 flex items-center justify-center text-white font-bold text-sm">W</span>
+            <span class="font-display font-bold text-white">Bali Bagus<br/>Journey</span>
+          </div>
+          <p class="text-teal-300 text-sm leading-relaxed">Your personal Bali storyteller, offering authentic experiences
+            with a trusted local driver since 2016.</p>
+          <div class="flex gap-3 mt-4">
+            <a href="https://wa.me/6285934484380" target="_blank" class="text-green-400 hover:text-green-300 transition">
+              <i class="fab fa-whatsapp text-lg"></i>
+            </a>
+            <a href="https://instagram.com" target="_blank" class="text-pink-400 hover:text-pink-300 transition">
+              <i class="fab fa-instagram text-lg"></i>
+            </a>
+            <a href="https://facebook.com" target="_blank" class="text-blue-400 hover:text-blue-300 transition">
+              <i class="fab fa-facebook text-lg"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Quick Links -->
+        <div>
+          <h3 class="font-bold text-white mb-4">Quick Links</h3>
+          <ul class="space-y-2 text-sm">
+            <li><a href="index.html" class="text-teal-300 hover:text-white transition">Home</a></li>
+            <li><a href="tours.html" class="text-teal-300 hover:text-white transition">Tours</a></li>
+            <li><a href="transportation.html" class="text-teal-300 hover:text-white transition">Transportation</a></li>
+            <li><a href="gallery.html" class="text-teal-300 hover:text-white transition">Gallery</a></li>
+            <li><a href="about.html" class="text-teal-300 hover:text-white transition">About Us</a></li>
+          </ul>
+        </div>
+
+        <!-- Services -->
+        <div>
+          <h3 class="font-bold text-white mb-4">Services</h3>
+          <ul class="space-y-2 text-sm">
+            <li><a href="tours.html" class="text-teal-300 hover:text-white transition">Tour Packages</a></li>
+            <li><a href="transportation.html" class="text-teal-300 hover:text-white transition">Vehicle Rental</a></li>
+            <li><a href="index.html#services" class="text-teal-300 hover:text-white transition">Custom Tours</a></li>
+            <li><a href="https://wa.me/6285934484380" target="_blank" class="text-teal-300 hover:text-white transition">Private
+                Guide</a></li>
+          </ul>
+        </div>
+
+        <!-- Contact Info -->
+        <div>
+          <h3 class="font-bold text-white mb-4">Get in Touch</h3>
+          <ul class="space-y-3 text-sm">
+            <li class="flex gap-2">
+              <i class="fas fa-phone text-orange-400 text-xs mt-1"></i>
+              <span class="text-teal-300">+62 859 3448 4380</span>
+            </li>
+            <li class="flex gap-2">
+              <i class="fas fa-map-marker-alt text-orange-400 text-xs mt-1"></i>
+
+            </li>
+            <li class="flex gap-2">
+              <i class="fas fa-clock text-orange-400 text-xs mt-1"></i>
+              <span class="text-teal-300">Available 24/7 on WhatsApp</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Divider -->
+      <div class="border-t border-teal-700/50 pt-8 text-center text-sm text-teal-300">
+        <p>© 2024 Bali Bagus Journey — <a href="https://wa.me/6285934484380" target="_blank"
+            class="text-orange-400 hover:text-orange-300 transition">Contact Us on WhatsApp</a></p>
+        <p class="text-xs text-teal-400 mt-2">Your trusted partner for authentic Bali experiences</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- FLOATING WHATSAPP -->
+  <a href="https://wa.me/6285934484380?text=Hi!%20I'm%20interested%20in%20a%20Bali%20tour%20package" target="_blank"
+    id="wa-float"
+    class="wa-float fixed bottom-6 right-6 z-50 bg-green-500 hover:bg-green-600 text-white w-14 h-14 rounded-full flex items-center justify-center shadow-2xl transition text-2xl"
+    title="Chat on WhatsApp">
+    <i class="fab fa-whatsapp"></i>
+  </a>
+
+  <script>
+    /* ══════════════════════════════════════════════
+       GALLERY DATA
+    ══════════════════════════════════════════════ */
+    const galleryPhotos = [
+      // ── Destinations ──
+      { src: 'https://images.unsplash.com/photo-1537996194471-e657df975ab4?w=800&q=80', cat: 'destination', title: 'Tanah Lot at Sunset', loc: 'Tabanan, Bali', span: 'wide' },
+      { src: 'https://images.unsplash.com/photo-1518548419970-58e3b4079ab2?w=800&q=80', cat: 'destination', title: 'Kelingking Beach Viewpoint', loc: 'Nusa Penida, Bali', span: 'tall' },
+      { src: 'https://images.unsplash.com/photo-1604665515222-39b3b55c2c9c?w=800&q=80', cat: 'destination', title: 'Lempuyang Gate of Heaven', loc: 'Karangasem, Bali', span: 'normal' },
+      { src: 'https://images.unsplash.com/photo-1555400038-63f5ba517a47?w=800&q=80', cat: 'destination', title: 'Tegallalang Rice Terraces', loc: 'Ubud, Bali', span: 'wide' },
+      { src: 'https://images.unsplash.com/photo-1537953773345-d172ccf13cf1?w=800&q=80', cat: 'destination', title: 'Ubud Rice Fields', loc: 'Ubud, Bali', span: 'normal' },
+      { src: 'https://images.unsplash.com/photo-1588668214407-6ea9a6d8c272?w=800&q=80', cat: 'destination', title: 'Besakih Mother Temple', loc: 'Karangasem, Bali', span: 'tall' },
+
+      // ── Tours ──
+      { src: 'https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=800&q=80', cat: 'tour', title: 'Ayung River Rafting', loc: 'Ubud, Bali', span: 'wide' },
+      { src: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80', cat: 'tour', title: 'ATV Ride Through the Jungle', loc: 'Ubud, Bali', span: 'normal' },
+      { src: 'https://images.unsplash.com/photo-1604999333679-b86d54738315?w=800&q=80', cat: 'tour', title: 'Bali Highlands Drive', loc: 'Kintamani, Bali', span: 'normal' },
+      { src: 'https://images.unsplash.com/photo-1580273916550-e323be2ae537?w=800&q=80', cat: 'tour', title: 'Private Tour — Countryside', loc: 'Sidemen, Bali', span: 'tall' },
+
+      // ── Culture ──
+      { src: 'https://images.unsplash.com/photo-1604665515222-39b3b55c2c9c?w=800&q=80', cat: 'culture', title: 'Temple Ceremony Bali', loc: 'Ubud, Bali', span: 'normal' },
+      { src: 'https://images.unsplash.com/photo-1512100356356-de1b84283e18?w=800&q=80', cat: 'culture', title: 'Traditional Kecak Dance', loc: 'Uluwatu, Bali', span: 'wide' },
+      { src: 'https://images.unsplash.com/photo-1570959789530-3b41dc7bdf3e?w=800&q=80', cat: 'culture', title: 'Balinese Offering (Canang)', loc: 'Bali', span: 'tall' },
+      { src: 'https://images.unsplash.com/photo-1575420416691-6a1ffa5b0e73?w=800&q=80', cat: 'culture', title: 'Silver Craft Village', loc: 'Celuk, Gianyar', span: 'normal' },
+
+      // ── Nature ──
+      { src: 'https://images.unsplash.com/photo-1518548419970-58e3b4079ab2?w=800&q=80', cat: 'nature', title: 'Diamond Beach Blue Water', loc: 'Nusa Penida, Bali', span: 'wide' },
+      { src: 'https://images.unsplash.com/photo-1555400038-63f5ba517a47?w=800&q=80', cat: 'nature', title: 'Sunrise Over Rice Terraces', loc: 'Tegallalang, Bali', span: 'normal' },
+      { src: 'https://images.unsplash.com/photo-1559628376-f3fe5f782a2f?w=800&q=80', cat: 'nature', title: 'Tegenungan Waterfall', loc: 'Gianyar, Bali', span: 'tall' },
+      { src: 'https://images.unsplash.com/photo-1537996194471-e657df975ab4?w=800&q=80', cat: 'nature', title: 'Bali Ocean Horizon', loc: 'South Bali', span: 'normal' },
+      { src: 'https://images.unsplash.com/photo-1604999333679-b86d54738315?w=800&q=80', cat: 'nature', title: 'Mount Batur Morning Mist', loc: 'Kintamani, Bali', span: 'wide' },
+
+      // ── Happy Guests ──
+      { src: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&q=80', cat: 'happy', title: 'Happy Travelers — Wayan', loc: 'Nusa Penida', span: 'normal' },
+      { src: 'https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=800&q=80', cat: 'happy', title: 'Smiling at Diamond Beach', loc: 'Nusa Penida, Bali', span: 'tall' },
+      { src: 'https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=800&q=80', cat: 'happy', title: 'Group Tour — Lempuyang', loc: 'Karangasem, Bali', span: 'normal' },
+      { src: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=800&q=80', cat: 'happy', title: 'Our Driver Wayan', loc: 'Ubud, Bali', span: 'normal' },
+      { src: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=800&q=80', cat: 'happy', title: 'Happy Family Tour', loc: 'Tanah Lot, Bali', span: 'wide' },
+    ];
+
+    const SPAN_ASPECT = { normal: 'aspect-square', tall: 'aspect-[3/4]', wide: 'aspect-[4/3]' };
+    let lbVisible = [];
+    let lbCurrent = 0;
+    let activeGalCat = 'all';
+
+    function buildGalleryItem(photoIdx) {
+      const p = galleryPhotos[photoIdx];
+      const aspect = SPAN_ASPECT[p.span] || 'aspect-square';
+      return `
+      <div class="masonry-item group" onclick="openLightbox(${photoIdx})">
+        <div class="${aspect} overflow-hidden rounded-2xl bg-gray-100">
+          <img src="${p.src}" alt="${p.title}"
+               class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+               loading="lazy"/>
+        </div>
+        <div class="gallery-overlay rounded-2xl">
+          <div>
+            <p class="text-white font-semibold text-sm leading-snug">${p.title}</p>
+            ${p.loc ? `<p class="text-white/70 text-xs mt-0.5"><i class="fas fa-map-marker-alt mr-1"></i>${p.loc}</p>` : ''}
+          </div>
+        </div>
+      </div>`;
+    }
+
+    function filterGallery(cat) {
+      activeGalCat = cat;
+
+      document.querySelectorAll('.gallery-pill').forEach(btn => {
+        const t = btn.textContent.trim().toLowerCase();
+        btn.classList.toggle('active',
+          (cat === 'all' && t === 'all photos') ||
+          (cat !== 'all' && t.includes(cat))
+        );
+      });
+
+      lbVisible = galleryPhotos
+        .map((_, i) => i)
+        .filter(i => cat === 'all' || galleryPhotos[i].cat === cat);
+
+      const grid = document.getElementById('gallery-grid');
+      const empty = document.getElementById('gallery-empty');
+      const count = document.getElementById('gallery-count');
+
+      if (!lbVisible.length) {
+        grid.innerHTML = '';
+        empty.classList.remove('hidden');
+        count.textContent = '0 photos';
+        return;
+      }
+
+      empty.classList.add('hidden');
+      count.textContent = `${lbVisible.length} photo${lbVisible.length !== 1 ? 's' : ''}`;
+      grid.innerHTML = lbVisible.map(i => buildGalleryItem(i)).join('');
+    }
+
+    function openLightbox(photoIdx) {
+      lbCurrent = lbVisible.indexOf(photoIdx);
+      if (lbCurrent === -1) {
+        lbVisible = galleryPhotos.map((_, i) => i);
+        lbCurrent = photoIdx;
+      }
+      renderLightbox();
+      document.getElementById('lightbox-overlay').classList.remove('hidden');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function renderLightbox() {
+      const idx = lbVisible[lbCurrent];
+      const p = galleryPhotos[idx];
+
+      const imgEl = document.getElementById('lb-img');
+      imgEl.classList.remove('lb-img-anim');
+      void imgEl.offsetWidth;
+      imgEl.classList.add('lb-img-anim');
+
+      imgEl.src = p.src.replace('w=800', 'w=1400');
+      imgEl.alt = p.title;
+      document.getElementById('lb-caption').textContent = p.title;
+      document.getElementById('lb-subcaption').textContent = p.loc || '';
+      document.getElementById('lb-counter').textContent = `${lbCurrent + 1} / ${lbVisible.length}`;
+
+      document.getElementById('lb-prev').style.opacity = lbCurrent > 0 ? '1' : '0.25';
+      document.getElementById('lb-next').style.opacity = lbCurrent < lbVisible.length - 1 ? '1' : '0.25';
+    }
+
+    function lbNavigate(dir) {
+      const next = lbCurrent + dir;
+      if (next < 0 || next >= lbVisible.length) return;
+      lbCurrent = next;
+      renderLightbox();
+    }
+
+    function closeLightbox(e) {
+      if (e && e.target !== document.getElementById('lightbox-overlay')) return;
+      document.getElementById('lightbox-overlay').classList.add('hidden');
+      document.body.style.overflow = '';
+    }
+
+    function toggleMenu() {
+      const menu = document.getElementById('mobileMenu');
+      menu.classList.toggle('hidden');
+    }
+
+    function closeMenu() {
+      document.getElementById('mobileMenu').classList.add('hidden');
+    }
+
+    document.addEventListener('keydown', e => {
+      const lb = document.getElementById('lightbox-overlay');
+      if (!lb.classList.contains('hidden')) {
+        if (e.key === 'ArrowLeft') lbNavigate(-1);
+        if (e.key === 'ArrowRight') lbNavigate(1);
+        if (e.key === 'Escape') { lb.classList.add('hidden'); document.body.style.overflow = ''; }
+      }
+    });
+
+    // Init
+    document.addEventListener('DOMContentLoaded', () => {
+      filterGallery('all');
+    });
+  </script>
+
+</body>
+
+</html>
