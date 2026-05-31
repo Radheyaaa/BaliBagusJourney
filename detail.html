@@ -36,7 +36,7 @@
 <nav class="fixed top-0 left-0 right-0 z-50 bg-teal-700/95 backdrop-blur-md shadow-lg">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 flex items-center justify-between h-16">
     <a href="index.html" class="flex items-center gap-2 group">
-      <span class="w-9 h-9 rounded-full bg-orange-500 flex items-center justify-center text-white font-bold text-lg shadow-md">W</span>
+      <img src="assets/images/logo_crop.png" alt="Logo" class="w-12 h-12 rounded-full object-cover shadow-md" />
       <span class="text-white font-display font-bold text-xl tracking-tight">Bali Bagus <span class="text-orange-400">Journey</span></span>
     </a>
 
@@ -44,7 +44,7 @@
       <a href="index.html" class="nav-link hover:text-white transition pb-1">Home</a>
       <a href="tours.html" class="nav-link hover:text-white transition pb-1">Tours</a>
       <a href="transportation.html" class="nav-link hover:text-white transition pb-1">Transportation</a>
-      <a href="about.html" class="nav-link hover:text-white transition pb-1">About Us</a>
+      <!-- <a href="about.html" class="nav-link hover:text-white transition pb-1">About Us</a> -->
       <a href="index.html#how-to-book" class="nav-link hover:text-white transition pb-1">How to Book</a>
       <a href="https://wa.me/6285934484380?text=Hi!%20I'm%20interested%20in%20a%20Bali%20tour%20package" target="_blank"
          class="bg-orange-500 hover:bg-orange-600 text-white px-5 py-2 rounded-full transition shadow">
@@ -61,7 +61,7 @@
     <a href="index.html" class="py-3 border-b border-teal-600/30 hover:text-white transition" onclick="closeMenu()">Home</a>
     <a href="tours.html" class="py-3 border-b border-teal-600/30 hover:text-white transition" onclick="closeMenu()">Tours</a>
     <a href="transportation.html" class="py-3 border-b border-teal-600/30 hover:text-white transition" onclick="closeMenu()">Transportation</a>
-    <a href="about.html" class="py-3 border-b border-teal-600/30 hover:text-white transition" onclick="closeMenu()">About Us</a>
+    <!-- <a href="about.html" class="py-3 border-b border-teal-600/30 hover:text-white transition" onclick="closeMenu()">About Us</a> -->
     <a href="index.html#how-to-book" class="py-3 border-b border-teal-600/30 hover:text-white transition" onclick="closeMenu()">How to Book</a>
     <a href="https://wa.me/6285934484380?text=Hi!%20I'm%20interested%20in%20a%20Bali%20tour%20package" target="_blank"
        class="bg-orange-500 text-white text-center py-3 rounded-xl mt-4 shadow-lg active:scale-95 transition" onclick="closeMenu()">
@@ -101,10 +101,21 @@
   <div class="flex flex-col lg:flex-row gap-10">
     <div class="flex-1 min-w-0">
       <div class="bg-teal-50 border border-teal-100 rounded-2xl p-6 mb-8">
-        <h2 class="font-bold text-teal-800 text-lg mb-3 flex items-center gap-2">
-          <i class="fas fa-tag text-orange-500"></i> Price Start From
-        </h2>
-        <ul id="detail-prices" class="space-y-1 text-gray-700 text-sm list-disc list-inside marker:text-orange-500"></ul>
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+          <div>
+            <h2 class="font-bold text-teal-800 text-lg mb-3 flex items-center gap-2">
+              <i class="fas fa-tag text-orange-500"></i> Price Start From
+            </h2>
+            <ul id="detail-prices" class="space-y-1 text-gray-700 text-sm list-disc list-inside marker:text-orange-500"></ul>
+          </div>
+          <div class="bg-orange-500/10 border border-orange-500/20 text-orange-800 text-sm rounded-xl p-4 flex items-center gap-3 w-fit shrink-0">
+            <i class="fas fa-exclamation-triangle text-orange-600 text-lg"></i>
+            <div>
+              <p class="font-bold">Important Note</p>
+              <p class="text-xs text-orange-700">All tours require a minimum of 2 persons (pax) per booking.</p>
+            </div>
+          </div>
+        </div>
       </div>
       <div class="bg-white border border-gray-100 rounded-2xl p-6 mb-8 shadow-sm">
         <h2 class="font-bold text-teal-800 text-lg mb-3 flex items-center gap-2">
@@ -137,7 +148,11 @@
             <span id="qb-price-display" class="text-3xl font-bold text-sky-500"></span>
             <span class="text-sm text-gray-400">/Person</span>
           </div>
-          <p class="text-base font-bold text-teal-800 mb-5">Select your details</p>
+          <p class="text-base font-bold text-teal-800 mb-2">Select your details</p>
+          <div class="bg-orange-500/10 border border-orange-500/20 text-orange-800 text-xs rounded-xl p-3 flex items-center gap-2.5 mb-5">
+            <i class="fas fa-info-circle text-orange-600"></i>
+            <span><strong>Booking Requirement:</strong> Minimum 2 packs/persons required.</span>
+          </div>
 
           <!-- Full Name -->
           <label class="block text-sm font-semibold text-gray-700 mb-1.5" for="qb-name">Full Name</label>
@@ -175,7 +190,7 @@
           <!-- ── FORM TYPE A: Simple (transport / cultural) ── -->
           <div id="qb-form-simple">
             <label class="block text-sm font-semibold text-gray-700 mb-1.5">
-              Person <span class="font-normal text-gray-400">(max 12)</span>
+              Person <span class="font-bold text-orange-600">(Min. 2 - Max. 12 Pax)</span>
             </label>
             <div class="flex items-center w-fit border border-gray-200 rounded-xl overflow-hidden mb-6">
               <button type="button" onclick="qbAdjust('simple',-1)"
@@ -202,7 +217,7 @@
                     <span class="text-sm font-bold text-gray-800">Adult</span>
                     <span id="qb-adult-price-label" class="text-sm text-gray-400"></span>
                   </div>
-                  <p class="text-xs text-gray-400 mt-0.5">Standard entry for adults (12+ years)</p>
+                  <p class="text-xs text-gray-400 mt-0.5">Standard entry for adults (Min. 2 Pax)</p>
                 </div>
                 <div class="flex items-center border border-gray-200 rounded-xl overflow-hidden ml-3">
                   <button type="button" onclick="qbAdjustOpt('adult',-1)"
